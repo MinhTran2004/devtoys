@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import styles from "../menu/menu-item.module.css";
+import Link from "next/link";
 
 interface MenuItemProps {
   label?: string;
@@ -22,7 +23,7 @@ export default function ItemMenu({
       <div className={styles.container}>
         <div className={styles.label}>
           {iconLeft}
-          <p>{label}</p>
+          <Link href={'/encoders'}>{label}</Link>
         </div>
         <div
           onClick={() => {
