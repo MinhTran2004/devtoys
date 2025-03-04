@@ -1,49 +1,16 @@
-"use client";
-import React from "react";
-import styles from "../menu/itemMemu.module.css";
+import ItemMenu from "./menu-item"
+import styles from "./menu.module.css"
 
-interface ItemMenuProps {
-  label?: string;
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  children?: ItemMenuProps[];
+interface MenuProps {
+  data: any[],
 }
 
-export default function ItemMenu({
-  label,
-  iconLeft,
-  iconRight,
-  children,
-}: ItemMenuProps) {
-  const [isVisible, setIsVisible] = React.useState(false);
-
+export default function Menu({ data }: MenuProps) {
   return (
-    <div className={styles.main}>
-      <div className={styles.container}>
-        <div className={styles.label}>
-          {iconLeft}
-          <p>{label}</p>
-        </div>
-        <div
-          onClick={() => {
-            setIsVisible(!isVisible);
-          }}
-        >
-          {iconRight}
-        </div>
-      </div>
-
-      {children && isVisible && (
-        <ul className={styles.ul}>
-          {children.map((item) => (
-            <li key={item.label} className={styles.menu_item}>
-              <div style={{ paddingLeft: 30 }}>
-                <ItemMenu {...item} />
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className={styles.ul}>
+      {data.map((item: any) => (
+        <ItemMenu key={item.key} {...item} />
+      ))}
     </div>
-  );
+  )
 }

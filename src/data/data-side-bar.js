@@ -1,12 +1,29 @@
 import HomeIcon from "@mui/icons-material/Home";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import EmojiObjectsIcon from "@mui/icons-material/EmojiObjects";
-import { yellow } from "@mui/material/colors";
+
+export const DataSettings = [
+  {
+    key: 'sub9',
+    label: "Manage extensions",
+    iconLeft: <HomeIcon fontSize="small" />,
+  },
+  {
+    key: 'sub10',
+    label: "Settings",
+    iconLeft: <HomeIcon fontSize="small" />,
+  }
+]
 
 export const DataSideBar = [
   {
     key: "sub1",
     label: "All tools",
+    iconLeft: <HomeIcon fontSize="small" />,
+  },
+  {
+    key: "sub9",
+    label: "Markdown Preview",
     iconLeft: <HomeIcon fontSize="small" />,
   },
   {
@@ -118,7 +135,7 @@ export const DataSideBar = [
   {
     key: "sub5",
     label: "Generators",
-    iconLeft: <HomeIcon />,
+    iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
     children: [
       {
@@ -147,7 +164,7 @@ export const DataSideBar = [
   {
     key: "sub6",
     label: "Graphic",
-    iconLeft: <HomeIcon />,
+    iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
     children: [
       {

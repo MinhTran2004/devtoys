@@ -1,8 +1,5 @@
-.main {
-  overflow-y: hidden;
-}
-
 .container {
+  cursor: pointer;
   width: 100%;
   display: flex;
   justify-content: space-between;
