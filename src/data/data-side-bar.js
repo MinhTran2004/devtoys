@@ -94,6 +94,7 @@ export const DataSideBar = [
         key: "sub3-5",
         label: "HTML",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "encoders/html"
       },
       {
         key: "sub3-6",
