@@ -2,6 +2,7 @@
 import DropImage from "@/components/drop-imge";
 import styles from "./page.module.css";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Base64ImagePage() {
     const [base64, setBase64] = useState("");
@@ -28,7 +29,7 @@ export default function Base64ImagePage() {
                     <div className={styles.boxImage}>
                         {
                             base64 && (
-                                <img
+                                <Image
                                     style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                                     src={base64} alt="" />
                             )
