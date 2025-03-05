@@ -7,7 +7,7 @@ interface MenuItemProps {
   label?: string;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
-  children?: MenuItemProps[];
+  children?: any[];
   link?: string
   statusSideBar?: boolean,
 }
