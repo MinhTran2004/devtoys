@@ -19,8 +19,12 @@ export default function ListCard({ data, title }: CardProps) {
                 )
             }
             <div className={styles.content}>
-                {data.map((item) => (
-                    <CardItem key={item.key} {...item} />
+                {data.map((item, index) => (
+                    <CardItem
+                        key={index}
+                        image={item.image}
+                        title={item.title}
+                        content={item.content} />
                 ))}
             </div>
         </div>

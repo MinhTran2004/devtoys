@@ -8,10 +8,17 @@ interface MenuProps {
 
 export default function Menu({ data, statusSideBar }: MenuProps) {
   return (
-      <div className={styles.ul}>
-        {data.map((item: any) => (
-          <ItemMenu {...item} statusSideBar={statusSideBar} />
-        ))}
-      </div>
+    <div className={styles.ul}>
+      {data.map((item: any, index: number) => (
+        <ItemMenu key={index}
+          label={item.label}
+          iconLeft={item.iconLeft}
+          iconRight={item.iconRight}
+          children={item.children}
+          link={item.link}
+          statusSideBar={statusSideBar} />
+      ))}
+
+    </div>
   )
 }

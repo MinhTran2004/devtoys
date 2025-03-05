@@ -8,8 +8,8 @@ interface MenuItemProps {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   children?: MenuItemProps[];
-  link: string
-  statusSideBar: boolean,
+  link?: string
+  statusSideBar?: boolean,
 }
 
 export default function ItemMenu({
@@ -43,8 +43,8 @@ export default function ItemMenu({
           )
             :
             (
-              <div className={styles.container} style={{padding: statusSideBar ? undefined : '5px 0'}}>
-                  <Link href={link != undefined ? link : "/"}>{iconLeft}</Link>
+              <div className={styles.container} style={{ padding: statusSideBar ? undefined : '5px 0' }}>
+                <Link href={link != undefined ? link : "/"}>{iconLeft}</Link>
               </div>
             )
         }
@@ -52,10 +52,10 @@ export default function ItemMenu({
 
       {children && statusSideBar && isVisible && (
         <ul className={styles.ul}>
-          {children.map((item) => (
+          {children.map((item, index) => (
             <li key={item.label} className={styles.menu_item}>
               <div style={{ paddingLeft: 30 }}>
-                <ItemMenu {...item} statusSideBar={true}/>
+                <ItemMenu key={index} {...item} statusSideBar={true} />
               </div>
             </li>
           ))}

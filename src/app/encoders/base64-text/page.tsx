@@ -32,7 +32,7 @@ export default function Base64ImagePage() {
         } else {
             convertDecode();  
         }
-    }, [input]);  
+    }, [input, isChecked]);  
     
 
     return (

@@ -14,10 +14,10 @@ export default function Toogle({
     onChangeValue
 }: ToogleProps) {
     const [isToogle, setIsToogle] = useState(false);
-    const handleCheckboxChange = (event:any) => {
-        setIsToogle(event.target.checked); 
+    const handleCheckboxChange = (event: any) => {
+        setIsToogle(event.target.checked);
         onChangeValue(event.target.checked);
-      }
+    }
 
     return (
         <div style={{
@@ -25,12 +25,12 @@ export default function Toogle({
             alignItems: 'center',
             gap: 10
         }}>
-            <p style={{fontSize: 15}}>
+            <p style={{ fontSize: 15 }}>
                 {isToogle ? textTrue : textFalse}
             </p>
 
             <label className={styles.switch}>
-                <input type="checkbox" onClick={handleCheckboxChange}/>
+                <input type="checkbox" onClick={handleCheckboxChange} />
                 <span className={`${styles.slider} ${styles.round}`}></span>
             </label>
         </div>
