@@ -4,21 +4,21 @@ import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import Toogle from "@/components/toogle";
+import he from 'he'; 
 
 export default function Base64ImagePage() {
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
-
     const [isChecked, setIsChecked] = useState(false);
 
     const convertEncode = () => {
-        const text = btoa(input);
+        const text = he.encode(input);
         setOutput(text);
     }
 
     const convertDecode = () => {
         try {
-            const text = atob(input);
+            const text = he.decode(input);
             setOutput(text);
         } catch (err) {
             console.log(err);
@@ -40,7 +40,7 @@ export default function Base64ImagePage() {
             <p style={{
                 fontSize: 20,
                 fontWeight: 500
-            }}>Base64 Text Encoders / Decoders</p>
+            }}>HTML Text Encoders / Decoders</p>
 
             <Accordion
                 iconLeft={<CurrencyExchangeIcon />}
