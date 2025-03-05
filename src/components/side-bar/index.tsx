@@ -1,19 +1,29 @@
+"use client"
 import { DataSettings, DataSideBar } from "@/data/data-side-bar";
 import InputField from "../input-field";
 import styles from "./index.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "../menu";
+import { useState } from "react";
 
 export default function SideBar() {
+    const [statusSideBar, setStatusSideBar] = useState(false);
+
     return (
-        <div className={styles.sideBar}>
+        <div className={styles.sideBar} style={{ minWidth: statusSideBar ? undefined : 50 }}>
             <div style={{ margin: " 0 10px" }}>
-                <MenuIcon sx={{ fontSize: 20, marginBottom: 1.5 }} />
-                <InputField placeholder="Type to search for tools" />
+                <div onClick={() => setStatusSideBar(!statusSideBar)}>
+                    <MenuIcon sx={{ fontSize: 20, marginBottom: 1.5 }} />
+                </div>
+                {
+                    statusSideBar && (
+                        <InputField placeholder="Type to search for tools" />
+                    )
+                }
             </div>
-            <Menu data={DataSideBar} />
+            <Menu data={DataSideBar} statusSideBar={statusSideBar} />
             <div className={styles.sidebarSetting}>
-                <Menu data={DataSettings} />
+                <Menu data={DataSettings} statusSideBar={statusSideBar} />
             </div>
         </div>
     )

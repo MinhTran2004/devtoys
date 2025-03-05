@@ -20,6 +20,7 @@ export const DataSideBar = [
     key: "sub1",
     label: "All tools",
     iconLeft: <HomeIcon fontSize="small" />,
+    link: "/"
   },
   {
     key: "sub9",
@@ -64,17 +65,20 @@ export const DataSideBar = [
     label: "Encoders / Decoders",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    link: "/encoders",
     children: [
       {
         key: "sub3-1",
         label: "Base64 Image",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/encoders/base64-image"
       },
       {
         key: "sub3-2",
         label: "Base64 Text",
         iconLeft: <HomeIcon fontSize="small" />,
         iconRight: <EmojiObjectsIcon fontSize="small" />,
+        link: "/encoders/base64-text"
       },
       {
         key: "sub3-3",

@@ -1,24 +1,26 @@
 import CardItem from "./card-item"
+import styles from "./index.module.css"
 
 interface CardProps {
     title: string,
     data: any[]
 }
 
-export default function Card({ data, title }: CardProps) {
+export default function ListCard({ data, title }: CardProps) {
     return (
         <div style={{ position: 'relative' }}>
             {
                 title && (
-                    <div style={{ position: "sticky", backgroundColor: '#282828', top: 0 }}>
+                    <div>
+                        {/* <div style={{ position: "sticky", backgroundColor: '#282828', top: 0 }}> */}
                         <p style={{ fontSize: 20 }}>{title}</p>
                         <hr style={{ margin: '5px 0 15px' }} />
                     </div>
                 )
             }
-            <div style={{ display: 'grid', gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }}>
+            <div className={styles.content}>
                 {data.map((item) => (
-                    <CardItem {...item} />
+                    <CardItem key={item.key} {...item} />
                 ))}
             </div>
         </div>
