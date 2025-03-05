@@ -21,20 +21,19 @@ export default function Base64ImagePage() {
             const text = atob(input);
             setOutput(text);
         } catch (err) {
+            console.log(err);
             setOutput("<Invalid Base64>")
         }
     }
 
-    {
-        isChecked ?
-            useEffect(() => {
-                convertEncode()
-            }, [input])
-            :
-            useEffect(() => {
-                convertDecode()
-            }, [input]);
-    }
+    useEffect(() => {
+        if (isChecked) {
+            convertEncode();  
+        } else {
+            convertDecode();  
+        }
+    }, [input]);  
+    
 
     return (
         <div className={styles.container}>
