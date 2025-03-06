@@ -1,0 +1,17 @@
+.container{
+    position: relative;
+    height: 100%;
+}
+
+.listMenu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #282828;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
+    right: 0;
+    gap: 3px;
+    z-index: 999;
+}

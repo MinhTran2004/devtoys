@@ -24,6 +24,7 @@ export default function Accordion({
             }}>
                 {/* {iconLeft} */}
                 <CurrencyExchangeIcon />
+
                 <div>
                     <p style={{fontSize: 13}}>{title}</p>
                     <p style={{fontSize: 13, color: "#bbbbbb"}}>{content}</p>

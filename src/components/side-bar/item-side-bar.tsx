@@ -15,7 +15,7 @@ interface MenuItemProps {
   setNameSideBar: (name: string) => void,
 }
 
-export default function MenuItem({
+export default function ItemSideBar({
   label,
   iconLeft,
   iconRight,
@@ -29,10 +29,9 @@ export default function MenuItem({
 
   const [isVisible, setIsVisible] = useState(false);
 
-  // const handlePath = (path: string, name: string) => {
-  //   setNameSideBar(name);
-  //   router.push(path);
-  // }
+  const handlePath = (path: string) => {
+    router.push(path);
+  }
 
   return (
     <div>
@@ -43,13 +42,8 @@ export default function MenuItem({
       >
         {
           statusSideBar ? (
-            <div
-              className={styles.container}
-            >
-              <div
-                className={styles.label}
-              // onClick={() => handlePath(link || "", label || "")}
-              >
+            <div className={styles.container}>
+              <div className={styles.label} onClick={() => handlePath(link || "")}>
                 {iconLeft}
                 <p>{label}</p>
               </div>
@@ -77,7 +71,7 @@ export default function MenuItem({
         <div>
           {children.map((item, index) => (
             <div style={{ paddingLeft: 30 }}>
-              <MenuItem key={index}
+              <ItemSideBar key={index}
                 nameSideBar={nameSideBar || ""}
                 setNameSideBar={setNameSideBar}
                 label={item.label}

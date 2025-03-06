@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MenuItem from "./item-side-bar"
+import ItemSideBar from "./item-side-bar"
 import styles from "./list-side-bar.module.css"
 
 interface MenuProps {
@@ -7,13 +7,13 @@ interface MenuProps {
   statusSideBar?: boolean,
 }
 
-export default function Menu({ data, statusSideBar }: MenuProps) {
+export default function ListSideBar({ data, statusSideBar }: MenuProps) {
   const [nameSideBar, setNameSideBar] = useState<string | null>("");
 
   return (
     <div className={styles.ul}>
       {data.map((item: any, index: number) => (
-        <MenuItem key={index}
+        <ItemSideBar key={index}
           nameSideBar={nameSideBar || ""}
           setNameSideBar={setNameSideBar}
           label={item.label}

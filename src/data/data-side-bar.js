@@ -80,27 +80,27 @@ export const DataSideBar = [
         iconRight: <EmojiObjectsIcon fontSize="small" />,
         link: "/encoders/base64-text"
       },
-      {
-        key: "sub3-3",
-        label: "Certificate",
-        iconLeft: <HomeIcon fontSize="small" />,
-      },
-      {
-        key: "sub3-4",
-        label: "GZIP",
-        iconLeft: <HomeIcon fontSize="small" />,
-      },
+      // {
+      //   key: "sub3-3",
+      //   label: "Certificate",
+      //   iconLeft: <HomeIcon fontSize="small" />,
+      // },
+      // {
+      //   key: "sub3-4",
+      //   label: "GZIP",
+      //   iconLeft: <HomeIcon fontSize="small" />,
+      // },
       {
         key: "sub3-5",
         label: "HTML",
         iconLeft: <HomeIcon fontSize="small" />,
         link: "/encoders/html"
       },
-      {
-        key: "sub3-6",
-        label: "JWT",
-        iconLeft: <HomeIcon fontSize="small" />,
-      },
+      // {
+      //   key: "sub3-6",
+      //   label: "JWT",
+      //   iconLeft: <HomeIcon fontSize="small" />,
+      // },
       {
         key: "sub3-7",
         label: "QR Code",
@@ -121,6 +121,7 @@ export const DataSideBar = [
     label: "Formatters",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    link: "/formatters",
     children: [
       {
         key: "sub4-1",

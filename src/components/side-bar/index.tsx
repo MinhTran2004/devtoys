@@ -3,7 +3,7 @@ import { DataSettings, DataSideBar } from "@/data/data-side-bar";
 import InputField from "../input-field";
 import styles from "./index.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
-import Menu from "./list-side-bar";
+import ListSideBar from "./list-side-bar";
 import { useState } from "react";
 
 export default function SideBar() {
@@ -21,9 +21,9 @@ export default function SideBar() {
                     )
                 }
             </div>
-            <Menu data={DataSideBar} statusSideBar={statusSideBar} />
+            <ListSideBar data={DataSideBar} statusSideBar={statusSideBar} />
             <div className={styles.sidebarSetting}>
-                <Menu data={DataSettings} statusSideBar={statusSideBar} />
+                <ListSideBar data={DataSettings} statusSideBar={statusSideBar} />
             </div>
         </div>
     )

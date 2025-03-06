@@ -3,7 +3,7 @@ import Accordion from "@/components/accordion";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import Toogle from "@/components/toogle";
+import Toogle from "@/components/accordion/toogle";
 
 export default function URLPage() {
     const [input, setInput] = useState("");
