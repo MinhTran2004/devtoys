@@ -2,6 +2,9 @@
   overflow-y: scroll;
   box-sizing: border-box;
   padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .ul::-webkit-scrollbar {

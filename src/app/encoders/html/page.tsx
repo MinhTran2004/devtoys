@@ -6,7 +6,7 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import Toogle from "@/components/toogle";
 import he from 'he'; 
 
-export default function Base64ImagePage() {
+export default function HTMLPage() {
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
     const [isChecked, setIsChecked] = useState(false);

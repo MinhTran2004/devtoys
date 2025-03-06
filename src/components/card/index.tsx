@@ -12,7 +12,6 @@ export default function ListCard({ data, title }: CardProps) {
             {
                 title && (
                     <div>
-                        {/* <div style={{ position: "sticky", backgroundColor: '#282828', top: 0 }}> */}
                         <p style={{ fontSize: 20 }}>{title}</p>
                         <hr style={{ margin: '5px 0 15px' }} />
                     </div>
@@ -24,7 +23,8 @@ export default function ListCard({ data, title }: CardProps) {
                         key={index}
                         image={item.image}
                         title={item.title}
-                        content={item.content} />
+                        content={item.content}
+                        link = {item.link} />
                 ))}
             </div>
         </div>

@@ -18,7 +18,7 @@ export const DataSettings = [
 export const DataSideBar = [
   {
     key: "sub1",
-    label: "All tools",
+    label: "All Tools",
     iconLeft: <HomeIcon fontSize="small" />,
     link: "/"
   },
@@ -106,11 +106,13 @@ export const DataSideBar = [
         label: "QR Code",
         iconLeft: <HomeIcon fontSize="small" />,
         iconRight: <EmojiObjectsIcon fontSize="small" />,
+        link: "/encoders/qr-code"
       },
       {
         key: "sub3-8",
         label: "URL",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/encoders/url"
       },
     ],
   },
@@ -124,6 +126,7 @@ export const DataSideBar = [
         key: "sub4-1",
         label: "JSON",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/formatters/json"
       },
       {
         key: "sub4-2",

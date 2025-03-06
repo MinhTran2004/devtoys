@@ -28,13 +28,15 @@ export const DataAllTools = [
         key: "at1",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Base64 Image Encoder / Decoder",
-        content: "Encode and decode Base64 Image data"
+        content: "Encode and decode Base64 Image data",
+        link: "/encoders/base64-image"
     },
     {
         key: "at2",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Base 64 Text Encoder / Decoder",
-        content: "Encode and decode Base64 text data"
+        content: "Encode and decode Base64 text data",
+        link: "/encoders/base64-text"
     },
     {
         key: "at3",
@@ -82,7 +84,8 @@ export const DataAllTools = [
         key: "at10",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "HTML Text Encoder / Decoder",
-        content: "Encode and decode HTML text data"
+        content: "Encode and decode HTML text data",
+        link: "/encoders/html"
     },
     {
         key: "at11",
@@ -154,7 +157,8 @@ export const DataAllTools = [
         key: "at22",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "QR Code Encoder/ Decoder",
-        content: "Read or generate a QR Code from a text. Can be exported as SVG."
+        content: "Read or generate a QR Code from a text. Can be exported as SVG.",
+        link: "/encoders/qr-code"
     },
     {
         key: "at23",
@@ -184,7 +188,8 @@ export const DataAllTools = [
         key: "at27",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "URL Encoder / Decoder",
-        content: "Encode or decode all the applicable"
+        content: "Encode or decode all the applicable",
+        link: "/encoders/url"
     },
     {
         key: "at28",

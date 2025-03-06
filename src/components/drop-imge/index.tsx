@@ -3,25 +3,10 @@ import React from "react"
 import styles from "./index.module.css"
 
 interface DropImageProps extends React.HtmlHTMLAttributes<HTMLInputElement> {
-    onChangeValue: (text: string) => void
+    handlerFuncion : (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export default function DropImage({ onChangeValue }: DropImageProps) {
-
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                if (reader.result) {
-                    onChangeValue(reader.result as string);
-                }
-            };
-            reader.readAsDataURL(file);
-        } else {
-            console.log("Không có tệp nào được chọn.");
-        }
-    };
+export default function DropImage({ handlerFuncion }: DropImageProps) {
 
     return (
         <div className={styles.container}>
@@ -36,7 +21,8 @@ export default function DropImage({ onChangeValue }: DropImageProps) {
                 <input
                     type="file"
                     style={{ fontSize: 15, color: '#6aaed6', width: 80 }}
-                    onChange={handleFileChange} />
+                    accept="image/*" 
+                    onChange={handlerFuncion} />
                 <p style={{ margin: '0 10px' }}>/</p>
                 <button style={{ fontSize: 15, color: '#6aaed6' }}>Paste</button>
             </div>

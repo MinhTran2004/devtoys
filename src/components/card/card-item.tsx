@@ -1,3 +1,5 @@
+"use client"
+import { useRouter } from "next/navigation";
 import styles from "./card-item.module.css";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
@@ -5,11 +7,18 @@ interface CardItemProps {
     image: React.ReactNode,
     title: string,
     content: string,
+    link: string,
 }
 
-export default function CardItem({ image, title, content }: CardItemProps) {
+export default function CardItem({ image, title, content, link }: CardItemProps) {
+    const router = useRouter();
+
+    const handlePath = () => {
+        router.push(link);
+    }
+
     return (
-        <div className={styles.container}>
+        <div className={styles.container} onClick={handlePath}>
             <div className={styles.image}>
                 {image}
             </div>

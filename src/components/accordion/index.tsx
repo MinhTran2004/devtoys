@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./index.module.css";
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 
 interface AccordionProps {
     iconLeft?: React.ReactNode,
@@ -21,7 +22,8 @@ export default function Accordion({
                 alignItems: 'center',
                 gap: 20
             }}>
-                {iconLeft}
+                {/* {iconLeft} */}
+                <CurrencyExchangeIcon />
                 <div>
                     <p style={{fontSize: 13}}>{title}</p>
                     <p style={{fontSize: 13, color: "#bbbbbb"}}>{content}</p>

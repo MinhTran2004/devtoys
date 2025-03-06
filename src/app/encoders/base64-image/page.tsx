@@ -2,10 +2,24 @@
 import DropImage from "@/components/drop-imge";
 import styles from "./page.module.css";
 import { useState } from "react";
-import Image from "next/image";
 
 export default function Base64ImagePage() {
     const [base64, setBase64] = useState("");
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                if (reader.result) {
+                    setBase64(reader.result as string);
+                }
+            };
+            reader.readAsDataURL(file);
+        } else {
+            console.log("Không có tệp nào được chọn.");
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -25,11 +39,11 @@ export default function Base64ImagePage() {
                 </div>
 
                 <div className={styles.containerImage}>
-                    <DropImage onChangeValue={setBase64}/>
+                    <DropImage handlerFuncion={handleFileChange} />
                     <div className={styles.boxImage}>
                         {
                             base64 && (
-                                <Image
+                                <img
                                     style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                                     src={base64} alt="" />
                             )

@@ -1,9 +1,9 @@
 "use client"
 import styles from "./page.module.css";
 import ListCard from "@/components/card";
-import { DataRecents, DataAllTools } from "../data/all-tools";
+import { DataRecents, DataAllTools } from "../../data/all-tools";
 
-export default function DashboardPage() {
+export default function FormattersPage() {
 
   const data = DataAllTools;
 
