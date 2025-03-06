@@ -97,7 +97,8 @@ export const DataAllTools = [
         key: "at12",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "JSON Formatter",
-        content: "Indent or minify JSON data"
+        content: "Indent or minify JSON data",
+        link: "/formatters/json"
     },
     {
         key: "at13",
