@@ -15,7 +15,7 @@ export default function JSONPage() {
     const [selectItemMenu, setSelectItemMenu] = useState("");
 
     // Hàm để sắp xếp các đối tượng theo tên khóa
-    const sortObject = (obj: any) => {
+    const sortObject = (obj: any):any => {
         if (typeof obj !== "object" || obj === null) return obj; // Không cần sắp xếp nếu không phải là đối tượng
 
         if (Array.isArray(obj)) {
@@ -42,17 +42,12 @@ export default function JSONPage() {
         }).sort(); // Sắp xếp mảng
     };
 
-
-
     const formatJson = () => {
         try {
             if (input) {
                 const parsedJson = json5.parse(input);
-
                 const sortedJson = Array.isArray(parsedJson) ? sortArray(parsedJson) : sortObject(parsedJson);
-
                 let prettyJson;
-
                 switch (selectItemMenu) {
                     case "2 spaces": prettyJson = JSON.stringify(isChecked ? sortedJson : parsedJson, null, 2); break;
                     case "4 spaces": prettyJson = JSON.stringify(isChecked ? sortedJson : parsedJson, null, 4); break;
