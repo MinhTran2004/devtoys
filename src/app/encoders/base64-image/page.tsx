@@ -23,22 +23,22 @@ export default function Base64ImagePage() {
     };
 
     return (
-        <div className="layout">
-            <p className="title">Base64 Image Encoders / Decoders</p>
+        <div className="h-full w-full">
+            <p className="text-2xl">Base64 Image Encoders / Decoders</p>
 
-            <div className={styles.content}>
+            <div className="grid grid-cols-[60%_38.5%] gap-6 h-full">
                 <Textarea
                     label="Base64 text"
                     value={base64}
                     onChange={(text) => setBase64(text.target.value)}
                 />
-                <div className={styles.containerImage}>
+                <div className="flex flex-col gap-5 w-full h-19/20">
                     <DropImage handlerFuncion={handleFileChange} />
-                    <div className={styles.boxImage}>
+                    <div className="w-full h-full rounded-b-lg bg-[#333333]">
                         {
                             base64 && (
                                 <img
-                                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                className="w-full h-full object-contain"
                                     src={base64} alt="" />
                             )
                         }

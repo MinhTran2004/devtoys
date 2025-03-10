@@ -1,5 +1,3 @@
-import styles from "./index.module.css";
-
 interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     label?: string
 }
@@ -9,10 +7,10 @@ export default function Textarea({
     ...textarea
 }: TextareaProps) {
     return (
-        <div style={{width: '100%', height: '100%'}}>
-            <p>{label}</p>
+        <div>
+            <p className="mt-5 mb-2">{label}</p>
             <textarea
-                className={styles.textarea}
+                className="w-full h-8/9 bg-[#333333] px-5 py-2 box-border rounded-lg"
                 {...textarea} />
         </div>
     )

@@ -9,15 +9,17 @@ interface DropImageProps extends React.HtmlHTMLAttributes<HTMLInputElement> {
 export default function DropImage({ handlerFuncion }: DropImageProps) {
 
     return (
-        <div className={styles.container}>
-            <p className={styles.title}>Drag & drop a BMP, GIF, ICO, JPEG, JPG, PNG, SEV, WEBP file here <br />or</p>
-            <div style={{
-                display: 'flex',
-                fontSize: 13,
-                justifyContent: 'center',
-                textAlign: 'center',
-                alignItems: 'center'
-            }}>
+        <div className="w-full outline-2 outline-dotted outline-[#767676] p-5 rounded-lg">
+            <p className="text-sm text-center">Drag & drop a BMP, GIF, ICO, JPEG, JPG, PNG, SEV, WEBP file here <br />or</p>
+            <div 
+            // style={{
+            //     display: 'flex',
+            //     fontSize: 13,
+            //     justifyContent: 'center',
+            //     textAlign: 'center',
+            //     alignItems: 'center'
+            // }}
+            >
                 <input
                     type="file"
                     style={{ fontSize: 15, color: '#6aaed6', width: 80 }}

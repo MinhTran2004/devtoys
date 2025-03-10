@@ -1,9 +1,0 @@
-.textarea {
-  width: 100%;
-  height: calc(100% - 25px);
-  background-color: #333333;
-  padding: 0 30px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  margin-top: 5px;
-}

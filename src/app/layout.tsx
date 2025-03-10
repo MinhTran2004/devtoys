@@ -30,13 +30,7 @@ export default function RootLayout({
       >
         <div id="main">
           <SideBar />
-          <div style={{
-            flex: 1,
-            padding: 30,
-            backgroundColor: "#282828",
-            overflow: 'hidden',
-            borderRadius: 10
-          }}>
+          <div className="flex-1 bg-[#282828] rounded-2xl p-8 overflow-hidden w-full box-border">
             {children}
           </div>
         </div>

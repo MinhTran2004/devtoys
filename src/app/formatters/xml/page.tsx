@@ -41,13 +41,6 @@ export default function XMLPage() {
         convertXML()
     }, [input]);
 
-
-
-
-
-
-
-
     return (
         <div className="layout">
             <p className="title">JSON {"<>"} YAML Converter</p>

@@ -1,12 +1,3 @@
-.container {
-    width: 100%;
-    outline-style: dotted;
-    outline-width: 2px;
-    outline-color: #767676;
-    padding: 20px;
-    border-radius: 10px;
-}
-
 .title {
     font-size: 14;
     text-align: center;
