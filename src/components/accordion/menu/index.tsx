@@ -3,7 +3,7 @@ import styles from "./index.module.css"
 import ItemMenu from "./item-menu"
 
 interface MenuProps {
-    data: any[]
+    data: string[]
     onSelectItemMenu: (text: string) => void
     selectItemMenu: string
 }

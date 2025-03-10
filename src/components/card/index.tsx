@@ -3,7 +3,13 @@ import styles from "./index.module.css"
 
 interface CardProps {
     title: string,
-    data: any[]
+    data: {
+        key:string,
+        image:React.ReactNode,
+        title: string,
+        content: string,
+        link?: string
+    }[]
 }
 
 export default function ListCard({ data, title }: CardProps) {
@@ -24,7 +30,7 @@ export default function ListCard({ data, title }: CardProps) {
                         image={item.image}
                         title={item.title}
                         content={item.content}
-                        link = {item.link} />
+                        link = {item.link || ""} />
                 ))}
             </div>
         </div>

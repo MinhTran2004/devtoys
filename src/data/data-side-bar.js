@@ -62,7 +62,7 @@ export const DataSideBar = [
   // },
   {
     key: "sub3",
-    label: "Encoders / Decoders",
+    label: "Encoders",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
     link: "/encoders",

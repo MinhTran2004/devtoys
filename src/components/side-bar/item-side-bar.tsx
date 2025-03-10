@@ -11,8 +11,6 @@ interface MenuItemProps {
   children?: any[];
   link?: string
   statusSideBar?: boolean,
-  nameSideBar: string,
-  setNameSideBar: (name: string) => void,
 }
 
 const ItemSideBar = ({
@@ -22,16 +20,22 @@ const ItemSideBar = ({
   children,
   link,
   statusSideBar,
-  nameSideBar,
-  setNameSideBar,
 }: MenuItemProps) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+
   const pathname = usePathname();
+
+  useLayoutEffect(() => {
+    const arrPathName = pathname.split("/");
+
+    // console.log(arrPathName);
+    
+    setIsVisible(arrPathName.length > 2 && arrPathName[1] === label?.toLowerCase())
+  }, [])
 
   return (
     <div>
       <div
-        onClick={() => { setNameSideBar(label || "/") }}
         className={styles.main}
         style={{ backgroundColor: pathname === link ? "#323232" : "transparent" }}
       >
@@ -67,8 +71,6 @@ const ItemSideBar = ({
           {children.map((item, index: number) => (
             <div style={{ paddingLeft: 30 }} key={index}>
               <ItemSideBar key={index}
-                nameSideBar={nameSideBar || ""}
-                setNameSideBar={setNameSideBar}
                 label={item.label}
                 iconLeft={item.iconLeft}
                 iconRight={item.iconRight}
