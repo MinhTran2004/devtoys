@@ -1,8 +1,8 @@
 "use client";
 import styles from "../side-bar/item-side-bar.module.css";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useLayoutEffect, useState } from "react";
 
 interface MenuItemProps {
   label?: string;
@@ -15,7 +15,7 @@ interface MenuItemProps {
   setNameSideBar: (name: string) => void,
 }
 
-export default function ItemSideBar({
+const ItemSideBar = ({
   label,
   iconLeft,
   iconRight,
@@ -24,26 +24,21 @@ export default function ItemSideBar({
   statusSideBar,
   nameSideBar,
   setNameSideBar,
-}: MenuItemProps) {
-  const router = useRouter();
-
-  const [isVisible, setIsVisible] = useState(false);
-
-  const handlePath = (path: string) => {
-    router.push(path);
-  }
+}: MenuItemProps) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const pathname = usePathname();
 
   return (
     <div>
       <div
         onClick={() => { setNameSideBar(label || "/") }}
         className={styles.main}
-        style={{ backgroundColor: nameSideBar === label ? "#323232" : "transparent" }}
+        style={{ backgroundColor: pathname === link ? "#323232" : "transparent" }}
       >
         {
           statusSideBar ? (
-            <div className={styles.container}>
-              <div className={styles.label} onClick={() => handlePath(link || "")}>
+            <Link href={link || ""} className={styles.container}>
+              <div className={styles.label}>
                 {iconLeft}
                 <p>{label}</p>
               </div>
@@ -55,7 +50,7 @@ export default function ItemSideBar({
               >
                 {iconRight}
               </div>
-            </div>
+            </Link>
           )
             :
             (
@@ -69,8 +64,8 @@ export default function ItemSideBar({
 
       {children && statusSideBar && isVisible && (
         <div>
-          {children.map((item, index) => (
-            <div style={{ paddingLeft: 30 }}>
+          {children.map((item, index: number) => (
+            <div style={{ paddingLeft: 30 }} key={index}>
               <ItemSideBar key={index}
                 nameSideBar={nameSideBar || ""}
                 setNameSideBar={setNameSideBar}
@@ -87,3 +82,5 @@ export default function ItemSideBar({
     </div>
   );
 }
+
+export default ItemSideBar;
