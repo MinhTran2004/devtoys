@@ -6,16 +6,16 @@ interface MenuProps {
   statusSideBar?: boolean,
   data: {
     key: string,
-    label: string,
-    iconLeft: React.ReactNode,
-    iconRight: React.ReactNode,
-    link: string,
+    label?: string,
+    iconLeft?: React.ReactNode,
+    iconRight?: React.ReactNode,
+    link?: string,
     children?: {
       key: string,
-      label: string,
-      iconLeft: React.ReactNode,
-      iconRight: React.ReactNode,
-      link: string,
+      label?: string,
+      iconLeft?: React.ReactNode,
+      iconRight?: React.ReactNode,
+      link?: string,
     }[]
   }[],
 }

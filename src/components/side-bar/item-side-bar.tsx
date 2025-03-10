@@ -27,9 +27,6 @@ const ItemSideBar = ({
 
   useLayoutEffect(() => {
     const arrPathName = pathname.split("/");
-
-    // console.log(arrPathName);
-    
     setIsVisible(arrPathName.length > 2 && arrPathName[1] === label?.toLowerCase())
   }, [])
 
