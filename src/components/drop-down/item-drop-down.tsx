@@ -1,22 +1,22 @@
 import React from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import styles from "./item-menu.module.css";
+import styles from "./item-drop-down.module.css";
 
 interface ItemMenuProps {
     iconLeft?: React.ReactNode,
     label?: string,
     iconRight?: React.ReactNode,
-    onSelectItemMenu?: (text: string) => void,
+    setSelectItemDropDown?: (text: string) => void,
 }
 
 export default function ItemMenu({
     iconLeft,
     label,
     iconRight,
-    onSelectItemMenu
+    setSelectItemDropDown
 }: ItemMenuProps) {
     return (
-        <div className={styles.container} onClick={() => {onSelectItemMenu && onSelectItemMenu(label || "")}}>
+        <div className={styles.container} onClick={() => {setSelectItemDropDown && setSelectItemDropDown(label || "")}}>
             {/* {iconLeft} */}
             <KeyboardArrowDownIcon />
             <p>{label}</p>

@@ -30,7 +30,15 @@ export default function RootLayout({
       >
         <div id="main">
           <SideBar />
-          {children}
+          <div style={{
+            flex: 1,
+            padding: 30,
+            backgroundColor: "#282828",
+            overflow: 'hidden',
+            borderRadius: 10
+          }}>
+            {children}
+          </div>
         </div>
       </body>
     </html>

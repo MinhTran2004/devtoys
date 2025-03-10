@@ -1,17 +1,18 @@
+"use client"
 import { useEffect, useRef, useState } from "react"
 import styles from "./index.module.css"
-import ItemMenu from "./item-menu"
+import ItemMenu from "./item-drop-down"
 
 interface MenuProps {
     data: string[]
-    onSelectItemMenu: (text: string) => void
-    selectItemMenu: string
+    setSelectItemDropDown?: (text: string) => void
+    selectItemDropDown?: string
 }
 
-export default function Menu({
+export default function DropDown({
     data,
-    onSelectItemMenu,
-    selectItemMenu
+    setSelectItemDropDown,
+    selectItemDropDown
 }: MenuProps) {
     const [isChecked, setIsChecked] = useState(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -29,17 +30,18 @@ export default function Menu({
     }, []);
 
     return (
-        <div className={styles.container}
+        <div
+            className={styles.container}
             ref={containerRef}
             onClick={() => setIsChecked(!isChecked)}>
-            <ItemMenu label={selectItemMenu} />
+            <ItemMenu label={selectItemDropDown ? selectItemDropDown : data[0]} />
             {isChecked && (
                 <div className={styles.listMenu}>
-                    {
+                    {data && (
                         data.map((item) => (
-                            <ItemMenu key={item} label={item} onSelectItemMenu={onSelectItemMenu} />
+                            <ItemMenu key={item} label={item} setSelectItemDropDown={setSelectItemDropDown} />
                         ))
-                    }
+                    )}
                 </div>
             )}
         </div>

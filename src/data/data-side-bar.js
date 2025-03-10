@@ -138,6 +138,7 @@ export const DataSideBar = [
         key: "sub4-3",
         label: "XML",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/formatters/xml"
       },
     ],
   },

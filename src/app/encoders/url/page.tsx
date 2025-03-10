@@ -3,7 +3,8 @@ import Accordion from "@/components/accordion";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import Toogle from "@/components/accordion/toogle";
+import Toogle from "@/components/switch";
+import Textarea from "@/components/textarea";
 
 export default function URLPage() {
     const [input, setInput] = useState("");
@@ -35,11 +36,8 @@ export default function URLPage() {
 
 
     return (
-        <div className={styles.container}>
-            <p style={{
-                fontSize: 20,
-                fontWeight: 500
-            }}>URL Encoders / Decoders</p>
+        <div className="layout">
+            <p className="title">URL Encoders / Decoders</p>
 
             <Accordion
                 iconLeft={<CurrencyExchangeIcon />}
@@ -48,25 +46,17 @@ export default function URLPage() {
                 iconRight={<Toogle textFalse="Decode" textTrue="Encode" onChangeValue={setIsChecked} />} />
 
             <div className={styles.content}>
-                <div>
-                    <p style={{ fontSize: 14 }}>Input</p>
-                    <textarea
-                        className={styles.textarea}
-                        value={input}
-                        onChange={text => setInput(text.target.value)}
-                    />
-                </div>
-
-                <div>
-                    <p style={{ fontSize: 14 }}>Output</p>
-                    <textarea
-                        className={styles.textarea}
-                        value={output}
-                        onChange={text => setOutput(text.target.value)}
-                    />
-                </div>
+                <Textarea
+                    label="Input"
+                    value={input}
+                    onChange={(text) => setInput(text.target.value)}
+                />
+                <Textarea
+                    label="Output"
+                    value={output}
+                    onChange={(text) => setOutput(text.target.value)}
+                />
             </div>
-
         </div>
     )
 }

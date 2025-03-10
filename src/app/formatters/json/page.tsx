@@ -2,9 +2,10 @@
 import styles from "./page.module.css";
 import React, { useEffect, useState } from "react";
 import Accordion from "@/components/accordion";
-import Toogle from "@/components/accordion/toogle";
-import Menu from "@/components/accordion/menu";
+import Switch from "@/components/switch";
+import DropDown from "@/components/drop-down";
 import json5 from "json5";
+import Textarea from "@/components/textarea";
 
 const data = ["2 spaces", "4 spaces", "1 tabs", "Minified"]
 
@@ -12,10 +13,10 @@ export default function JSONPage() {
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
     const [isChecked, setIsChecked] = useState(false);
-    const [selectItemMenu, setSelectItemMenu] = useState("");
+    const [selectItemDropDown, setSelectItemDropDown] = useState("");
 
     // Hàm để sắp xếp các đối tượng theo tên khóa
-    const sortObject = (obj: any):any => {
+    const sortObject = (obj: any): any => {
         if (typeof obj !== "object" || obj === null) return obj; // Không cần sắp xếp nếu không phải là đối tượng
 
         if (Array.isArray(obj)) {
@@ -48,7 +49,7 @@ export default function JSONPage() {
                 const parsedJson = json5.parse(input);
                 const sortedJson = Array.isArray(parsedJson) ? sortArray(parsedJson) : sortObject(parsedJson);
                 let prettyJson;
-                switch (selectItemMenu) {
+                switch (selectItemDropDown) {
                     case "2 spaces": prettyJson = JSON.stringify(isChecked ? sortedJson : parsedJson, null, 2); break;
                     case "4 spaces": prettyJson = JSON.stringify(isChecked ? sortedJson : parsedJson, null, 4); break;
                     case "1 tab": prettyJson = JSON.stringify(isChecked ? sortedJson : parsedJson, null, '\t'); break;
@@ -71,36 +72,25 @@ export default function JSONPage() {
     }, [input, formatJson])
 
     return (
-        <div className={styles.container}>
-            <p style={{
-                fontSize: 20,
-                fontWeight: 500
-            }}>JSON Formatter</p>
+        <div className="layout">
+            <p className="title">JSON Formatter</p>
 
-            <Accordion title="Indentation" iconRight={<Menu data={data} selectItemMenu={selectItemMenu} onSelectItemMenu={setSelectItemMenu} />} />
+            <Accordion title="Indentation" iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} setSelectItemDropDown={setSelectItemDropDown} />} />
             <Accordion
                 title="Sort JSON Properties alphabetically"
-                iconRight={<Toogle textTrue="On" textFalse="Off" onChangeValue={setIsChecked} />} />
+                iconRight={<Switch textTrue="On" textFalse="Off" onChangeValue={setIsChecked} />} />
 
             <div className={styles.content}>
-                <div>
-                    <p style={{ fontSize: 14 }}>Input</p>
-                    <textarea
-                        className={styles.textarea}
-                        value={input}
-                        onChange={text => setInput(text.target.value)}
-                    />
-                </div>
-
-                <div>
-                    <p style={{ fontSize: 14 }}>Output</p>
-                    <textarea
-                        disabled
-                        className={styles.textarea}
-                        value={output}
-                        onChange={() => { }}
-                    />
-                </div>
+                <Textarea
+                    label="Input"
+                    value={input}
+                    onChange={(text) => setInput(text.target.value)}
+                />
+                <Textarea
+                    label="Output"
+                    value={output}
+                    onChange={(text) => setOutput(text.target.value)}
+                />
             </div>
 
         </div>

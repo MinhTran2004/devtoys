@@ -4,6 +4,7 @@ import { useState } from "react";
 import { QRCodeCanvas } from 'qrcode.react';
 import DropImage from "@/components/drop-imge";
 import jsQR from "jsqr";
+import Textarea from "@/components/textarea";
 
 export default function QRCodePage() {
     const [input, setInput] = useState("");
@@ -42,21 +43,15 @@ export default function QRCodePage() {
 
 
     return (
-        <div className={styles.container}>
-            <p style={{
-                fontSize: 20,
-                fontWeight: 500
-            }}>QR Code Encoders / Decoders</p>
+        <div className="layout">
+            <p className="title">QR Code Encoders / Decoders</p>
 
             <div className={styles.content}>
-                <div>
-                    <p style={{ fontSize: 14 }}>Text</p>
-                    <textarea
-                        className={styles.textarea}
+                    <Textarea
+                        label="Text"
                         value={input}
-                        onChange={text => setInput(text.target.value)}
+                        onChange={(text) => setInput(text.target.value)}
                     />
-                </div>
 
                 <div className={styles.containerImage}>
                     <DropImage handlerFuncion={handleImageUpload} />

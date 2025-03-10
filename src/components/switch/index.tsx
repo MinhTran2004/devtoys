@@ -5,10 +5,10 @@ import styles from "./index.module.css";
 interface ToogleProps {
     textTrue?: string,
     textFalse?: string,
-    onChangeValue: (text: boolean) => void
+    onChangeValue?: (text: boolean) => void
 }
 
-export default function Toogle({
+export default function Switch({
     textTrue,
     textFalse,
     onChangeValue
@@ -16,7 +16,7 @@ export default function Toogle({
     const [isToogle, setIsToogle] = useState(false);
     const handleCheckboxChange = (event: any) => {
         setIsToogle(event.target.checked);
-        onChangeValue(event.target.checked);
+        onChangeValue &&  onChangeValue(event.target.checked);
     }
 
     return (

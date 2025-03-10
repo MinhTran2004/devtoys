@@ -2,6 +2,7 @@
 import DropImage from "@/components/drop-imge";
 import styles from "./page.module.css";
 import { useState } from "react";
+import Textarea from "@/components/textarea";
 
 export default function Base64ImagePage() {
     const [base64, setBase64] = useState("");
@@ -22,22 +23,15 @@ export default function Base64ImagePage() {
     };
 
     return (
-        <div className={styles.container}>
-            <p style={{
-                fontSize: 20,
-                fontWeight: 500
-            }}>Base64 Image Encoders / Decoders</p>
+        <div className="layout">
+            <p className="title">Base64 Image Encoders / Decoders</p>
 
             <div className={styles.content}>
-                <div>
-                    <p style={{ fontSize: 14 }}>Base64 text</p>
-                    <textarea
-                        className={styles.textarea}
-                        value={base64}
-                        onChange={text => setBase64(text.target.value)}
-                    />
-                </div>
-
+                <Textarea
+                    label="Base64 text"
+                    value={base64}
+                    onChange={(text) => setBase64(text.target.value)}
+                />
                 <div className={styles.containerImage}>
                     <DropImage handlerFuncion={handleFileChange} />
                     <div className={styles.boxImage}>
