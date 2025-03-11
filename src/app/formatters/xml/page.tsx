@@ -3,7 +3,6 @@ import Accordion from "@/components/accordion";
 import DropDown from "@/components/drop-down";
 import Switch from "@/components/switch";
 import Textarea from "@/components/textarea";
-import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 
 const data = ["2 spaces", "4 spaces", "1 tabs", "Minified"]
@@ -42,8 +41,8 @@ export default function XMLPage() {
     }, [input]);
 
     return (
-        <div className="layout">
-            <p className="title">JSON {"<>"} YAML Converter</p>
+        <div className="h-full w-full">
+            <p className="text-2xl mb-2">JSON {"<>"} YAML Converter</p>
 
             <Accordion
                 title="Indentation"
@@ -54,7 +53,7 @@ export default function XMLPage() {
                 content="Whether to put attributes on a new line"
                 iconRight={<Switch textFalse="Off" textTrue="On"/>} />
 
-            <div className={styles.content}>
+            <div className="grid grid-cols-1 gap-3 h-5/6 lg:grid-cols-2">
                 <Textarea
                     label="Input"
                     value={input}

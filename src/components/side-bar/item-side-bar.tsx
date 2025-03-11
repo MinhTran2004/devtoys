@@ -1,5 +1,4 @@
 "use client";
-import styles from "../side-bar/item-side-bar.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
@@ -28,21 +27,23 @@ const ItemSideBar = ({
   useLayoutEffect(() => {
     const arrPathName = pathname.split("/");
     setIsVisible(arrPathName.length > 2 && arrPathName[1] === label?.toLowerCase())
-  }, [])
+  }, [pathname])
+
+  console.log(pathname);
+
 
   return (
     <div>
       <div
-        className={styles.main}
-        style={{ backgroundColor: pathname === link ? "#323232" : "transparent" }}
-      >
+        className="cursor-pointer rounded-md"
+        style={{ backgroundColor: pathname === link ? "#323232" : "transparent" }}>
         {
           statusSideBar ? (
-            <Link href={link || ""} className={styles.container}>
-              <div className={styles.label}>
+            <div className="cursor-pointer w-full flex justify-between py-2.5 px-2.5 rounded-md hover:bg-[#323232]">
+              <Link href={link || ""} className="flex items-center text-sm gap-2 w-full">
                 {iconLeft}
                 <p>{label}</p>
-              </div>
+              </Link>
 
               <div
                 onClick={() => {
@@ -51,11 +52,11 @@ const ItemSideBar = ({
               >
                 {iconRight}
               </div>
-            </Link>
+            </div>
           )
             :
             (
-              <div className={styles.container} style={{ padding: statusSideBar ? undefined : '8px 10px' }}>
+              <div className="cursor-pointer w-full flex justify-between py-2.5 px-2.5 rounded-md hover:bg-[#323232]" style={{ padding: statusSideBar ? undefined : '8px 10px' }}>
                 <Link href={link != undefined ? link : "/"}>{iconLeft}</Link>
               </div>
             )
@@ -66,7 +67,7 @@ const ItemSideBar = ({
       {children && statusSideBar && isVisible && (
         <div>
           {children.map((item, index: number) => (
-            <div style={{ paddingLeft: 30 }} key={index}>
+            <div className="ml-7 mt-1" key={index}>
               <ItemSideBar key={index}
                 label={item.label}
                 iconLeft={item.iconLeft}

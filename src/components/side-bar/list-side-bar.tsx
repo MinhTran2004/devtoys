@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import ItemSideBar from "./item-side-bar"
 import styles from "./list-side-bar.module.css"
 

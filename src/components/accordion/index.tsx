@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./index.module.css";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 
 interface AccordionProps {
@@ -16,18 +15,14 @@ export default function Accordion({
     iconRight
 }: AccordionProps) {
     return (
-        <div className={styles.container}>
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 20
-            }}>
+        <div className="flex justify-between min-h-17 py-3 px-4 mb-2 rounded-sm items-center bg-[#333333]">
+            <div className="flex items-center gap-3">
                 {/* {iconLeft} */}
                 <CurrencyExchangeIcon />
 
                 <div>
-                    <p style={{fontSize: 13}}>{title}</p>
-                    <p style={{fontSize: 13, color: "#bbbbbb"}}>{content}</p>
+                    <p className="text-sm">{title}</p>
+                    <p className="text-sm text-[#bbbbbb]">{content}</p>
                 </div>
             </div>
 

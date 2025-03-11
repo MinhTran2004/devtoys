@@ -1,5 +1,4 @@
 "use client"
-import styles from "./page.module.css";
 import { useState } from "react";
 import { QRCodeCanvas } from 'qrcode.react';
 import DropImage from "@/components/drop-imge";
@@ -43,19 +42,19 @@ export default function QRCodePage() {
 
 
     return (
-        <div className="layout">
-            <p className="title">QR Code Encoders / Decoders</p>
+        <div className="h-full w-full">
+            <p className="text-2xl">QR Code Encoders / Decoders</p>
 
-            <div className={styles.content}>
+            <div className="grid grid-cols-[60%_38.5%] gap-6 h-full">
                     <Textarea
                         label="Text"
                         value={input}
                         onChange={(text) => setInput(text.target.value)}
                     />
 
-                <div className={styles.containerImage}>
+                <div className="flex flex-col gap-5 w-full h-19/20">
                     <DropImage handlerFuncion={handleImageUpload} />
-                    <div className={styles.boxImage}>
+                    <div className="w-full h-full rounded-b-lg bg-[#333333]">
                         {
                             input && (
                                 <QRCodeCanvas value={input} />

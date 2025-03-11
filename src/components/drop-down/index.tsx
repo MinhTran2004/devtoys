@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
-import styles from "./index.module.css"
 import ItemMenu from "./item-drop-down"
 
 interface MenuProps {
@@ -31,12 +30,12 @@ export default function DropDown({
 
     return (
         <div
-            className={styles.container}
+            className="relative h-full"
             ref={containerRef}
             onClick={() => setIsChecked(!isChecked)}>
             <ItemMenu label={selectItemDropDown ? selectItemDropDown : data[0]} />
             {isChecked && (
-                <div className={styles.listMenu}>
+                <div className="absolute flex flex-col bg-[#282828] z-999 gap-1 mt-1">
                     {data && (
                         data.map((item) => (
                             <ItemMenu key={item} label={item} setSelectItemDropDown={setSelectItemDropDown} />

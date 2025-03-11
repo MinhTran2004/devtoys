@@ -1,27 +1,27 @@
 import React from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import styles from "./item-drop-down.module.css";
 
-interface ItemMenuProps {
+interface ItemDropDownProps {
     iconLeft?: React.ReactNode,
     label?: string,
     iconRight?: React.ReactNode,
     setSelectItemDropDown?: (text: string) => void,
 }
 
-export default function ItemMenu({
+export default function ItemDropDown({
     iconLeft,
     label,
     iconRight,
     setSelectItemDropDown
-}: ItemMenuProps) {
+}: ItemDropDownProps) {
     return (
-        <div className={styles.container} onClick={() => {setSelectItemDropDown && setSelectItemDropDown(label || "")}}>
+        <div className="flex min-w-33 bg-[#434446] px-3 py-1 justify-between rounded-sm cursor-pointer"
+            onClick={() => { setSelectItemDropDown && setSelectItemDropDown(label || "") }}>
             {/* {iconLeft} */}
-            <KeyboardArrowDownIcon />
+            {/* <KeyboardArrowDownIcon /> */}
             <p>{label}</p>
             {/* {iconRight} */}
-            {/* <KeyboardArrowDownIcon /> */}
+            <KeyboardArrowDownIcon />
         </div>
     )
 }

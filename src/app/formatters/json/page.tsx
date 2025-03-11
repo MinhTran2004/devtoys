@@ -1,5 +1,4 @@
 "use client"
-import styles from "./page.module.css";
 import React, { useEffect, useState } from "react";
 import Accordion from "@/components/accordion";
 import Switch from "@/components/switch";
@@ -72,24 +71,24 @@ export default function JSONPage() {
     }, [input, formatJson])
 
     return (
-        <div className="layout">
-            <p className="title">JSON Formatter</p>
+        <div className="h-full w-full">
+            <p className="text-2xl mb-2">JSON Formatter</p>
 
             <Accordion title="Indentation" iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} setSelectItemDropDown={setSelectItemDropDown} />} />
             <Accordion
                 title="Sort JSON Properties alphabetically"
-                iconRight={<Switch textTrue="On" textFalse="Off" onChangeValue={setIsChecked} />} />
+                iconRight={<Switch textTrue="On" textFalse="Off" statusSwicth={isChecked} onChangeStatus={setIsChecked} />} />
 
-            <div className={styles.content}>
+            <div className="grid grid-cols-1 gap-3 h-5/6 lg:grid-cols-2">
                 <Textarea
                     label="Input"
                     value={input}
                     onChange={(text) => setInput(text.target.value)}
                 />
                 <Textarea
+                    disabled
                     label="Output"
                     value={output}
-                    onChange={(text) => setOutput(text.target.value)}
                 />
             </div>
 

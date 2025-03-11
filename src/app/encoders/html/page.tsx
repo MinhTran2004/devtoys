@@ -1,6 +1,5 @@
 "use client"
 import Accordion from "@/components/accordion";
-import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import Toogle from "@/components/switch";
@@ -37,8 +36,8 @@ export default function HTMLPage() {
 
 
     return (
-        <div className="layout">
-            <p className="title">HTML Text Encoders / Decoders</p>
+        <div className="h-full w-full">
+            <p className="text-2xl mb-2">HTML Text Encoders / Decoders</p>
 
             <Accordion
                 iconLeft={<CurrencyExchangeIcon />}
@@ -46,16 +45,16 @@ export default function HTMLPage() {
                 content="Select wich conversion mode you want to use"
                 iconRight={<Toogle textFalse="Decode" textTrue="Encode" onChangeValue={setIsChecked} />} />
 
-            <div className={styles.content}>
+            <div className="h-7/8 grid grid-rows-2 gap-2">
                 <Textarea
                     label="Input"
                     value={input}
                     onChange={(text) => setInput(text.target.value)}
                 />
                 <Textarea
+                    disabled
                     label="Output"
                     value={output}
-                    onChange={(text) => setOutput(text.target.value)}
                 />
             </div>
 

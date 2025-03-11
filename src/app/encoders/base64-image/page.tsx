@@ -1,6 +1,5 @@
 "use client"
 import DropImage from "@/components/drop-imge";
-import styles from "./page.module.css";
 import { useState } from "react";
 import Textarea from "@/components/textarea";
 
