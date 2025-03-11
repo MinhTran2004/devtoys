@@ -29,9 +29,6 @@ const ItemSideBar = ({
     setIsVisible(arrPathName.length > 2 && arrPathName[1] === label?.toLowerCase())
   }, [pathname])
 
-  console.log(pathname);
-
-
   return (
     <div>
       <div

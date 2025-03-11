@@ -12,7 +12,7 @@ export default function JSONPage() {
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
     const [isChecked, setIsChecked] = useState(false);
-    const [selectItemDropDown, setSelectItemDropDown] = useState("");
+    const [selectItemDropDown, setSelectItemDropDown] = useState("2 spaces");
 
     // Hàm để sắp xếp các đối tượng theo tên khóa
     const sortObject = (obj: any): any => {
@@ -74,7 +74,7 @@ export default function JSONPage() {
         <div className="h-full w-full">
             <p className="text-2xl mb-2">JSON Formatter</p>
 
-            <Accordion title="Indentation" iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} setSelectItemDropDown={setSelectItemDropDown} />} />
+            <Accordion title="Indentation" iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} onSelectItemDropDown={setSelectItemDropDown} />} />
             <Accordion
                 title="Sort JSON Properties alphabetically"
                 iconRight={<Switch textTrue="On" textFalse="Off" statusSwicth={isChecked} onChangeStatus={setIsChecked} />} />

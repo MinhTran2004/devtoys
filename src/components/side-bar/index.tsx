@@ -3,6 +3,7 @@ import { DataSettings, DataSideBar } from "@/data/data-side-bar";
 import InputField from "../input-field";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListSideBar from "./list-side-bar";
+import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 
 export default function SideBar() {
@@ -19,7 +20,7 @@ export default function SideBar() {
                 </div>
                 {
                     statusSideBar && (
-                        <InputField placeholder="Type to search for tools" />
+                        <InputField placeholder="Type to search for tools" iconRight={<SearchIcon />} />
                     )
                 }
             </div>

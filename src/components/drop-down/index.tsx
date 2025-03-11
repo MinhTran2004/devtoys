@@ -1,16 +1,17 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
-import ItemMenu from "./item-drop-down"
+import ItemDropDown from "./item-drop-down"
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 interface MenuProps {
     data: string[]
-    setSelectItemDropDown?: (text: string) => void
+    onSelectItemDropDown?: (text: string) => void
     selectItemDropDown?: string
 }
 
 export default function DropDown({
     data,
-    setSelectItemDropDown,
+    onSelectItemDropDown,
     selectItemDropDown
 }: MenuProps) {
     const [isChecked, setIsChecked] = useState(false);
@@ -26,6 +27,7 @@ export default function DropDown({
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
+        
     }, []);
 
     return (
@@ -33,13 +35,17 @@ export default function DropDown({
             className="relative h-full"
             ref={containerRef}
             onClick={() => setIsChecked(!isChecked)}>
-            <ItemMenu label={selectItemDropDown ? selectItemDropDown : data[0]} />
+            <ItemDropDown label={selectItemDropDown ? selectItemDropDown : data[0]} iconRight={<KeyboardArrowDownIcon/>} />
             {isChecked && (
                 <div className="absolute flex flex-col bg-[#282828] z-999 gap-1 mt-1">
                     {data && (
-                        data.map((item) => (
-                            <ItemMenu key={item} label={item} setSelectItemDropDown={setSelectItemDropDown} />
-                        ))
+                        data.map((item) => {
+                            if (item !== selectItemDropDown) {
+                                return (
+                                    <ItemDropDown key={item} label={item} onSelectItemDropDown={onSelectItemDropDown} />
+                                )
+                            }
+                        })
                     )}
                 </div>
             )}

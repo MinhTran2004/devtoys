@@ -54,7 +54,8 @@ export const DataAllTools = [
         key: "at5",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Cron expression parser",
-        content: "Parse Cron expression to get scheduled dates"
+        content: "Parse Cron expression to get scheduled dates",
+        link: "/converters/cron-parser"
     },
     {
         key: "at6",

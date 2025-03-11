@@ -7,8 +7,8 @@ export default function Textarea({
     ...textarea
 }: TextareaProps) {
     return (
-        <div>
-            <p className="mt-5 mb-2">{label}</p>
+        <div className="h-full">
+            <label className="text-sm text-[#bbbbbb]">{label}</label>
             <textarea
                 className="w-full h-8/9 bg-[#333333] px-5 py-2 box-border rounded-lg"
                 {...textarea} />

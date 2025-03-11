@@ -3,17 +3,17 @@ import Accordion from "@/components/accordion";
 import DropDown from "@/components/drop-down";
 import Switch from "@/components/switch";
 import Textarea from "@/components/textarea";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const data = ["2 spaces", "4 spaces", "1 tabs", "Minified"]
 
 export default function XMLPage() {
-    const [selectItemDropDown, setSelectItemDropDown] = useState("");
+    const [selectItemDropDown, setSelectItemDropDown] = useState("2 spaces");
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
 
 
-    const formatXml = (xmlString: string): string => {
+    const formatXml = useCallback((xmlString: string): string => {
         try {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlString, "application/xml");
@@ -24,17 +24,17 @@ export default function XMLPage() {
         } catch (error) {
             return "Invalid XML";
         }
-    };
+    }, []);
 
-    const convertXML = () => {
+    const convertXML = useCallback(() => {
         if (input.length > 0) {
             const formatted = formatXml(input);
             setOutput(formatted);
             console.log(formatted);
-        }else{
+        } else {
             setOutput("")
         }
-    };
+    }, []);
 
     useEffect(() => {
         convertXML()
@@ -46,12 +46,12 @@ export default function XMLPage() {
 
             <Accordion
                 title="Indentation"
-                iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} setSelectItemDropDown={setSelectItemDropDown} />} />
+                iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} onSelectItemDropDown={setSelectItemDropDown} />} />
 
             <Accordion
                 title="Put attributes on a new line"
                 content="Whether to put attributes on a new line"
-                iconRight={<Switch textFalse="Off" textTrue="On"/>} />
+                iconRight={<Switch textFalse="Off" textTrue="On" />} />
 
             <div className="grid grid-cols-1 gap-3 h-5/6 lg:grid-cols-2">
                 <Textarea

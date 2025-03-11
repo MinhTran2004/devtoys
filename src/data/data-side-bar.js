@@ -27,39 +27,41 @@ export const DataSideBar = [
   //   label: "Markdown Preview",
   //   iconLeft: <HomeIcon fontSize="small" />,
   // },
-  // {
-  //   key: "sub2",
-  //   label: "Converters",
-  //   iconLeft: <HomeIcon fontSize="small" />,
-  //   iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-  //   children: [
-  //     {
-  //       key: "sub2-1",
-  //       label: "Cron parser",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub2-2",
-  //       label: "Date",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub2-3",
-  //       label: "JSON > Table",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub2-4",
-  //       label: "JSON <> YAML",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub2-5",
-  //       label: "Number Base",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //   ],
-  // },
+  {
+    key: "sub2",
+    label: "Converters",
+    iconLeft: <HomeIcon fontSize="small" />,
+    iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    link: "/converters",
+    children: [
+      {
+        key: "sub2-1",
+        label: "Cron parser",
+        iconLeft: <HomeIcon fontSize="small" />,
+        link: "/converters/cron-parser",
+      },
+      {
+        key: "sub2-2",
+        label: "Date",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub2-3",
+        label: "JSON > Table",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub2-4",
+        label: "JSON <> YAML",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub2-5",
+        label: "Number Base",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+    ],
+  },
   {
     key: "sub3",
     label: "Encoders",

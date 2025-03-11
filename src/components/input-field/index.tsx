@@ -1,15 +1,24 @@
-import SearchIcon from "@mui/icons-material/Search";
-import styles from "./inputField.module.css";
 
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  placeholder: string;
+  label?: string,
+  iconRight?: React.ReactNode
 }
 
-export default function InputField({ placeholder }: InputFieldProps) {
+export default function InputField({
+  label,
+  iconRight,
+  ...input
+}: InputFieldProps) {
   return (
-    <div className={styles.container}>
-      <input className={styles.input} type="text" placeholder={placeholder} />
-      <SearchIcon />
+    <div>
+      <label className="text-sm text-[#bbbbbb]">{label}</label>
+      <div className="flex w-full justify-between items-center bg-[#323232] rounded-sm p-1 pl-2 border-b-2">
+        <input
+          className="w-full text-sm outline-none"
+          {...input}
+        />
+        {iconRight}
+      </div>
     </div>
   );
 }
