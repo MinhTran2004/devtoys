@@ -49,6 +49,7 @@ export const DataSideBar = [
         key: "sub2-3",
         label: "JSON > Table",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/converters/json-table",
       },
       {
         key: "sub2-4",
