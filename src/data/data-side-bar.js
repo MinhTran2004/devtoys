@@ -85,27 +85,28 @@ export const DataSideBar = [
         iconRight: <EmojiObjectsIcon fontSize="small" />,
         link: "/encoders/base64-text"
       },
-      // {
-      //   key: "sub3-3",
-      //   label: "Certificate",
-      //   iconLeft: <HomeIcon fontSize="small" />,
-      // },
-      // {
-      //   key: "sub3-4",
-      //   label: "GZIP",
-      //   iconLeft: <HomeIcon fontSize="small" />,
-      // },
+      {
+        key: "sub3-3",
+        label: "Certificate",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub3-4",
+        label: "GZIP",
+        iconLeft: <HomeIcon fontSize="small" />,
+        link: "/encoders/gzip"
+      },
       {
         key: "sub3-5",
         label: "HTML",
         iconLeft: <HomeIcon fontSize="small" />,
         link: "/encoders/html"
       },
-      // {
-      //   key: "sub3-6",
-      //   label: "JWT",
-      //   iconLeft: <HomeIcon fontSize="small" />,
-      // },
+      {
+        key: "sub3-6",
+        label: "JWT",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
       {
         key: "sub3-7",
         label: "QR Code",
@@ -147,114 +148,114 @@ export const DataSideBar = [
       },
     ],
   },
-  // {
-  //   key: "sub5",
-  //   label: "Generators",
-  //   iconLeft: <HomeIcon fontSize="small" />,
-  //   iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-  //   children: [
-  //     {
-  //       key: "sub5-1",
-  //       label: "Hash / Checksum",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //       iconRight: <EmojiObjectsIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub5-2",
-  //       label: "Lorem Ipsum",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub5-3",
-  //       label: "Password",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub5-4",
-  //       label: "UUID",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //   ],
-  // },
-  // {
-  //   key: "sub6",
-  //   label: "Graphic",
-  //   iconLeft: <HomeIcon fontSize="small" />,
-  //   iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-  //   children: [
-  //     {
-  //       key: "sub6-1",
-  //       label: "Color blindness Simulator",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub6-2",
-  //       label: "Image Converter",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //   ],
-  // },
-  // {
-  //   key: "sub7",
-  //   label: "Testers",
-  //   iconLeft: <HomeIcon fontSize="small" />,
-  //   iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-  //   children: [
-  //     {
-  //       key: "sub7-1",
-  //       label: "JSONpath",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub7-2",
-  //       label: "RegEx",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //       iconRight: <EmojiObjectsIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub7-3",
-  //       label: "XMl",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //   ],
-  // },
-  // {
-  //   key: "sub8",
-  //   label: "Text",
-  //   iconLeft: <HomeIcon fontSize="small" />,
-  //   iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-  //   children: [
-  //     {
-  //       key: "sub8-1",
-  //       label: "Escape / Unescape",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub8-2",
-  //       label: "List Compare",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub8-3",
-  //       label: "Markdown Preview",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //     {
-  //       key: "sub8-4",
-  //       label: "Analyzer & Utilities",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //       iconRight: (
-  //         <EmojiObjectsIcon
-  //           fontSize="small"
-  //           sx={{ backgroundColor: "yellow" }}
-  //         />
-  //       ),
-  //     },
-  //     {
-  //       key: "sub8-5",
-  //       label: "Compare",
-  //       iconLeft: <HomeIcon fontSize="small" />,
-  //     },
-  //   ],
-  // },
+  {
+    key: "sub5",
+    label: "Generators",
+    iconLeft: <HomeIcon fontSize="small" />,
+    iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    children: [
+      {
+        key: "sub5-1",
+        label: "Hash / Checksum",
+        iconLeft: <HomeIcon fontSize="small" />,
+        iconRight: <EmojiObjectsIcon fontSize="small" />,
+      },
+      {
+        key: "sub5-2",
+        label: "Lorem Ipsum",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub5-3",
+        label: "Password",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub5-4",
+        label: "UUID",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+    ],
+  },
+  {
+    key: "sub6",
+    label: "Graphic",
+    iconLeft: <HomeIcon fontSize="small" />,
+    iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    children: [
+      {
+        key: "sub6-1",
+        label: "Color blindness Simulator",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub6-2",
+        label: "Image Converter",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+    ],
+  },
+  {
+    key: "sub7",
+    label: "Testers",
+    iconLeft: <HomeIcon fontSize="small" />,
+    iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    children: [
+      {
+        key: "sub7-1",
+        label: "JSONpath",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub7-2",
+        label: "RegEx",
+        iconLeft: <HomeIcon fontSize="small" />,
+        iconRight: <EmojiObjectsIcon fontSize="small" />,
+      },
+      {
+        key: "sub7-3",
+        label: "XMl",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+    ],
+  },
+  {
+    key: "sub8",
+    label: "Text",
+    iconLeft: <HomeIcon fontSize="small" />,
+    iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    children: [
+      {
+        key: "sub8-1",
+        label: "Escape / Unescape",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub8-2",
+        label: "List Compare",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub8-3",
+        label: "Markdown Preview",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub8-4",
+        label: "Analyzer & Utilities",
+        iconLeft: <HomeIcon fontSize="small" />,
+        iconRight: (
+          <EmojiObjectsIcon
+            fontSize="small"
+            sx={{ backgroundColor: "yellow" }}
+          />
+        ),
+      },
+      {
+        key: "sub8-5",
+        label: "Compare",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+    ],
+  },
 ];

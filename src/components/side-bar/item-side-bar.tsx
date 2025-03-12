@@ -36,7 +36,7 @@ const ItemSideBar = ({
         style={{ backgroundColor: pathname === link ? "#323232" : "transparent" }}>
         {
           statusSideBar ? (
-            <div className="cursor-pointer w-full flex justify-between py-2.5 px-2.5 rounded-md hover:bg-[#323232]">
+            <div className="cursor-pointer w-full flex justify-between py-2.5 px-2.5 rounded-md hover:bg-[#323232]" style={{ color: link ? "white" : "#7f7f7f"}}>
               <Link href={link || ""} className="flex items-center text-sm gap-2 w-full">
                 {iconLeft}
                 <p>{label}</p>
@@ -53,8 +53,8 @@ const ItemSideBar = ({
           )
             :
             (
-              <div className="cursor-pointer w-full flex justify-between py-2.5 px-2.5 rounded-md hover:bg-[#323232]" style={{ padding: statusSideBar ? undefined : '8px 10px' }}>
-                <Link href={link != undefined ? link : "/"}>{iconLeft}</Link>
+              <div className="cursor-pointer w-full flex justify-between py-2.5 px-2.5 rounded-md hover:bg-[#323232]" style={{ padding: statusSideBar ? undefined : '8px 10px', color: link && "#7f7f7f" }}>
+                <Link href={link != undefined ? link : ""}>{iconLeft}</Link>
               </div>
             )
         }

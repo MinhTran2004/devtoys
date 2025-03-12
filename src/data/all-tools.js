@@ -75,7 +75,8 @@ export const DataAllTools = [
         key: "at8",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "GZip Compress / Decompress",
-        content: "Compress or decompress a text in GZip"
+        content: "Compress or decompress a text in GZip",
+        link: "/encoders/gzip"
     },
     {
         key: "at9",
