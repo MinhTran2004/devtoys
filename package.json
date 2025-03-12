@@ -16,6 +16,7 @@
     "antd": "^5.24.2",
     "cron-parser": "^5.0.4",
     "date-fns": "^4.1.0",
+    "diff": "^7.0.0",
     "he": "^1.2.0",
     "js-yaml": "^4.1.0",
     "json5": "^2.2.3",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/diff": "^7.0.1",
     "@types/he": "^1.2.3",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20",

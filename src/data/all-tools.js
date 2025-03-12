@@ -193,7 +193,8 @@ export const DataAllTools = [
         key: "at26",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Text Comparer",
-        content: "Compare two texts"
+        content: "Compare two texts",
+        link: "/text/compare"
     },
     {
         key: "at27",

@@ -250,7 +250,7 @@ export const DataSideBar = [
         iconRight: (
           <EmojiObjectsIcon
             fontSize="small"
-            sx={{ backgroundColor: "yellow" }}
+            sx={{ color: "yellow" }}
           />
         ),
       },
@@ -258,6 +258,7 @@ export const DataSideBar = [
         key: "sub8-5",
         label: "Compare",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/text/compare"
       },
     ],
   },
