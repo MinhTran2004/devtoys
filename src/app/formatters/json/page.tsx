@@ -77,7 +77,7 @@ export default function JSONPage() {
             <Accordion title="Indentation" iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} onSelectItemDropDown={setSelectItemDropDown} />} />
             <Accordion
                 title="Sort JSON Properties alphabetically"
-                iconRight={<Switch textTrue="On" textFalse="Off" statusSwicth={isChecked} onChangeStatus={setIsChecked} />} />
+                iconRight={<Switch textTrue="On" textFalse="Off" checked={isChecked} onChange={text => setIsChecked(!isChecked)} />} />
 
             <div className="grid grid-cols-1 gap-3 h-5/6 lg:grid-cols-2">
                 <Textarea

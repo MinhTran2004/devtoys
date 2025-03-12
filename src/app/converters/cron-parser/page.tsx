@@ -52,7 +52,7 @@ export default function CronParserPage() {
                 iconLeft={<CurrencyExchangeIcon />}
                 title="Include seconds"
                 content="Whether the Cron expression should include seconds in its definition"
-                iconRight={<Toogle textFalse="Decode" textTrue="Encode" statusSwicth={isChecked} onChangeStatus={setIsChecked} />} />
+                iconRight={<Toogle textFalse="Decode" textTrue="Encode" checked={isChecked} onChangeStatus={setIsChecked} />} />
 
             <Accordion
                 iconLeft={<CurrencyExchangeIcon />}

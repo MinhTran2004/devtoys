@@ -43,7 +43,7 @@ export default function HTMLPage() {
                 iconLeft={<CurrencyExchangeIcon />}
                 title="Conversion"
                 content="Select wich conversion mode you want to use"
-                iconRight={<Toogle textFalse="Decode" textTrue="Encode" onChangeValue={setIsChecked} />} />
+                iconRight={<Toogle textFalse="Decode" textTrue="Encode" checked={isChecked} onChange={text =>  setIsChecked(!isChecked)} />} />
 
             <div className="h-7/8 grid grid-rows-2 gap-2">
                 <Textarea

@@ -60,6 +60,7 @@ export const DataSideBar = [
         key: "sub2-5",
         label: "Number Base",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/converters/number-base"
       },
     ],
   },

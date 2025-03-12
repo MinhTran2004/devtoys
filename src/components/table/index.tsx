@@ -1,8 +1,9 @@
-"use client"
+"use client";
+
 interface TableProps {
-    label?: string,
-    data: any[],
-    styleTable?: React.CSSProperties
+    label?: string;
+    data: any[] | string;
+    styleTable?: React.CSSProperties;
 }
 
 export default function Table({
@@ -10,43 +11,55 @@ export default function Table({
     data,
     styleTable
 }: TableProps) {
+    // Khởi tạo headerTable chỉ khi dữ liệu là mảng và có phần tử
+    let headerTable: string[] | undefined;
 
-    if (data) return <p>hihi</p>
-
-    const headerTable = Object.keys(data[0]);
+    if (Array.isArray(data) && data.length > 0) {
+        headerTable = Object.keys(data[0]); // Lấy các khóa của đối tượng đầu tiên trong mảng
+    }
 
     return (
         <div className="h-full">
             <label className="text-sm text-[#bbbbbb]">{label}</label>
             <div className="bg-[#333333] h-full rounded-lg">
-                <table
-                    className=" w-full border-collapse border "
-                    style={{ ...styleTable }}>
-                    <thead>
-                        <tr>
-                            {headerTable &&
-                                headerTable.map((item, index: number) => (
-                                    <th
-                                        className="text-center py-2 border"
-                                        key={index}>{item}</th>
-                                ))
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((row: any, index: any) => (
-                            <tr key={index}>
-                                {headerTable &&
-                                    headerTable.map((column) => (
-                                        <td
-                                            className="text-center border"
-                                            key={column}>{row[column]}</td>
+                {typeof data === "string" ? (
+                    <p>{data}</p>
+                ) : (
+                    headerTable && (
+                        <table
+                            className="w-full border-collapse border"
+                            style={{ ...styleTable }}
+                        >
+                            <thead>
+                                <tr>
+                                    {headerTable.map((item, index) => (
+                                        <th
+                                            className="text-center py-2 border"
+                                            key={index}
+                                        >
+                                            {item}
+                                        </th>
                                     ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data.map((row, index) => (
+                                    <tr key={index}>
+                                        {headerTable.map((column) => (
+                                            <td
+                                                className="text-center border"
+                                                key={column}
+                                            >
+                                                {row[column]}
+                                            </td>
+                                        ))}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )
+                )}
             </div>
         </div>
-    )
+    );
 }

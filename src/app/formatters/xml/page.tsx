@@ -12,7 +12,6 @@ export default function XMLPage() {
     const [input, setInput] = useState("");
     const [output, setOutput] = useState("");
 
-
     const formatXml = useCallback((xmlString: string): string => {
         try {
             const parser = new DOMParser();

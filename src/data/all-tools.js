@@ -111,7 +111,8 @@ export const DataAllTools = [
         key: "at14",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "JSON Array to Table",
-        content: "Convert a JSON array to tabular format, export to CSV or TSV"
+        content: "Convert a JSON array to tabular format, export to CSV or TSV",
+        link: "/converters/json-table"
     },
     {
         key: "at15",
@@ -147,7 +148,8 @@ export const DataAllTools = [
         key: "at20",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Number Base Converter",
-        content: "Convert numbers from one base to another"
+        content: "Convert numbers from one base to another",
+        link: "/converters/number-base"
     },
     {
         key: "at21",
