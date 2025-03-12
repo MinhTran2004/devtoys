@@ -53,7 +53,7 @@ export default function QRCodePage() {
                     />
 
                 <div className="flex flex-col gap-5 w-full h-19/20">
-                    <DropImage handlerFuncion={handleImageUpload} />
+                    <DropImage onChange={handleImageUpload} />
                     <div className="w-full h-full rounded-b-lg bg-[#333333]">
                         {
                             input && (

@@ -24,7 +24,7 @@ export default function ListComparePage() {
     let resultSet: Set<string> = new Set();
 
     switch (selectItemDropdown) {
-      case "A n B": // Giao
+      case "A n B": 
         setA.forEach((item) => {
           if (
             setB.has(item) ||
@@ -35,12 +35,12 @@ export default function ListComparePage() {
         });
         break;
 
-      case "A u B": // Hợp
+      case "A u B": 
         setA.forEach((item) => resultSet.add(item));
         setB.forEach((item) => resultSet.add(item));
         break;
 
-      case "A Only": // Chỉ có trong A
+      case "A Only": 
         setA.forEach((item) => {
           if (!setB.has(item) && ![...setB].some((b) => !isChecked && b.toLowerCase() === item.toLowerCase())) {
             resultSet.add(item);
@@ -48,7 +48,7 @@ export default function ListComparePage() {
         });
         break;
 
-      case "B Only": // Chỉ có trong B
+      case "B Only": 
         setB.forEach((item) => {
           if (!setA.has(item) && ![...setA].some((a) => !isChecked && a.toLowerCase() === item.toLowerCase())) {
             resultSet.add(item);

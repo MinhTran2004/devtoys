@@ -182,16 +182,19 @@ export const DataSideBar = [
     label: "Graphic",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    link: "/graphic",
     children: [
       {
         key: "sub6-1",
         label: "Color blindness Simulator",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/graphic/color-blindness-simulator",
       },
       {
         key: "sub6-2",
         label: "Image Converter",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/graphic/image-converter",
       },
     ],
   },

@@ -51,7 +51,8 @@ export const DataAllTools = [
         key: "at4",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Color Blindness Simulator",
-        content: "Simulator color blindness on a picture or scrennshot"
+        content: "Simulator color blindness on a picture or scrennshot",
+        link: "/graphic/color-blindness-simulator",
     },
     {
         key: "at5",
@@ -97,7 +98,8 @@ export const DataAllTools = [
         key: "at11",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Image Converter",
-        content: "Lossless image converter"
+        content: "Lossless image converter",
+        link: "/graphic/image-converter",
     },
     {
         key: "at12",

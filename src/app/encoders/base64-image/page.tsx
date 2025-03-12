@@ -32,7 +32,7 @@ export default function Base64ImagePage() {
                     onChange={(text) => setBase64(text.target.value)}
                 />
                 <div className="flex flex-col gap-5 w-full h-19/20">
-                    <DropImage handlerFuncion={handleFileChange} />
+                    <DropImage onChange={handleFileChange} />
                     <div className="w-full h-full rounded-b-lg bg-[#333333]">
                         {
                             base64 && (
