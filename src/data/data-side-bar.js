@@ -55,6 +55,7 @@ export const DataSideBar = [
         key: "sub2-4",
         label: "JSON <> YAML",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/converters/json-yaml",
       },
       {
         key: "sub2-5",

@@ -6,7 +6,9 @@ export const DataRecents =
             key: "r1",
             image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
             title: "JSON <> YAML Converter",
-            content: "Convert JSON data to YAML and vice versa"
+            content: "Convert JSON data to YAML and vice versa",
+            link: "/converters/json-yaml",
+
         },
         {
             key: "r2",
@@ -124,7 +126,8 @@ export const DataAllTools = [
         key: "at16",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "JSON <> YAML Converter",
-        content: "Convert JSON data to YAML and vice versa"
+        content: "Convert JSON data to YAML and vice versa",
+        link: "/converters/json-yaml",
     },
     {
         key: "at17",

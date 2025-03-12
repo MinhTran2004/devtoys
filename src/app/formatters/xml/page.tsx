@@ -41,7 +41,7 @@ export default function XMLPage() {
 
     return (
         <div className="h-full w-full">
-            <p className="text-2xl mb-2">JSON {"<>"} YAML Converter</p>
+            <p className="text-2xl mb-2">XML Formatter</p>
 
             <Accordion
                 title="Indentation"

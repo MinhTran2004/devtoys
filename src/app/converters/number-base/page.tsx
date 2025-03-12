@@ -5,7 +5,7 @@ import Accordion from "@/components/accordion";
 import Switch from "@/components/switch";
 import InputField from "@/components/input-field";
 
-export default function JsonTablePage() {
+export default function NumberBasePage() {
     const [isFormat, setIsFormat] = useState(true);
     const [isMode, setIsMode] = useState(false);
 
