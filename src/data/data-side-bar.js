@@ -241,6 +241,7 @@ export const DataSideBar = [
         key: "sub8-3",
         label: "Markdown Preview",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/text/markdown-preview"
       },
       {
         key: "sub8-4",

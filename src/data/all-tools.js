@@ -20,7 +20,8 @@ export const DataRecents =
             key: "r3",
             image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
             title: "Markdown Preview",
-            content: "Preview a Markdown document with a GitHub-like render"
+            content: "Preview a Markdown document with a GitHub-like render",
+            link: "/text/markdown-preview"
         },
     ]
 
@@ -147,7 +148,8 @@ export const DataAllTools = [
         key: "at19",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Markdown Preview",
-        content: "Preview a Markdown document with a Github-like render"
+        content: "Preview a Markdown document with a Github-like render",
+        link: "/text/markdown-preview"
     },
     {
         key: "at20",
