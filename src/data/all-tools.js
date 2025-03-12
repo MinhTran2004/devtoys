@@ -136,7 +136,8 @@ export const DataAllTools = [
         key: "at17",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "List Comparer",
-        content: "Compare tow lists"
+        content: "Compare tow lists",
+        link: "/text/list-compare"
     },
     {
         key: "at18",

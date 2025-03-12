@@ -236,6 +236,7 @@ export const DataSideBar = [
         key: "sub8-2",
         label: "List Compare",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/text/list-compare"
       },
       {
         key: "sub8-3",
