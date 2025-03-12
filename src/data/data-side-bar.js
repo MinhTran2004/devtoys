@@ -224,11 +224,13 @@ export const DataSideBar = [
     label: "Text",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    link: "/text",
     children: [
       {
         key: "sub8-1",
         label: "Escape / Unescape",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/text/escape-unescape"
       },
       {
         key: "sub8-2",

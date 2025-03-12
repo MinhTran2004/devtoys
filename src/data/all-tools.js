@@ -69,7 +69,8 @@ export const DataAllTools = [
         key: "at7",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Text Escape / Unescape",
-        content: "Escapes or unescapes a string, removeing characters that could prevent parsing."
+        content: "Escapes or unescapes a string, removeing characters that could prevent parsing.",
+        link: "/text/escape-unescape"
     },
     {
         key: "at8",

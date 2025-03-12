@@ -67,7 +67,7 @@ export default function GzipPage() {
 
     return (
         <div className="h-full w-full">
-            <p className="text-2xl mb-2">Base64 Text Encoders / Decoders</p>
+            <p className="text-2xl mb-2">GZip Compress / Decompress</p>
 
             <Accordion
                 iconLeft={<CurrencyExchangeIcon />}
