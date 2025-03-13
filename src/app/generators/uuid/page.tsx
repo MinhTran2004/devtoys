@@ -48,11 +48,11 @@ export default function UUIDPage() {
             <Accordion
                 label="Configuration"
                 title="Hyphens"
-                iconRight={<Switch textFalse="Off" textTrue="On" checked={isHyphens} onChange={text => setIsHyphens(!isHyphens)} />} />
+                iconRight={<Switch textFalse="Off" textTrue="On" checked={isHyphens} onChange={() => setIsHyphens(!isHyphens)} />} />
 
             <Accordion
                 title="Uppercase"
-                iconRight={<Switch textFalse="Off" textTrue="On" checked={isUpperCase} onChange={text => setIsUpperCase(!isUpperCase)} />} />
+                iconRight={<Switch textFalse="Off" textTrue="On" checked={isUpperCase} onChange={() => setIsUpperCase(!isUpperCase)} />} />
 
             <Accordion
                 title="UUID version"
@@ -72,7 +72,8 @@ export default function UUIDPage() {
                 <InputField
                     value={input}
                     type="number"
-                    onChange={(text) => setInput(text.target.value)}/>
+                    onChange={text => setInput(text.target.value)}
+                />
             </div>
 
             <div className="w-full h-9/16 mt-4">

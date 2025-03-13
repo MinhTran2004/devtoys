@@ -170,12 +170,13 @@ export const DataSideBar = [
         key: "sub5-3",
         label: "Password",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/generators/password",
       },
       {
         key: "sub5-4",
         label: "UUID",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/generators/uuid"
+        link: "/generators/uuid",
       },
     ],
   },

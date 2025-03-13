@@ -165,7 +165,8 @@ export const DataAllTools = [
         key: "at21",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Password Generator",
-        content: "Generate random passwords"
+        content: "Generate random passwords",
+        link: "/generators/password",
     },
     {
         key: "at22",

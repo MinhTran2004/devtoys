@@ -30,7 +30,7 @@ export default function RootLayout({
       >
         <div id="main">
           <SideBar />
-          <div className="flex-1 bg-[#282828] rounded-2xl p-8 overflow-hidden w-full box-border">
+          <div className="flex-1 bg-[#282828] rounded-2xl p-8 overflow-hidden w-full h-full box-border">
             {children}
           </div>
         </div>
