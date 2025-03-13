@@ -165,6 +165,7 @@ export const DataSideBar = [
         key: "sub5-2",
         label: "Lorem Ipsum",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/generators/lorem-ipsum",
       },
       {
         key: "sub5-3",

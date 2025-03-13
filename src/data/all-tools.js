@@ -145,7 +145,8 @@ export const DataAllTools = [
         key: "at18",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Lorem Ipsum Generator",
-        content: "Generate Lorem Ipsum (or similar) placeholder text"
+        content: "Generate Lorem Ipsum (or similar) placeholder text",
+        link: "/generators/lorem-ipsum",
     },
     {
         key: "at19",
