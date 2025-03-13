@@ -85,7 +85,8 @@ export const DataAllTools = [
         key: "at9",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Hash / Checksum Generator",
-        content: "Calculate has form text or binary"
+        content: "Calculate has form text or binary",
+        link: "/generators/hash-checksum",
     },
     {
         key: "at10",

@@ -160,6 +160,7 @@ export const DataSideBar = [
         label: "Hash / Checksum",
         iconLeft: <HomeIcon fontSize="small" />,
         iconRight: <EmojiObjectsIcon fontSize="small" />,
+        link: "/generators/hash-checksum",
       },
       {
         key: "sub5-2",
