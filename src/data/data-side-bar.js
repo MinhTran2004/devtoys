@@ -106,6 +106,7 @@ export const DataSideBar = [
         key: "sub3-6",
         label: "JWT",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/encoders/jwt"
       },
       {
         key: "sub3-7",
@@ -153,7 +154,7 @@ export const DataSideBar = [
     label: "Generators",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    link:"/generators",
+    link: "/generators",
     children: [
       {
         key: "sub5-1",
@@ -208,7 +209,7 @@ export const DataSideBar = [
     label: "Testers",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    // link: "/testers",
+    link: "/testers",
     children: [
       {
         key: "sub7-1",
@@ -223,8 +224,9 @@ export const DataSideBar = [
       },
       {
         key: "sub7-3",
-        label: "XMl",
+        label: "XML",
         iconLeft: <HomeIcon fontSize="small" />,
+        // link: "/testers/xml",
       },
     ],
   },

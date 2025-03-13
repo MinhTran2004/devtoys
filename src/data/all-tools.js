@@ -126,7 +126,8 @@ export const DataAllTools = [
         key: "at15",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "JWT Encoder / Decoder",
-        content: "Encode and decode Json Web Token"
+        content: "Encode and decode Json Web Token",
+        link: "/encoders/jwt"
     },
     {
         key: "at16",

@@ -46,13 +46,13 @@ export default function QRCodePage() {
             <p className="text-2xl">QR Code Encoders / Decoders</p>
 
             <div className="grid grid-cols-[60%_38.5%] gap-6 h-full">
-                    <Textarea
-                        label="Text"
-                        value={input}
-                        onChange={(text) => setInput(text.target.value)}
-                    />
+                <Textarea
+                    label="Text"
+                    value={input}
+                    onChange={(text) => setInput(text.target.value)}
+                />
 
-                <div className="flex flex-col gap-5 w-full h-19/20">
+                <div className="flex flex-col gap-5 w-full h-23/25">
                     <DropImage onChange={handleImageUpload} />
                     <div className="w-full h-full rounded-b-lg bg-[#333333]">
                         {

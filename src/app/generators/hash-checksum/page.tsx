@@ -101,7 +101,7 @@ export default function HashCheckSumPage() {
                 </div>
                 <p className="mx-2">or</p>
                 <div className="w-5/10 h-6/7 mr-1 mt-9">
-                    <DropImage onChange={generateHashFromFile}/>
+                    <DropImage onChange={generateHashFromFile} styleLayout={{height: '100%'}}/>
                 </div>
             </div>
 
