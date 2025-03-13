@@ -5,6 +5,7 @@ import DropImage from "@/components/drop-imge";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import { useState } from "react";
 import { saveAs } from "file-saver";
+import PrimaryButton from "@/components/button";
 
 const dataConversion = ["BMP", "JPEG", "PBM", "PNG", "TGA", "TIFF", "WEBP"];
 const listImage: string[] = [];
@@ -76,22 +77,14 @@ export default function ImageConverterPage() {
       <DropImage onChange={handleFileChange} />
 
       <div className="flex gap-2 justify-end">
-        <button
-          className="mt-4 p-2  text-black text-sm rounded"
-          style={{cursor: images.length > 0 ? "pointer" : "default", color: images.length > 0 ? "black": "#808080", backgroundColor: images.length > 0 ? "#6ebbe7" : "#2f2f2f" }}
-          onClick={handleConvert}
-          disabled={images.length === 0}
-        >
-          Convert all
-        </button>
-        <button
-          className="mt-4 p-2 text-sm rounded"
-          style={{cursor: images.length > 0 ? "pointer" : "default", color: images.length > 0 ? "white": "#808080", backgroundColor: images.length > 0 ? "#3a3a3a" : "#2f2f2f"}}
-          onClick={handleConvert}
-          disabled={images.length === 0}
-        >
-          Delete All
-        </button>
+        <PrimaryButton
+        onClick={handleConvert}
+          disabled={images.length !== 0}
+          name="Convert all" />
+        <PrimaryButton
+        onClick={() => setImages([])}
+          disabled={images.length !== 0}
+          name="Delete all" />
       </div>
 
       <br />
