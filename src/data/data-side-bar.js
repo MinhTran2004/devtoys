@@ -153,6 +153,7 @@ export const DataSideBar = [
     label: "Generators",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    link:"/generators",
     children: [
       {
         key: "sub5-1",
@@ -174,6 +175,7 @@ export const DataSideBar = [
         key: "sub5-4",
         label: "UUID",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/generators/uuid"
       },
     ],
   },
@@ -203,6 +205,7 @@ export const DataSideBar = [
     label: "Testers",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    // link: "/testers",
     children: [
       {
         key: "sub7-1",
