@@ -10,18 +10,16 @@ export default function XMLPage() {
 
   const handleValidate = useCallback(() => {
     if (!inputXML || !inputXSD) {
-      setResult('Vui lòng nhập cả XML và XSD.');
+      setResult("");
       return;
     }
 
-    // Kiểm tra cú pháp XML
     parseString(inputXML, (err, xmlObj) => {
       if (err) {
         setResult('XML không hợp lệ.');
         return;
       }
 
-      // Thực hiện kiểm tra XSD cơ bản - so sánh với một số phần tử trong XSD
       try {
         const xsdParser = new DOMParser();
         const xsdDoc = xsdParser.parseFromString(inputXSD, 'application/xml');
@@ -50,7 +48,6 @@ export default function XMLPage() {
     });
   }, [inputXML, inputXSD]);
 
-  // Cập nhật khi input thay đổi
   useEffect(() => {
     handleValidate();
   }, [inputXML, inputXSD]);
@@ -60,16 +57,15 @@ export default function XMLPage() {
       <p className="text-2xl mb-2">XML / XSD Tester</p>
 
       <div className="grid grid-cols-2 h-9/10 gap-3">
+      <Textarea
+          label="XML"
+          value={inputXML}
+          onChange={(text) => setInputXML(text.target.value)}
+        />
         <Textarea
           label="XSD"
           value={inputXSD}
           onChange={(text) => setInputXSD(text.target.value)}
-        />
-
-        <Textarea
-          label="XML"
-          value={inputXML}
-          onChange={(text) => setInputXML(text.target.value)}
         />
       </div>
       <p>{result}</p>

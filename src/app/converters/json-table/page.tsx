@@ -20,14 +20,14 @@ export default function JsonTablePage() {
             } catch (error) {
                 setOutput('Định dạng JSON không hợp lệ!');
             }
-        }else{
+        } else {
             setOutput("")
         }
     }, [input]);
 
     useEffect(() => {
         handleConvertJSON();
-        console.log(typeof(input));
+        console.log(typeof (input));
     }, [input])
 
     return (
@@ -35,12 +35,15 @@ export default function JsonTablePage() {
             <p className="text-2xl mb-2">JSON Array to Table</p>
 
             <div className={"grid grid-cols-1 gap-5 h-full mt-8 lg:grid-cols-2"}>
-                <Textarea
-                    label="Input"
-                    value={input}
-                    placeholder="[ ]"
-                    onChange={text => setInput(text.target.value)}
-                />
+                <div className="h-14/15">
+                    <Textarea
+                        label="Input"
+                        value={input}
+                        placeholder="[ ]"
+                        onChange={text => setInput(text.target.value)}
+                    />
+                </div>
+
                 <div className="h-8/9">
                     <Table data={output} label="Output" />
                 </div>

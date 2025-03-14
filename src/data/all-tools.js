@@ -113,7 +113,8 @@ export const DataAllTools = [
         key: "at13",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "JSONPath Tester",
-        content: "Test a JSONPath"
+        content: "Test a JSONPath",
+        link: "/testers/json-path",
     },
     {
         key: "at14",
@@ -182,7 +183,8 @@ export const DataAllTools = [
         key: "at23",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Regular Expression Tester",
-        content: "Validate and test regular expressions"
+        content: "Validate and test regular expressions",
+        link: "/testers/regex",
     },
     {
         key: "at24",
@@ -214,19 +216,22 @@ export const DataAllTools = [
         key: "at28",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "UUID Generator",
-        content: "Generate UUIDs version 1,4 (GUID) and 7"
+        content: "Generate UUIDs version 1,4 (GUID) and 7",
+        link: "/generators/uuid",
     },
     {
         key: "at29",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "XML Formatter",
-        content: "Indent or minify XML data"
+        content: "Indent or minify XML data",
+        link: "/formatters/xml"
     },
     {
         key: "at30",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "XML / XSD Tester",
-        content: "Validate XML data via an XSD scheme"
+        content: "Validate XML data via an XSD scheme",
+        link: "/testers/xml",
     },
     {
         key: "at31",

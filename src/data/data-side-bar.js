@@ -40,11 +40,11 @@ export const DataSideBar = [
         iconLeft: <HomeIcon fontSize="small" />,
         link: "/converters/cron-parser",
       },
-      {
-        key: "sub2-2",
-        label: "Date",
-        iconLeft: <HomeIcon fontSize="small" />,
-      },
+      // {
+      //   key: "sub2-2",
+      //   label: "Date",
+      //   iconLeft: <HomeIcon fontSize="small" />,
+      // },
       {
         key: "sub2-3",
         label: "JSON > Table",
@@ -85,12 +85,12 @@ export const DataSideBar = [
         iconRight: <EmojiObjectsIcon fontSize="small" />,
         link: "/encoders/base64-text"
       },
-      {
-        key: "sub3-3",
-        label: "Certificate",
-        iconLeft: <HomeIcon fontSize="small" />,
-        // link: "/encoders/certificate"
-      },
+      // {
+      //   key: "sub3-3",
+      //   label: "Certificate",
+      //   iconLeft: <HomeIcon fontSize="small" />,
+      //   link: "/encoders/certificate"
+      // },
       {
         key: "sub3-4",
         label: "GZIP",
@@ -137,11 +137,11 @@ export const DataSideBar = [
         iconLeft: <HomeIcon fontSize="small" />,
         link: "/formatters/json"
       },
-      {
-        key: "sub4-2",
-        label: "SQL",
-        iconLeft: <HomeIcon fontSize="small" />,
-      },
+      // {
+      //   key: "sub4-2",
+      //   label: "SQL",
+      //   iconLeft: <HomeIcon fontSize="small" />,
+      // },
       {
         key: "sub4-3",
         label: "XML",
@@ -229,7 +229,7 @@ export const DataSideBar = [
         key: "sub7-3",
         label: "XML",
         iconLeft: <HomeIcon fontSize="small" />,
-        // link: "/testers/xml",
+        link: "/testers/xml",
       },
     ],
   },
@@ -258,17 +258,17 @@ export const DataSideBar = [
         iconLeft: <HomeIcon fontSize="small" />,
         link: "/text/markdown-preview"
       },
-      {
-        key: "sub8-4",
-        label: "Analyzer & Utilities",
-        iconLeft: <HomeIcon fontSize="small" />,
-        iconRight: (
-          <EmojiObjectsIcon
-            fontSize="small"
-            sx={{ color: "yellow" }}
-          />
-        ),
-      },
+      // {
+      //   key: "sub8-4",
+      //   label: "Analyzer & Utilities",
+      //   iconLeft: <HomeIcon fontSize="small" />,
+      //   iconRight: (
+      //     <EmojiObjectsIcon
+      //       fontSize="small"
+      //       sx={{ color: "yellow" }}
+      //     />
+      //   ),
+      // },
       {
         key: "sub8-5",
         label: "Compare",

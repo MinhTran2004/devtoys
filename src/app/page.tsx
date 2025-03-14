@@ -9,13 +9,14 @@ export default function DashboardPage() {
   const filter = data.filter((item) => item.link);
 
   return (
-    <div>
+    <div className="pb-100">
       <div className="flex">
-        <p  className="text-5xl font-bold">Welcome to DevToys</p>
+        <h1 className="text-4xl font-bold">Welcome to DevToys</h1>
         <span className="text-base">v2.0-preview.8</span>
       </div>
-      <br/>
-      <ListCard title="All tools" data={filter} />
+      <div>
+        <ListCard title="All tools" data={filter} />
+      </div>
     </div>
   );
 }

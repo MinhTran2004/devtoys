@@ -17,7 +17,7 @@ export default function ListCard({ data, title }: ListCardProps) {
             {
                 title && (
                     <div>
-                        <p className="text-2xl ">{title}</p>
+                        <p className="text-xl ">{title}</p>
                         <hr style={{ margin: '5px 0 15px' }} />
                     </div>
                 )
