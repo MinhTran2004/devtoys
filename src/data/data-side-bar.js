@@ -277,4 +277,34 @@ export const DataSideBar = [
       },
     ],
   },
+  {
+    key: "sub8",
+    label: "Tools",
+    iconLeft: <HomeIcon fontSize="small" />,
+    iconRight: <KeyboardArrowDownIcon fontSize="small" />,
+    link: "/tools",
+    children: [
+      {
+        key: "sub8-1",
+        label: "Currency Exchange",
+        iconLeft: <HomeIcon fontSize="small" />,
+        link: "/tools/currency-exchange"
+      },
+      {
+        key: "sub8-2",
+        label: "List Compare",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub8-3",
+        label: "Markdown Preview",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+      {
+        key: "sub8-5",
+        label: "Compare",
+        iconLeft: <HomeIcon fontSize="small" />,
+      },
+    ],
+  },
 ];

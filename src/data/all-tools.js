@@ -45,7 +45,8 @@ export const DataAllTools = [
         key: "at3",
         image: <ContentCopyIcon style={{ width: 13, height: 13 }} />,
         title: "Certificate Decoder",
-        content: "Decode a certificate"
+        content: "Decode a certificate",
+        link: "/encoders/certificate"
     },
     {
         key: "at4",

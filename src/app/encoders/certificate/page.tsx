@@ -6,7 +6,7 @@ import DropImage from "@/components/drop-imge";
 import { X509 } from 'jsrsasign';
 
 export default function CertificatePage() {
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState<any>("");
 
@@ -46,7 +46,7 @@ export default function CertificatePage() {
     }else{
       setOutput("");
     }
-  }, [input, output]);
+  }, [input]);
 
   useEffect(() => {
     handleDecode();
@@ -58,10 +58,10 @@ export default function CertificatePage() {
 
       <div className="grid grid-cols-2 h-full gap-3">
         <div className="h-19/20 flex flex-col gap-3">
-          <InputField
+          {/* <InputField
             label="Password"
             value={password}
-            onChange={(text) => setPassword(text.target.value)} />
+            onChange={(text) => setPassword(text.target.value)} /> */}
           <DropImage onChange={handleFileChange}/>
           <Textarea
             label="Input"
