@@ -42,7 +42,7 @@ export default function URLPage() {
                 iconLeft={<CurrencyExchangeIcon />}
                 title="Conversion"
                 content="Select wich conversion mode you want to use"
-                iconRight={<Toogle textFalse="Decode" textTrue="Encode" statusSwicth={isChecked} onChangeStatus={setIsChecked} />} />
+                iconRight={<Toogle textFalse="Decode" textTrue="Encode" checked={isChecked} onChangeStatus={setIsChecked} />} />
 
             <div className="h-7/8 grid grid-rows-2 gap-2">
                 <Textarea
