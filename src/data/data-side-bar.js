@@ -85,12 +85,12 @@ export const DataSideBar = [
         iconRight: <EmojiObjectsIcon fontSize="small" />,
         link: "/encoders/base64-text"
       },
-      // {
-      //   key: "sub3-3",
-      //   label: "Certificate",
-      //   iconLeft: <HomeIcon fontSize="small" />,
-      //   link: "/encoders/certificate"
-      // },
+      {
+        key: "sub3-3",
+        label: "Certificate",
+        iconLeft: <HomeIcon fontSize="small" />,
+        link: "/encoders/certificate"
+      },
       {
         key: "sub3-4",
         label: "GZIP",

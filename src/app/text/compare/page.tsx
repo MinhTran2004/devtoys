@@ -12,7 +12,6 @@ export default function ComparePage() {
   const [output, setOutput] = useState<any>([]);
   const [isChecked, setIsChecked] = useState(false);
 
-
   useEffect(() => {
     if (inputOriginal && inputModified) {
       const result = diffChars(inputOriginal, inputModified);
@@ -64,16 +63,18 @@ export default function ComparePage() {
         />
       </div>
 
-      <div className="h-4/8 grid grid-cols-2 gap-x-5">
-        <Textarea
-          disabled
-          label="Difference"
-          value={inputOriginal}
-        />
+      <div className="h-4/8 grid grid-cols-2 mt-5 gap-x-5">
+        <div className="h-11/12">
+          <Textarea
+            disabled
+            label="Difference"
+            value={inputOriginal}
+          />
+        </div>
 
         <div>
           <label className="text-sm text-[#bbbbbb]">Difference</label>
-          <pre className="bg-[#333333] h-8/9 rounded-lg pt-2 pl-3">{renderDiff(output)}</pre>
+          <pre className="bg-[#333333] h-13/15 rounded-lg pt-2 pl-3">{renderDiff(output)}</pre>
         </div>
       </div>
 

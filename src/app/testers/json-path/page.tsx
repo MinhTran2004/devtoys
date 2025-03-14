@@ -65,7 +65,7 @@ export default function JSONPathTester() {
             />
           </div>
 
-          <div className="h-14/25">
+          <div className="h-14/25 mt-2">
             <Table data={data} label="Cheat sheet" />
           </div>
         </div>

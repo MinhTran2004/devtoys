@@ -16,7 +16,6 @@ export default function DropImage({ styleLayout, ...input }: DropImageProps) {
                     <input
                         className="text-[#6aaed6] cursor-pointer text-sm w-19"
                         type="file"
-                        accept="image/*"
                         {...input} />
                     <p className="mx-2">/</p>
                     <button className="text-[#6aaed6] cursor-pointer text-sm" >Paste</button>

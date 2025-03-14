@@ -1,15 +1,56 @@
 "use client"
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Textarea from "@/components/textarea";
 import InputField from "@/components/input-field";
 import DropImage from "@/components/drop-imge";
+import { X509 } from 'jsrsasign';
 
 export default function CertificatePage() {
   const [password, setPassword] = useState("");
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
+  const [output, setOutput] = useState<any>("");
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const fileContent = e.target?.result as string;
+        if (fileContent) {
+          setInput(fileContent);
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
 
+  const handleDecode = useCallback(() => {
+    if (input.length > 0) {
+      try {
+        const x509 = new X509();
+        x509.readCertPEM(input);
+        const decoded = {
+          subject: x509.getSubjectString(),
+          issuer: x509.getIssuerString(),
+          validFrom: x509.getNotBefore(),
+          validTo: x509.getNotAfter(),
+          version: x509.getVersion(),
+          signatureAlgorithm: x509.getSignatureAlgorithmField(),
+          serialNumber: x509.getSerialNumberHex(),
+        };
+        setOutput(JSON.stringify(decoded, null, 2));
+      } catch (err: any) {
+        setOutput("Lỗi");
+        console.log(err);
+      }
+    }else{
+      setOutput("");
+    }
+  }, [input, output]);
+
+  useEffect(() => {
+    handleDecode();
+  }, [input])
 
   return (
     <div className="h-full w-full">
@@ -21,7 +62,7 @@ export default function CertificatePage() {
             label="Password"
             value={password}
             onChange={(text) => setPassword(text.target.value)} />
-          <DropImage />
+          <DropImage onChange={handleFileChange}/>
           <Textarea
             label="Input"
             value={input}

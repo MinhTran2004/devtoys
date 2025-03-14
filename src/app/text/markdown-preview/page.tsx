@@ -44,7 +44,7 @@ export default function MarkdownPreviewPage() {
         <div>
           <label>Output</label>
         <div
-          className="h-8/9 pt-3 pl-5 rounded-lg"
+          className="h-19/20 pt-3 pl-5 rounded-lg"
           style={{backgroundColor: selectItemTheme === "Dark" ? "#0e1117" : "white", color: selectItemTheme === "Dark" ? "white" : "black"}}
           dangerouslySetInnerHTML={{ __html: output }} />
         </div>

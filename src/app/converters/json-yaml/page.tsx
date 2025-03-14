@@ -58,7 +58,7 @@ export default function JSONYAMLPage() {
                 title="Indentation"
                 iconRight={<DropDown data={dataindentation} selectItemDropDown={selectItemIndentation} onSelectItemDropDown={setSelectItemIndentation} />} />
 
-            <div className="grid grid-cols-1 gap-3 h-4/5 lg:grid-cols-2 mt-3">
+            <div className="grid grid-cols-1 gap-3 h-11/15 lg:grid-cols-2 mt-3">
                 <Textarea
                     label="Input"
                     value={input}

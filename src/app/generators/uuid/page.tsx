@@ -76,7 +76,7 @@ export default function UUIDPage() {
                 />
             </div>
 
-            <div className="w-full h-9/16 mt-4">
+            <div className="w-full h-11/20 mt-4">
                 <Textarea
                     label="UUID(s)"
                     value={output.join("\n")} />

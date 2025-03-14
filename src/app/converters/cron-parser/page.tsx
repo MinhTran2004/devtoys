@@ -81,7 +81,7 @@ export default function CronParserPage() {
                     onChange={text => setInputDescription(text.target.value)} />
             </div>
 
-            <div className="h-1/2 mt-8">
+            <div className="h-7/15 mt-8">
                 <Textarea
                     disabled
                     label="Next scheduled dates"

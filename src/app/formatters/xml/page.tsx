@@ -52,7 +52,7 @@ export default function XMLPage() {
                 content="Whether to put attributes on a new line"
                 iconRight={<Switch textFalse="Off" textTrue="On" />} />
 
-            <div className="grid grid-cols-1 gap-3 h-5/6 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 h-8/10 lg:grid-cols-2">
                 <Textarea
                     label="Input"
                     value={input}
