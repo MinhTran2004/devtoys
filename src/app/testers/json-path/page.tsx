@@ -1,57 +1,42 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
+import { JSONPath } from "jsonpath-plus";
 import Textarea from "@/components/textarea";
 import InputField from "@/components/input-field";
 import Table from "@/components/table";
-import JSONPath from 'jsonpath';
 
 const data = [
   { "Syntax": "$", "Description": "The root object or array." },
-  { "Syntax": "@", "Description": "Used for filter expressions. Refres to the current node for further processing." },
+  { "Syntax": "@", "Description": "Used for filter expressions. Refers to the current node for further processing." },
   { "Syntax": "object.property", "Description": "Dot-notated child" },
   { "Syntax": "['object'].['property']", "Description": "Bracket-noted child or children" },
   { "Syntax": "..property", "Description": "Performs a deep scan for the specified property in all available objects." },
-  { "Syntax": "*", "Description": "Wildcard. Selects all elemant in an object or array." },
+  { "Syntax": "*", "Description": "Wildcard. Selects all elements in an object or array." },
   { "Syntax": "[n]", "Description": "Selects the n-th element from an array. Indexes start from 0." },
   { "Syntax": "[n1, n2]", "Description": "Selects n1 and n2 array items. Returns a list." },
   { "Syntax": "[start:end:step]", "Description": "Array slice operator." },
-  { "Syntax": "?(expression)", "Description": "Selects all elemants in an object or array taht match the specified boolean expression." },
+  { "Syntax": "?(expression)", "Description": "Selects all elements in an object or array that match the specified boolean expression." },
   { "Syntax": "(expression)", "Description": "Script expression" },
 ]
 
-
-export default function XMLPage() {
+export default function JSONPathTester() {
   const [input, setInput] = useState("");
-  const [inputJSONPath, setInputJSonPath] = useState("");
-  const [result, setResult] = useState("");
-
+  const [inputJSONPath, setInputJSONPath] = useState("");
+  const [result, setResult] = useState<string>("");
 
   const handleTestJSONPath = useCallback(() => {
     try {
-      let jsonObject;
-      try {
-        jsonObject = JSON.parse(input);
-      } catch (e) {
-        throw new Error('Cú pháp JSON không hợp lệ');
-      }
-
-      let queryResult;
-      try {
-        queryResult = JSONPath.query(jsonObject, inputJSONPath);
-      } catch (e) {
-        throw new Error('Cú pháp JSONPath không hợp lệ');
-      }
-
+      const jsonObject = JSON.parse(input); 
+      const queryResult = JSONPath({ path: inputJSONPath, json: jsonObject }); 
       setResult(JSON.stringify(queryResult, null, 2));
-    } catch (e: any) {
-      console.log(e);
-      setResult("");
+    } catch (err) {
+      setResult("Lỗi cú pháp JSON hoặc JSONPath không hợp lệ");
     }
   }, [input, inputJSONPath]);
 
   useEffect(() => {
     handleTestJSONPath();
-  }, [input, inputJSONPath])
+  }, [input, inputJSONPath]);
 
   return (
     <div className="h-full w-full">
@@ -60,9 +45,9 @@ export default function XMLPage() {
       <div className="grid grid-cols-2 h-full gap-3">
         <div className="h-24/25">
           <Textarea
-            label="XSD"
+            label="JSON"
             value={input}
-            onChange={(text) => setInput(text.target.value)}
+            onChange={(e) => setInput(e.target.value)}
           />
         </div>
 
@@ -70,19 +55,18 @@ export default function XMLPage() {
           <InputField
             label="JSONPath"
             value={inputJSONPath}
-            onChange={(text) => setInputJSonPath(text.target.value)}
+            onChange={(e) => setInputJSONPath(e.target.value)}
           />
           <div className="h-5/10">
             <Textarea
               label="Test result"
               value={result}
-              onChange={(text) => setResult(text.target.value)}
+              onChange={(e) => setResult(e.target.value)}
             />
           </div>
 
           <div className="h-14/25">
-            <Table data={data} label="hihi" />
-
+            <Table data={data} label="Cheat sheet" />
           </div>
         </div>
       </div>

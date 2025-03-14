@@ -3,8 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import Textarea from "@/components/textarea";
 import InputField from "@/components/input-field";
 import Table from "@/components/table";
-import JSONPath from 'jsonpath';
-import Accordion from "@/components/accordion";
 
 const data = [
   { "Syntax": "$", "Description": "The root object or array." },

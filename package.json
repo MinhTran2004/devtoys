@@ -25,6 +25,7 @@
     "js-yaml": "^4.1.0",
     "json5": "^2.2.3",
     "jsonpath": "^1.1.1",
+    "jsonpath-plus": "^10.3.0",
     "jsonwebtoken": "^9.0.2",
     "jsqr": "^1.4.0",
     "lorem-ipsum": "^2.0.8",
