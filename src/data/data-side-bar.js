@@ -89,6 +89,7 @@ export const DataSideBar = [
         key: "sub3-3",
         label: "Certificate",
         iconLeft: <HomeIcon fontSize="small" />,
+        // link: "/encoders/certificate"
       },
       {
         key: "sub3-4",
@@ -215,6 +216,7 @@ export const DataSideBar = [
         key: "sub7-1",
         label: "JSONpath",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/testers/json-path",
       },
       {
         key: "sub7-2",

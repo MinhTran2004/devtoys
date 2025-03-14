@@ -47,7 +47,7 @@ export default function Table({
                                     <tr key={index}>
                                         {headerTable.map((column) => (
                                             <td
-                                                className="text-center border"
+                                                className=" border"
                                                 key={column}
                                             >
                                                 {row[column]}
