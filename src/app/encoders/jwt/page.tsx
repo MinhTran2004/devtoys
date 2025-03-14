@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import Toogle from "@/components/switch";
 import Textarea from "@/components/textarea";
+import base64url from 'base64url';
 
 export default function HTMLPage() {
     const [inputToken, setInputToken] = useState("");
@@ -13,21 +14,43 @@ export default function HTMLPage() {
 
     const [isChecked, setIsChecked] = useState(false);
 
-    const [result, setResult] = useState<{ header: object; payload: object; message: string } | null>(null);
+    // Hàm giải mã JWT (Header, Payload, Signature)
+    const decodeJWT = (token: string) => {
+        const [headerEncoded, payloadEncoded, signatureEncoded] = token.split('.');
 
-    const handleDecode = async () => {
-      try {
-        const response = await fetch(`/app/encoders/jwt?token=${inputToken}`);
-        const data = await response.json();
-        setResult(data);
-      } catch (error) {
-        console.error('Error:', error);
-      }
+        if (!headerEncoded || !payloadEncoded || !signatureEncoded) {
+            throw new Error('Invalid JWT token');
+        }
+
+        const header = JSON.parse(base64url.decode(headerEncoded));
+        const payload = JSON.parse(base64url.decode(payloadEncoded));
+
+        return {
+            header,
+            payload,
+            signature: signatureEncoded, 
+        };
+    };
+
+    const handleSubmit = async () => {
+        setHeaderText("");
+        setPayloadText("");
+        setSignature("");
+
+        try {
+            const decoded = decodeJWT(inputToken);
+            setHeaderText(JSON.stringify(decoded.header, null, 2));
+            setPayloadText(JSON.stringify(decoded.payload, null, 2));
+            setSignature(JSON.stringify(decoded.signature, null, 2));
+        } catch (error: any) {
+            console.log(error);
+        }
     };
 
     useEffect(() => {
-        handleDecode();
-    }, [inputToken]);
+        handleSubmit();
+    }, [inputToken, handleSubmit])
+
 
     return (
         <div className="h-full w-full">
@@ -39,11 +62,11 @@ export default function HTMLPage() {
                 content="Select which mode you want to use"
                 iconRight={<Toogle textFalse="Decode" textTrue="Encode" checked={isChecked} onChange={text => setIsChecked(!isChecked)} />} />
 
-            <Accordion
+            {/* <Accordion
                 iconLeft={<CurrencyExchangeIcon />}
                 title="Settings"
                 content="Select token parameters"
-                data={["hihi"]} />
+                data={[{title: ""}]} /> */}
 
             <div className="h-2/10 mt-3">
                 <Textarea
@@ -66,13 +89,13 @@ export default function HTMLPage() {
                 />
             </div>
 
-            <div className="h-2/10 mt-7">
+            {isChecked && <div className="h-2/10 mt-7">
                 <Textarea
                     label="Signature"
                     value={signature}
                     onChange={(text) => setSignature(text.target.value)}
                 />
-            </div>
+            </div>}
         </div>
     )
 }
