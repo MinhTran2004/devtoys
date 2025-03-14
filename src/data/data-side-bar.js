@@ -223,6 +223,7 @@ export const DataSideBar = [
         label: "RegEx",
         iconLeft: <HomeIcon fontSize="small" />,
         iconRight: <EmojiObjectsIcon fontSize="small" />,
+        link: "/testers/regex",
       },
       {
         key: "sub7-3",
