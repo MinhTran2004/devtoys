@@ -43,7 +43,7 @@ export default function ScanVirusFilePage() {
 
             {output && (
                 <div className="mt-5 overflow-y-scroll h-8/9">
-                <table border="1" cellPadding="10">
+                <table>
                     <thead>
                         <tr>
                             <th>Field</th>
