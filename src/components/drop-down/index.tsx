@@ -7,12 +7,14 @@ interface MenuProps {
     data: string[]
     onSelectItemDropDown?: (text: string) => void
     selectItemDropDown?: string
+    styleLayoutDropDown?: React.CSSProperties,
 }
 
 export default function DropDown({
     data,
     onSelectItemDropDown,
-    selectItemDropDown
+    selectItemDropDown,
+    styleLayoutDropDown
 }: MenuProps) {
     const [isChecked, setIsChecked] = useState(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -27,7 +29,7 @@ export default function DropDown({
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-        
+
     }, []);
 
     return (
@@ -35,14 +37,18 @@ export default function DropDown({
             className="relative h-full"
             ref={containerRef}
             onClick={() => setIsChecked(!isChecked)}>
-            <ItemDropDown label={selectItemDropDown ? selectItemDropDown : data[0]} iconRight={<KeyboardArrowDownIcon/>} />
+            <ItemDropDown styleLayoutDropDown={styleLayoutDropDown} label={selectItemDropDown ? selectItemDropDown : data[0]} iconRight={<KeyboardArrowDownIcon />} />
             {isChecked && (
-                <div className="absolute flex flex-col bg-[#282828] z-999 gap-1 mt-1">
+                <div className="absolute flex flex-col h-50 overflow-y-scroll bg-[#323232] z-999 gap-1 mt-1">
                     {data && (
                         data.map((item) => {
                             if (item !== selectItemDropDown) {
                                 return (
-                                    <ItemDropDown key={item} label={item} onSelectItemDropDown={onSelectItemDropDown} />
+                                    <ItemDropDown
+                                        key={item}
+                                        label={item}
+                                        onSelectItemDropDown={onSelectItemDropDown}
+                                        styleLayoutDropDown={styleLayoutDropDown} />
                                 )
                             }
                         })

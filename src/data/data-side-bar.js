@@ -292,18 +292,21 @@ export const DataSideBar = [
       },
       {
         key: "sub8-2",
-        label: "List Compare",
+        label: "Crypto Currency Exchange",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/tools/crypto-currency-exchange"
       },
       {
         key: "sub8-3",
-        label: "Markdown Preview",
+        label: "Scan Virus File",
         iconLeft: <HomeIcon fontSize="small" />,
+        // link: "/tools/scan-virus-file"
       },
       {
         key: "sub8-5",
-        label: "Compare",
+        label: "Ip Geo Location",
         iconLeft: <HomeIcon fontSize="small" />,
+        link: "/tools/ip-geo-location"
       },
     ],
   },
