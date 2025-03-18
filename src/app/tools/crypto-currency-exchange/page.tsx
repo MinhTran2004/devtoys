@@ -6,12 +6,13 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import axios from "axios";
 
 export default function CryptoCurrencyExchangePage() {
-  const [input, setInput] = useState<number>(1);
+  const [input, setInput] = useState("0");
   const [output, setOutput] = useState<number>(0);
   const [baseCode, setBaseCode] = useState<string>("BTC");
   const [targetCode, setTargetCode] = useState<string>("ETH");
   const [listCryptoCurrencies, setListCryptoCurrencies] = useState<string[]>([]);
   const [arrayCrypto, setArrayCrypto] = useState<any[]>([]);
+  const [error, setError] = useState("");
 
   const getListCurrencies = useCallback(async () => {
     const arrayCryptoCurrencies: string[] = [];
@@ -33,13 +34,22 @@ export default function CryptoCurrencyExchangePage() {
   }, [])
 
   const handleCryptocurrencyExchange = useCallback(async () => {
-    try {
-      const filterBase = arrayCrypto.filter((item) => item[0] === baseCode);
-      const filterTarget = arrayCrypto.filter((item) => item[0] === targetCode);
-      const baseToTarget = (input * Number(filterBase[0][1])) / Number(filterTarget[0][1]);
-      setOutput(baseToTarget);
-    } catch (err) {
-      console.log(err);
+    if (input.length < 1) {
+      setError("Cần có it nhất 1 trường")
+    }else if (isNaN(Number(input))) {
+      setError("Lỗi định dạng dữ liệu")
+    } else if (Number(input) < 0) {
+      setError("Input > 0")
+    } else {
+      setError("")
+      try {
+        const filterBase = arrayCrypto.filter((item) => item[0] === baseCode);
+        const filterTarget = arrayCrypto.filter((item) => item[0] === targetCode);
+        const baseToTarget = (Number(input) * Number(filterBase[0][1])) / Number(filterTarget[0][1]);
+        setOutput(baseToTarget);
+      } catch (err) {
+        console.log(err);
+      }
     }
   }, [input,arrayCrypto])
 
@@ -50,20 +60,20 @@ export default function CryptoCurrencyExchangePage() {
   return (
     <div className="h-full w-full">
       <p className="text-2xl mb-2">Crypto Currency Exchange</p>
-      <div className="flex items-center justify-between gap-5">
+      <div className="flex justify-between gap-5">
         <InputField
           label="Input"
-          type="number"
           value={input}
+          textError={error}
           styleLayout={{ width: '100%' }}
-          onChange={(text) => setInput(Number(text.target.value))}
+          onChange={(text) => setInput(text.target.value)}
           iconRight={<DropDown
             data={listCryptoCurrencies}
             selectItemDropDown={baseCode}
             onSelectItemDropDown={setBaseCode} />}
         />
 
-        <CurrencyExchangeIcon className="mt-5" />
+        <CurrencyExchangeIcon className="mt-8" />
 
         <InputField
           label="Output"
