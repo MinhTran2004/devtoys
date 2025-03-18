@@ -1,11 +1,8 @@
 "use client";
 import InputField from "@/components/input-field";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import PrimaryButton from "@/components/button";
 import axios from "axios";
-import Table from "@/components/table";
-
-const API_KEY = "1f9de557b5784774ab9832906c6fe6dc";
 
 export default function ScanVirusFilePage() {
     const [input, setInput] = useState<string>("58.186.22.176");
@@ -13,15 +10,12 @@ export default function ScanVirusFilePage() {
 
     const handleIpGeoLocaiton = async () => {
         try {
-            const reponse = (await axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${API_KEY}&ip=${input}`)).data;
+            const reponse = (await axios.get(`/api/ip-geo-location?input=${input}`)).data;
             setOutput(reponse);
         } catch (err) {
             console.log(err);
         }
     };
-
-    console.log(output);
-
 
     return (
         <div className="h-full w-full">
