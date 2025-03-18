@@ -300,7 +300,7 @@ export const DataSideBar = [
         key: "sub8-3",
         label: "Scan Virus File",
         iconLeft: <HomeIcon fontSize="small" />,
-        // link: "/tools/scan-virus-file"
+        link: "/tools/scan-virus-file"
       },
       {
         key: "sub8-5",

@@ -1,11 +1,9 @@
 "use client"
 import InputField from "@/components/input-field";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import axios from 'axios';
 import DropDown from "@/components/drop-down";
-
-const API_KEY = "d492183d5c384afb627f2f6b";
 
 export default function CurrencyExchangePage() {
   const [input, setInput] = useState<number>(1);
@@ -16,7 +14,7 @@ export default function CurrencyExchangePage() {
 
   const dataCurrency = useCallback(async () => {
     try {
-      const reponse = (await axios.get(`https://v6.exchangerate-api.com/v6/${API_KEY}/codes`)).data;
+      const reponse = (await axios.get(`/api/currency-exchange/data-currency`)).data;
       const currencyCodes = reponse.supported_codes.map((item: string[]) => item[0]);
       setListCurrency(currencyCodes);
     } catch (err) {
@@ -26,12 +24,14 @@ export default function CurrencyExchangePage() {
 
   const currencyExchange = useCallback(async () => {
     try {
-      const reponse = (await axios.get(`https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${baseCode}/${targetCode}/${input}`)).data;
+      const reponse = (await axios.get(
+        `/api/currency-exchange/convert-currency?baseCode=${baseCode}&targetCode=${targetCode}&input=${input}`
+      )).data;
       setOutput(reponse.conversion_result);
     } catch (err) {
       console.log(err);
     }
-  },[input, baseCode, targetCode]);
+  }, [input, baseCode, targetCode]);
 
   useEffect(() => {
     dataCurrency();
@@ -52,7 +52,7 @@ export default function CurrencyExchangePage() {
           label="Input"
           type="number"
           value={input}
-          styleLayout={{width: '100%'}}
+          styleLayout={{ width: '100%' }}
           onChange={(text) => setInput(Number(text.target.value))}
           iconRight={<DropDown
             data={listCurrency}
@@ -66,7 +66,7 @@ export default function CurrencyExchangePage() {
           label="Output"
           type="number"
           value={output}
-          styleLayout={{width: '100%'}}
+          styleLayout={{ width: '100%' }}
           onChange={(text) => setOutput(Number(text.target.value))}
           iconRight={<DropDown
             data={listCurrency}

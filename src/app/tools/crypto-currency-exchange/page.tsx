@@ -1,39 +1,51 @@
 "use client";
 import DropDown from "@/components/drop-down";
 import InputField from "@/components/input-field";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import axios from "axios";
 
-export default function ScanVirusFilePage() {
+export default function CryptoCurrencyExchangePage() {
   const [input, setInput] = useState<number>(1);
   const [output, setOutput] = useState<number>(0);
-  const [baseCode, setBaseCode] = useState<string>("usd");
-  const [targetCode, setTargetCode] = useState<string>("VND");
-  const [listCurrencies, setListCurrencies] = useState<string[]>([]);
-  const [listCryptoCurrencies, setListCryptocurrencies] = useState<string[]>([]);
+  const [baseCode, setBaseCode] = useState<string>("BTC");
+  const [targetCode, setTargetCode] = useState<string>("ETH");
+  const [listCryptoCurrencies, setListCryptoCurrencies] = useState<string[]>([]);
+  const [arrayCrypto, setArrayCrypto] = useState<any[]>([]);
 
-  const getListcurrency = async () => {
-    try{
-      const [Currencies,Cryptocurrencies] =  await Promise.all([
-        (await axios.get(`https://api.coingecko.com/api/v3/simple/supported_vs_currencies`)).data,
-        (await axios.get(`https://api.coingecko.com/api/v3/coins/list`)).data
-      ]);
-      setListCurrencies(Currencies);
-      setListCryptocurrencies(Cryptocurrencies);
-      console.log(Cryptocurrencies);
-      
-      // console.log(Cryptocurrencies);
-      // https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd
-
-    }catch(err){
+  const getListCurrencies = useCallback(async () => {
+    const arrayCryptoCurrencies: string[] = [];
+    try {
+      const reponse = (await axios.get(`/api/crypto-currency-exchange`)).data;
+      const convertListCryptoCurrencies = Object.entries(reponse.rates);
+      convertListCryptoCurrencies.map((item) => {
+        arrayCryptoCurrencies.push(item[0])
+      });
+      setListCryptoCurrencies(arrayCryptoCurrencies);
+      setArrayCrypto(convertListCryptoCurrencies);
+    } catch (err) {
       console.log(err);
     }
-  }
+  }, []);
 
   useEffect(() => {
-    getListcurrency();
+    getListCurrencies();
   }, [])
+
+  const handleCryptocurrencyExchange = useCallback(async () => {
+    try {
+      const filterBase = arrayCrypto.filter((item) => item[0] === baseCode);
+      const filterTarget = arrayCrypto.filter((item) => item[0] === targetCode);
+      const baseToTarget = (input * Number(filterBase[0][1])) / Number(filterTarget[0][1]);
+      setOutput(baseToTarget);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [input,arrayCrypto])
+
+  useEffect(() => {
+    handleCryptocurrencyExchange();
+  }, [input, arrayCrypto])
 
   return (
     <div className="h-full w-full">
@@ -46,7 +58,7 @@ export default function ScanVirusFilePage() {
           styleLayout={{ width: '100%' }}
           onChange={(text) => setInput(Number(text.target.value))}
           iconRight={<DropDown
-            data={listCurrencies}
+            data={listCryptoCurrencies}
             selectItemDropDown={baseCode}
             onSelectItemDropDown={setBaseCode} />}
         />

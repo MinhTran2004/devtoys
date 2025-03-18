@@ -18,7 +18,7 @@ export default function DropDown({
 }: MenuProps) {
     const [isChecked, setIsChecked] = useState(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
-
+    
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {

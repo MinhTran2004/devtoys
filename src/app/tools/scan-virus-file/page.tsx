@@ -3,44 +3,49 @@ import DropImage from "@/components/drop-imge";
 import axios from "axios";
 import { useState } from "react";
 
-const API_KEY = "0876de33e3acd54ad53063bf59a5bb293080c604c8d7256bd859aa855b429e02";
-
 export default function ScanVirusFilePage() {
-    const [input, setInput] = useState("");
-    const [output, setOutput] = useState("");
+    const [output, setOutput] = useState<any[]>([]);
+    const [error, setError] = useState("");
 
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            setInput(file.name);
-            handleScanVirusFile(file);
-        }
-    };
+    const handleScanVirusFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = event.target.files?.[0];
+        if (!selectedFile) return;
 
-    const handleScanVirusFile = async (file: File) => {
-        const formData = new FormData();
-        formData.append("file", file); 
         try {
-            const response = await axios.post(
-                "https://www.virustotal.com/vtapi/v2/file/scan",
-                formData,
-                {
-                    headers: {
-                        "x-apikey": API_KEY, 
-                    },
-                }
-            );
-            console.log(response.data); 
-            setOutput(response.data); 
-        } catch (err) {
-            console.error("Error scanning file:", err);
+            const formData = new FormData();
+            formData.append("file", selectedFile);
+
+            const response = await axios.post(`/api/virustotal`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            setError("");
+            const convertDataArray = Object.entries(response.data);
+            setOutput(convertDataArray)
+        } catch (err: any) {
+            setError("Error scanning file:" + err);
         }
     };
 
     return (
         <div className="h-full w-full">
             <p className="text-2xl mb-2">Scan Virus File</p>
-            <DropImage onChange={handleFileChange} />
+            <DropImage onChange={handleScanVirusFile} />
+            <div className="w-full flex justify-center mt-20">
+                {error ?
+                    <p>error</p>
+                    :
+                    <table>
+                        {output.map((item) => (
+                            <tr>
+                                <td className="border px-5">{item[0]}</td>
+                                <td className="px-10 border">{item[1]}</td>
+                            </tr>
+                        ))}
+                    </table>
+                }
+            </div>
         </div>
     );
 }
