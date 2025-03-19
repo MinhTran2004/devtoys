@@ -1,3 +1,4 @@
+import { error } from "console";
 import React from "react";
 
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -26,7 +27,13 @@ export default function InputField({
         </div>
         {iconRight}
       </div>
-      <p className="text-red-600 text-sm">{textError}</p>
+      <div className="h-5">
+        {textError ?
+          <p className="text-red-600 text-sm">{textError}</p>
+          :
+          <p></p>
+        }
+      </div>
     </div>
   );
 }
