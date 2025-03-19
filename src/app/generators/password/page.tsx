@@ -100,7 +100,7 @@ export default function PasswordPage() {
                         onChange={(text) => setInputLength(Number(text.target.value))} />} />
 
                 <label>Generate</label>
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-start">
                     <PrimaryButton
                         onClick={generatePassword}
                         disabled={inputGenerate.toString().length > 0 && Number(inputGenerate) > 0}

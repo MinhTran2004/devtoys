@@ -47,7 +47,7 @@ export default function RegexPage() {
       <p className="text-2xl mb-2">Regular Expression Tester</p>
 
       <div className="grid grid-cols-2 h-full gap-3">
-        <div className="h-full flex flex-col gap-3">
+        <div className="h-full flex flex-col ">
           <InputField
             label="Regular expression"
             value={inputReguler}
@@ -60,9 +60,9 @@ export default function RegexPage() {
               onChange={(text) => setInputText(text.target.value)} />
           </div>
         </div>
-        <div className="grid grid-rows-[45%_55%] gap-7">
+        <div className="grid grid-rows-[44%_53%] gap-7">
           <Table data={data} label="Cheat sheet"/>
-          <div className="h-12/15">
+          <div className="h-13/15">
             <Textarea
               disabled
               label="Output"
@@ -70,7 +70,6 @@ export default function RegexPage() {
           </div>
         </div>
       </div>
-      <p>{result}</p>
     </div>
   );
 }

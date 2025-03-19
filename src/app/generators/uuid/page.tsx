@@ -62,7 +62,7 @@ export default function UUIDPage() {
             <br />
 
             <label>Generate</label>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-start">
                 <PrimaryButton
                     onClick={generateUUIDs}
                     disabled={input.length > 0 && Number(input) > 0}
