@@ -78,11 +78,11 @@ export default function ImageConverterPage() {
 
       <div className="flex gap-2 justify-end">
         <PrimaryButton
-        onClick={handleConvert}
+          onClick={handleConvert}
           disabled={images.length !== 0}
           name="Convert all" />
         <PrimaryButton
-        onClick={() => setImages([])}
+          onClick={() => setImages([])}
           disabled={images.length !== 0}
           name="Delete all" />
       </div>

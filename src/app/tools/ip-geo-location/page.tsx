@@ -9,7 +9,7 @@ export default function ScanVirusFilePage() {
     const [input, setInput] = useState<string>("58.186.22.176");
     const [output, setOutput] = useState("");
     const [error, setError] = useState("");
-    const [isLoading, setIsLoading] = useState(false); 
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleIpGeoLocaiton = async () => {
         if (input.length < 1) {
@@ -22,7 +22,7 @@ export default function ScanVirusFilePage() {
                 setOutput(reponse);
             } catch (err) {
                 console.log(err);
-            }finally{
+            } finally {
                 setIsLoading(false);
             }
         }

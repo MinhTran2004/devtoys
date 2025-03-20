@@ -3,8 +3,8 @@ import React, { ButtonHTMLAttributes } from "react";
 interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     iconLeft?: React.ReactNode,
     iconRight?: React.ReactNode,
-    label?:string,
-    styleLayout?:React.CSSProperties,
+    label?: string,
+    styleLayout?: React.CSSProperties,
 }
 
 export default function PrimaryButton({
@@ -17,13 +17,11 @@ export default function PrimaryButton({
     ...button
 }: PrimaryButtonProps) {
     return (
-        <div style={{...styleLayout}}>
+        <div style={{ ...styleLayout }}>
             <label>{label}</label>
-            <div className="flex items-center justify-between gap-1 mt-1 p-2  text-black text-sm rounded"
-                style={{ cursor: disabled ? "pointer" : "default", color: disabled ? "black" : "#808080", backgroundColor: disabled ? "#6ebbe7" : "#2f2f2f" }}>
+            <div className={`h-8 flex items-center justify-between gap-1 mt-1 p-2 text-sm rounded ${disabled ? 'cursor-pointer text-black bg-[#6ebbe7]' : 'cursor-default text-[#808080] bg-[#2f2f2f]'}`}>
                 {iconLeft}
-                <button
-                    style={{ cursor: disabled ? "pointer" : "default", color: disabled ? "black" : "#808080", backgroundColor: disabled ? "#6ebbe7" : "#2f2f2f" }}
+                <button className={` h-full flex items-center justify-between mt-1 p-2 text-sm rounded ${disabled ? 'cursor-pointer text-black bg-[#6ebbe7]' : 'cursor-default text-[#808080] bg-[#2f2f2f]'}`}
                     {...button}>{name}</button>
                 {iconRight}
             </div>

@@ -1,11 +1,13 @@
 "use client"
+
 import ListCard from "@/components/card/list-card";
 import { DataAllTools } from "../data/all-tools";
 
 export default function DashboardPage() {
 
-  const data = DataAllTools;
+  
 
+  const data = DataAllTools;
   const filter = data.filter((item) => item.link);
 
   return (
@@ -17,6 +19,7 @@ export default function DashboardPage() {
       <div>
         <ListCard title="All tools" data={filter} />
       </div>
+      <a href="/api/auth/login">Login</a>
     </div>
   );
 }
