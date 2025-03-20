@@ -1,4 +1,5 @@
 "use client";
+
 import Accordion from "@/components/accordion";
 import DropDown from "@/components/drop-down";
 import DropImage from "@/components/drop-imge";
@@ -8,13 +9,11 @@ import { saveAs } from "file-saver";
 import PrimaryButton from "@/components/button";
 
 const dataConversion = ["BMP", "JPEG", "PBM", "PNG", "TGA", "TIFF", "WEBP"];
-const listImage: string[] = [];
 
 export default function ImageConverterPage() {
   const [selectItemDropDown, setSelectItemDropDown] = useState("BMP");
-  const [images, setImages] = useState<File[]>([]); // Lưu mảng các file ảnh
+  const [images, setImages] = useState<File[]>([]);
 
-  // Xử lý khi người dùng chọn nhiều file
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
@@ -23,7 +22,6 @@ export default function ImageConverterPage() {
     }
   };
 
-  // Chuyển đổi tất cả ảnh
   const handleConvert = async () => {
     if (images.length === 0) return;
 
@@ -65,30 +63,33 @@ export default function ImageConverterPage() {
   return (
     <div className="h-full w-full">
       <p className="text-2xl mb-2">Image Converter</p>
-
       <Accordion
         iconLeft={<CurrencyExchangeIcon />}
         title="Conversion"
         content="Select the image format to convert into"
-        iconRight={<DropDown data={dataConversion} selectItemDropDown={selectItemDropDown} onSelectItemDropDown={setSelectItemDropDown} />}
+        iconRight={<DropDown
+          data={dataConversion}
+          selectItemDropDown={selectItemDropDown}
+          onSelectItemDropDown={setSelectItemDropDown}
+        />}
       />
-
       <br />
-      <DropImage onChange={handleFileChange} />
-
+      <DropImage
+        onChange={handleFileChange}
+      />
       <div className="flex gap-2 justify-end">
         <PrimaryButton
           onClick={handleConvert}
           disabled={images.length !== 0}
-          name="Convert all" />
+          name="Convert all"
+        />
         <PrimaryButton
           onClick={() => setImages([])}
           disabled={images.length !== 0}
-          name="Delete all" />
+          name="Delete all"
+        />
       </div>
-
       <br />
-
       <div>
         {images.map((image, index) => (
           <Accordion

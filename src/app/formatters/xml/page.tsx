@@ -16,7 +16,6 @@ export default function XMLPage() {
         try {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(xmlString, "application/xml");
-
             const serializer = new XMLSerializer();
             const formatted = serializer.serializeToString(xmlDoc);
             return formatted;
@@ -31,7 +30,7 @@ export default function XMLPage() {
             setOutput(formatted);
             console.log(formatted);
         } else {
-            setOutput("")
+            setOutput("");
         }
     }, []);
 
@@ -42,26 +41,33 @@ export default function XMLPage() {
     return (
         <div className="h-full w-full">
             <p className="text-2xl mb-2">XML Formatter</p>
-
             <Accordion
                 title="Indentation"
-                iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} onSelectItemDropDown={setSelectItemDropDown} />} />
-
+                iconRight={<DropDown
+                    data={data}
+                    selectItemDropDown={selectItemDropDown}
+                    onSelectItemDropDown={setSelectItemDropDown}
+                />}
+            />
             <Accordion
                 title="Put attributes on a new line"
                 content="Whether to put attributes on a new line"
-                iconRight={<Switch textFalse="Off" textTrue="On" />} />
-
+                iconRight={<Switch
+                    textFalse="Off"
+                    textTrue="On"
+                />}
+            />
             <div className="grid grid-cols-1 gap-3 h-8/10 lg:grid-cols-2">
                 <Textarea
                     label="Input"
                     value={input}
-                    onChange={text => setInput(text.target.value)} />
-
+                    onChange={text => setInput(text.target.value)}
+                />
                 <Textarea
                     disabled
                     label="Output"
-                    value={output} />
+                    value={output}
+                />
             </div>
         </div>
     )

@@ -20,19 +20,18 @@ interface MenuProps {
 }
 
 export default function ListSideBar({ data, statusSideBar }: MenuProps) {
-
   return (
     <div className={styles.ul}>
       {data.map((item: any, index: number) => (
-        <ItemSideBar key={index}
+        <ItemSideBar
+          key={index}
           label={item.label}
           iconLeft={item.iconLeft}
           iconRight={item.iconRight}
           children={item.children}
           link={item.link}
-          statusSideBar={statusSideBar} />
-      ))}
-
+          statusSideBar={statusSideBar}
+        />))}
     </div>
   )
 }

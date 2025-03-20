@@ -18,15 +18,22 @@ export default function SideBar() {
                 <div onClick={() => setStatusSideBar(!statusSideBar)}>
                     <MenuIcon sx={{ fontSize: 20, marginBottom: 1.5, cursor: "pointer" }} />
                 </div>
-                {
-                    statusSideBar && (
-                        <InputField placeholder="Type to search for tools" iconRight={<SearchIcon />} />
-                    )
-                }
+                {statusSideBar && (
+                    <InputField
+                        placeholder="Type to search for tools"
+                        iconRight={<SearchIcon />}
+                    />
+                )}
             </div>
-            <ListSideBar data={DataSideBar} statusSideBar={statusSideBar} />
+            <ListSideBar
+                data={DataSideBar}
+                statusSideBar={statusSideBar}
+            />
             <div className="absolute bottom-0 left-0 w-full border-t-1 z-999 pl-1 pt-1">
-                <ListSideBar data={DataSettings} statusSideBar={statusSideBar} />
+                <ListSideBar
+                    data={DataSettings}
+                    statusSideBar={statusSideBar}
+                />
             </div>
         </div>
     )

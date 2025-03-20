@@ -5,7 +5,6 @@ const API_KEY = process.env.API_KEY_IPLOCATION;
 
 export async function GET(req: Request) {
     const url = new URL(req.url);
-
     const input = url.searchParams.get("input");
 
     if (!input) {
@@ -24,5 +23,4 @@ export async function GET(req: Request) {
             { status: 500 }
         );
     }
-
 }

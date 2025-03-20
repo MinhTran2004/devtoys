@@ -25,8 +25,8 @@ export default function PasswordPage() {
             } else {
                 setOutput(lorem.generateParagraphs(inputLength));
             }
-        }else{
-            setOutput("Length phải lớn hơn 0")
+        } else {
+            setOutput("Length phải lớn hơn 0");
         }
     }, [selectType, inputLength]);
 
@@ -41,17 +41,20 @@ export default function PasswordPage() {
                 <Accordion
                     label="Configuration"
                     title="Text corpus"
-                    iconRight={<DropDown data={dataCorpus} selectItemDropDown={selectCorpus}/>}
-                        />
-
+                    iconRight={<DropDown
+                        data={dataCorpus}
+                        selectItemDropDown={selectCorpus}
+                    />}
+                />
                 <Accordion
                     title="Type"
                     content="Generate words, sentences or paragraphs of Lorem Ipsum"
                     iconRight={<DropDown
                         data={dataType}
                         selectItemDropDown={selectType}
-                        onSelectItemDropDown={setSelectType} />} />
-
+                        onSelectItemDropDown={setSelectType}
+                    />}
+                />
                 <Accordion
                     title="Length"
                     content="Number of words, sentences of paragraphs to generate"
@@ -59,12 +62,14 @@ export default function PasswordPage() {
                         type="number"
                         value={inputLength}
                         onChange={(text) => setInputLength(Number(text.target.value))}
-                        style={{ width: 100 }} />} />
-
+                        style={{ width: 100 }}
+                    />}
+                />
                 <div className="w-full h-full mt-4">
                     <Textarea
                         label="Output"
-                        value={output} />
+                        value={output}
+                    />
                 </div>
             </div>
         </div>

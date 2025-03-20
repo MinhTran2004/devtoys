@@ -44,7 +44,8 @@ export default function ScanVirusFilePage() {
                     disabled={true}
                     styleLayout={{ width: 100, padding: '0 10px', boxSizing: 'border-box' }}
                     onClick={handleIpGeoLocaiton}
-                    name="Tìm kiếm" />
+                    name="Tìm kiếm"
+                />
             </div>
 
             {isLoading && <CircularProgress />}

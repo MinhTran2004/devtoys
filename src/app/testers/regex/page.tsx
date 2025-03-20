@@ -27,16 +27,16 @@ export default function RegexPage() {
     if (inputReguler.trim().length > 0 && inputText.trim().length > 0) {
       try {
         const regex = new RegExp(inputReguler.trim());
-        
+
         const matchResult = regex.test(inputText.trim());
         setResult(matchResult ? "Dữ liệu Khớp" : "Không khớp dữ liệu");
       } catch (e) {
         setResult('Lỗi');
       }
-    }else{
+    } else {
       setResult("")
     }
-  },[inputText, inputReguler]);
+  }, [inputText, inputReguler]);
 
   useEffect(() => {
     handleTestRegex();
@@ -45,7 +45,6 @@ export default function RegexPage() {
   return (
     <div className="h-full w-full">
       <p className="text-2xl mb-2">Regular Expression Tester</p>
-
       <div className="grid grid-cols-2 h-full gap-3">
         <div className="h-full flex flex-col ">
           <InputField
@@ -61,7 +60,10 @@ export default function RegexPage() {
           </div>
         </div>
         <div className="grid grid-rows-[44%_53%] gap-7">
-          <Table data={data} label="Cheat sheet"/>
+          <Table
+            data={data}
+            label="Cheat sheet"
+          />
           <div className="h-13/15">
             <Textarea
               disabled

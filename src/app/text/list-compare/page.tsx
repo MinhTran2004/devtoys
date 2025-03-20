@@ -1,4 +1,5 @@
 "use client"
+
 import Accordion from "@/components/accordion";
 import { useEffect, useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
@@ -13,18 +14,16 @@ export default function ListComparePage() {
   const [inputB, setInputB] = useState("");
   const [output, setOutput] = useState("");
   const [selectItemDropdown, setSelectItemDropdown] = useState("A n B");
-
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCompare = () => {
-    // Chuyển đổi các input thành mảng
     const setA = new Set(inputA.split("\n").map(item => item.trim()).filter(Boolean));
     const setB = new Set(inputB.split("\n").map(item => item.trim()).filter(Boolean));
 
     let resultSet: Set<string> = new Set();
 
     switch (selectItemDropdown) {
-      case "A n B": 
+      case "A n B":
         setA.forEach((item) => {
           if (
             setB.has(item) ||
@@ -35,12 +34,12 @@ export default function ListComparePage() {
         });
         break;
 
-      case "A u B": 
+      case "A u B":
         setA.forEach((item) => resultSet.add(item));
         setB.forEach((item) => resultSet.add(item));
         break;
 
-      case "A Only": 
+      case "A Only":
         setA.forEach((item) => {
           if (!setB.has(item) && ![...setB].some((b) => !isChecked && b.toLowerCase() === item.toLowerCase())) {
             resultSet.add(item);
@@ -48,7 +47,7 @@ export default function ListComparePage() {
         });
         break;
 
-      case "B Only": 
+      case "B Only":
         setB.forEach((item) => {
           if (!setA.has(item) && ![...setA].some((a) => !isChecked && a.toLowerCase() === item.toLowerCase())) {
             resultSet.add(item);
@@ -70,18 +69,26 @@ export default function ListComparePage() {
   return (
     <div className="h-full w-full">
       <p className="text-2xl mb-2">List comparer</p>
-
       <Accordion
         iconLeft={<CurrencyExchangeIcon />}
         label="Configuration"
         title="Case sensitive comparison"
-        iconRight={<Toogle textFalse="Off" textTrue="On" checked={isChecked} onChange={text => setIsChecked(!isChecked)} />} />
-
+        iconRight={<Toogle
+          textFalse="Off"
+          textTrue="On"
+          checked={isChecked}
+          onChange={text => setIsChecked(!isChecked)}
+        />}
+      />
       <Accordion
         iconLeft={<CurrencyExchangeIcon />}
         title="Comparison mode"
-        iconRight={<DropDown data={dataMode} selectItemDropDown={selectItemDropdown} onSelectItemDropDown={setSelectItemDropdown} />} />
-
+        iconRight={<DropDown
+          data={dataMode}
+          selectItemDropDown={selectItemDropdown}
+          onSelectItemDropDown={setSelectItemDropdown}
+        />}
+      />
       <div className="h-3/10 grid grid-cols-2 gap-3 mt-5">
         <Textarea
           label="A"

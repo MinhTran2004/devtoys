@@ -31,8 +31,7 @@ export default function InputField({
         {textError ?
           <p className="text-red-600 text-sm">{textError}</p>
           :
-          <p></p>
-        }
+          <p></p>}
       </div>
     </div>
   );

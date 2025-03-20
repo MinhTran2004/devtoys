@@ -5,8 +5,6 @@ import { DataAllTools } from "../data/all-tools";
 
 export default function DashboardPage() {
 
-  
-
   const data = DataAllTools;
   const filter = data.filter((item) => item.link);
 

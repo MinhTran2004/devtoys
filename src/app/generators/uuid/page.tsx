@@ -1,4 +1,5 @@
 "use client"
+
 import Accordion from "@/components/accordion";
 import PrimaryButton from "@/components/button";
 import DropDown from "@/components/drop-down";
@@ -21,18 +22,10 @@ export default function UUIDPage() {
     const generateUUIDs = useCallback(() => {
         const newUUIDs = Array.from({ length: Number(input) }, () => {
             let newUUID = uuidv4();
-
-            if (isHyphens) {
-                newUUID = newUUID.replace(/-/g, "");
-            }
-
-            if (isUpperCase) {
-                newUUID = newUUID.toUpperCase();
-            }
-
+            if (isHyphens) newUUID = newUUID.replace(/-/g, "");
+            if (isUpperCase) newUUID = newUUID.toUpperCase();
             return newUUID;
         });
-
         setOutput(newUUIDs);
     }, [input, isHyphens, isUpperCase, selectItemDropDown]);
 
@@ -44,23 +37,35 @@ export default function UUIDPage() {
     return (
         <div className="h-full w-full">
             <p className="text-2xl mb-2">UUID Generator</p>
-
             <Accordion
                 label="Configuration"
                 title="Hyphens"
-                iconRight={<Switch textFalse="Off" textTrue="On" checked={isHyphens} onChange={() => setIsHyphens(!isHyphens)} />} />
-
+                iconRight={<Switch
+                    textFalse="Off"
+                    textTrue="On"
+                    checked={isHyphens}
+                    onChange={() => setIsHyphens(!isHyphens)}
+                />}
+            />
             <Accordion
                 title="Uppercase"
-                iconRight={<Switch textFalse="Off" textTrue="On" checked={isUpperCase} onChange={() => setIsUpperCase(!isUpperCase)} />} />
-
+                iconRight={<Switch
+                    textFalse="Off"
+                    textTrue="On"
+                    checked={isUpperCase}
+                    onChange={() => setIsUpperCase(!isUpperCase)}
+                />}
+            />
             <Accordion
                 title="UUID version"
                 content="Choose the version of UUID to generate"
-                iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} onSelectItemDropDown={setSelectItemDropDown} />} />
-
+                iconRight={<DropDown
+                    data={data}
+                    selectItemDropDown={selectItemDropDown}
+                    onSelectItemDropDown={setSelectItemDropDown}
+                />}
+            />
             <br />
-
             <label>Generate</label>
             <div className="flex gap-2 items-start">
                 <PrimaryButton
@@ -75,13 +80,12 @@ export default function UUIDPage() {
                     onChange={text => setInput(text.target.value)}
                 />
             </div>
-
             <div className="w-full h-11/20 mt-4">
                 <Textarea
                     label="UUID(s)"
-                    value={output.join("\n")} />
+                    value={output.join("\n")}
+                />
             </div>
-
         </div>
     )
 }

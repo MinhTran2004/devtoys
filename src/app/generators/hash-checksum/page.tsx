@@ -1,4 +1,5 @@
 "use client"
+
 import Accordion from "@/components/accordion";
 import DropDown from "@/components/drop-down";
 import DropImage from "@/components/drop-imge";
@@ -44,7 +45,6 @@ export default function HashCheckSumPage() {
         generateHash();
     }, [input, selectItemDropDown])
 
-    // Hàm để băm tệp hình ảnh
     const generateHashFromFile = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files ? event.target.files[0] : null;
 
@@ -76,11 +76,10 @@ export default function HashCheckSumPage() {
                     hash = '';
                     break;
             }
-
             setOutput(hash);
         };
         reader.readAsArrayBuffer(file);
-    },[selectItemDropDown]);
+    }, [selectItemDropDown]);
 
     return (
         <div className="h-full w-full overflow-y-hidden">
@@ -89,7 +88,12 @@ export default function HashCheckSumPage() {
                 label="Configuration"
                 title="Text corpus"
                 content="Select which hashing alforithm tou want to use"
-                iconRight={<DropDown data={dataHasihng} selectItemDropDown={selectItemDropDown} onSelectItemDropDown={setSelectItemDropDown} />} />
+                iconRight={<DropDown
+                    data={dataHasihng}
+                    selectItemDropDown={selectItemDropDown}
+                    onSelectItemDropDown={setSelectItemDropDown}
+                />}
+            />
 
             <div className="flex w-full h-2/10 justify-between items-center mt-1">
                 <div className="w-5/10 h-full">
@@ -101,20 +105,19 @@ export default function HashCheckSumPage() {
                 </div>
                 <p className="mx-2">or</p>
                 <div className="w-5/10 h-6/7 mr-1 mt-9">
-                    <DropImage onChange={generateHashFromFile} styleLayout={{height: '100%'}}/>
+                    <DropImage
+                        onChange={generateHashFromFile}
+                        styleLayout={{ height: '100%' }}
+                    />
                 </div>
             </div>
-
             <br />
-
             <InputField
                 disabled
                 label="Output"
                 value={output}
             />
-
             <br />
-
             <InputField
                 label="Checksum to verify data integrity"
                 value={checksum}

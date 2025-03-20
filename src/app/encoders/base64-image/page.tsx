@@ -1,4 +1,5 @@
 "use client"
+
 import DropImage from "@/components/drop-imge";
 import { useState } from "react";
 import Textarea from "@/components/textarea";
@@ -24,7 +25,6 @@ export default function Base64ImagePage() {
     return (
         <div className="h-full w-full">
             <p className="text-2xl">Base64 Image Encoders / Decoders</p>
-
             <div className="grid grid-cols-[60%_38.5%] gap-6 h-full">
                 <Textarea
                     label="Base64 text"
@@ -34,17 +34,14 @@ export default function Base64ImagePage() {
                 <div className="flex flex-col gap-5 w-full h-29/30">
                     <DropImage onChange={handleFileChange} />
                     <div className="w-full h-full rounded-b-lg bg-[#333333]">
-                        {
-                            base64 && (
-                                <img
+                        {base64 && (
+                            <img
                                 className="w-full h-full object-contain"
-                                    src={base64} alt="" />
-                            )
-                        }
+                                src={base64} alt="" />
+                        )}
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

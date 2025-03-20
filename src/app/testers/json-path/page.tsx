@@ -1,4 +1,5 @@
 "use client";
+
 import { useCallback, useState, useEffect } from "react";
 import { JSONPath } from "jsonpath-plus";
 import Textarea from "@/components/textarea";
@@ -26,8 +27,8 @@ export default function JSONPathTester() {
 
   const handleTestJSONPath = useCallback(() => {
     try {
-      const jsonObject = JSON.parse(input); 
-      const queryResult = JSONPath({ path: inputJSONPath, json: jsonObject }); 
+      const jsonObject = JSON.parse(input);
+      const queryResult = JSONPath({ path: inputJSONPath, json: jsonObject });
       setResult(JSON.stringify(queryResult, null, 2));
     } catch (err) {
       setResult("Lỗi cú pháp JSON hoặc JSONPath không hợp lệ");
@@ -41,7 +42,6 @@ export default function JSONPathTester() {
   return (
     <div className="h-full w-full">
       <p className="text-2xl mb-2">JSONPath Tester</p>
-
       <div className="grid grid-cols-2 h-full gap-3">
         <div className="h-24/25">
           <Textarea
@@ -50,7 +50,6 @@ export default function JSONPathTester() {
             onChange={(e) => setInput(e.target.value)}
           />
         </div>
-
         <div className="h-27/30 flex flex-col gap-2">
           <InputField
             label="JSONPath"
@@ -64,9 +63,10 @@ export default function JSONPathTester() {
               onChange={(e) => setResult(e.target.value)}
             />
           </div>
-
           <div className="h-14/25 mt-2">
-            <Table data={data} label="Cheat sheet" />
+            <Table
+              data={data}
+              label="Cheat sheet" />
           </div>
         </div>
       </div>

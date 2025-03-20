@@ -1,4 +1,5 @@
 "use client"
+
 import { useState } from "react";
 import { QRCodeCanvas } from 'qrcode.react';
 import DropImage from "@/components/drop-imge";
@@ -14,9 +15,8 @@ export default function QRCodePage() {
             const reader = new FileReader();
             reader.onloadend = () => {
                 const img = new Image();
-                img.src = reader.result as string; // Đảm bảo result là một chuỗi Base64
+                img.src = reader.result as string;
                 img.onload = () => {
-                    // Quét mã QR từ ảnh
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
                     if (ctx) {
@@ -24,14 +24,13 @@ export default function QRCodePage() {
                         canvas.height = img.height;
                         ctx.drawImage(img, 0, 0, img.width, img.height);
 
-                        // Lấy dữ liệu ảnh và giải mã mã QR
                         const imageData = ctx.getImageData(0, 0, img.width, img.height);
                         const qrCode = jsQR(imageData.data, img.width, img.height);
 
                         if (qrCode) {
-                            setInput(qrCode.data); // Lưu thông tin giải mã được từ mã QR
+                            setInput(qrCode.data);
                         } else {
-                            setInput(''); // Xóa input nếu không tìm thấy mã QR
+                            setInput('');
                         }
                     }
                 };
@@ -39,7 +38,6 @@ export default function QRCodePage() {
             reader.readAsDataURL(file);
         }
     };
-
 
     return (
         <div className="h-full w-full">
@@ -51,9 +49,10 @@ export default function QRCodePage() {
                     value={input}
                     onChange={(text) => setInput(text.target.value)}
                 />
-
                 <div className="flex flex-col gap-5 w-full h-29/30">
-                    <DropImage onChange={handleImageUpload} />
+                    <DropImage
+                        onChange={handleImageUpload}
+                    />
                     <div className="w-full h-full rounded-b-lg bg-[#333333]">
                         {
                             input && (

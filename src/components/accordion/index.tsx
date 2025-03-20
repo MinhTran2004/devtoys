@@ -5,7 +5,6 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 interface AccordionProps {
     data?: AccordionProps[],
     label?: string,
-    iconLeft?: React.ReactNode,
     title?: string,
     content?: string,
     iconRight?: React.ReactNode,
@@ -14,7 +13,6 @@ interface AccordionProps {
 export default function Accordion({
     data,
     label,
-    iconLeft,
     title,
     content,
     iconRight
@@ -27,7 +25,6 @@ export default function Accordion({
                 <label >{label}</label>
                 <div className="flex justify-between min-h-17 py-3 px-4 rounded-sm items-center bg-[#333333]">
                     <div className="flex items-center gap-3">
-                        {/* {iconLeft} */}
                         <CurrencyExchangeIcon />
                         <div>
                             <p className="text-sm">{title}</p>
@@ -36,15 +33,14 @@ export default function Accordion({
                     </div>
                     <div className="flex items-center gap-2">
                         {iconRight}
-                        {data && <div onClick={() => setIsDropDown(!isDropDown)}><KeyboardArrowDownIcon/></div>}
+                        {data && <div onClick={() => setIsDropDown(!isDropDown)}><KeyboardArrowDownIcon /></div>}
                     </div>
                 </div>
                 <div>
                     {data && isDropDown && (
                         data.map((item, index) => (
                             <Accordion key={index} {...item} />
-                        ))
-                    )}
+                        )))}
                 </div>
             </div>
 

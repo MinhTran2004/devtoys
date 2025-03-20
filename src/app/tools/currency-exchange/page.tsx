@@ -30,7 +30,7 @@ export default function CurrencyExchangePage() {
   const currencyExchange = useCallback(async () => {
     if (input.length < 1) {
       setError("Cần có it nhất 1 trường")
-    }else if (isNaN(Number(input))) {
+    } else if (isNaN(Number(input))) {
       setError("Lỗi định dạng dữ liệu")
     } else if (Number(input) < 0) {
       setError("Input > 0")
@@ -68,9 +68,9 @@ export default function CurrencyExchangePage() {
             selectItemDropDown={baseCode}
             onSelectItemDropDown={setBaseCode} />}
         />
-
-        <CurrencyExchangeIcon className="mt-8" />
-
+        <CurrencyExchangeIcon
+          className="mt-8"
+        />
         <InputField
           label="Output"
           type="number"

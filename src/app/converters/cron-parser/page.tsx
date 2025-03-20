@@ -1,4 +1,5 @@
 "use client"
+
 import Accordion from "@/components/accordion";
 import { useCallback, useEffect, useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
@@ -15,7 +16,6 @@ export default function CronParserPage() {
     const [inputDescription, setInputDescription] = useState("");
     const [output, setOutput] = useState("");
     const [formatDate, setFormatDate] = useState("yyyy-MM-dd ddd HH:mm:ss");
-
     const [isChecked, setIsChecked] = useState(true);
     const [selectItemDropDown, setSelectItemDropDown] = useState("5");
 
@@ -23,64 +23,74 @@ export default function CronParserPage() {
         try {
             if (inputExpression.length > 10) {
                 const result = parseCronExpression(inputExpression);
-
                 let convertArray = "";
-
                 result.nextRuns?.map((item) => {
                     convertArray = convertArray + item + "\n"
-                })
-
+                });
                 setOutput(convertArray);
             } else {
                 setOutput("");
             }
         } catch (err) {
             console.log(err);
-            setOutput("Lỗi định dạng")
+            setOutput("Lỗi định dạng");
         }
     }, [inputExpression]);
 
     useEffect(() => {
         handleCronPaser();
-    }, [handleCronPaser])
+    }, [inputExpression]);
 
     return (
         <div className="h-full w-full">
             <p className="text-2xl mb-2">URL Encoders / Decoders</p>
-
             <Accordion
                 iconLeft={<CurrencyExchangeIcon />}
                 title="Include seconds"
                 content="Whether the Cron expression should include seconds in its definition"
-                iconRight={<Toogle textFalse="Decode" textTrue="Encode" checked={isChecked} onChangeStatus={setIsChecked} />} />
-
+                iconRight={<Toogle
+                    textFalse="Decode"
+                    textTrue="Encode"
+                    checked={isChecked}
+                    onChangeStatus={setIsChecked}
+                />}
+            />
             <Accordion
                 iconLeft={<CurrencyExchangeIcon />}
                 title="Next sheduled dates"
                 content="How many scheduled dates needs to be fenerated"
-                iconRight={<DropDown data={dataDropDown} onSelectItemDropDown={setSelectItemDropDown} selectItemDropDown={selectItemDropDown} />} />
-
+                iconRight={<DropDown
+                    data={dataDropDown}
+                    onSelectItemDropDown={setSelectItemDropDown}
+                    selectItemDropDown={selectItemDropDown}
+                />}
+            />
             <Accordion
                 iconLeft={<CurrencyExchangeIcon />}
                 title="Output format"
                 content="Date time format of upcoming dates"
-                iconRight={<InputField disabled type="text" value={formatDate} onChange={text => setFormatDate(text.target.value)} />} />
-
+                iconRight={<InputField
+                    disabled
+                    type="text"
+                    value={formatDate}
+                    onChange={text => setFormatDate(text.target.value)}
+                />}
+            />
             <div className="flex flex-col mt-7 mb-2 gap-3">
                 <InputField
                     label="Cron expression to parse"
                     value={inputExpression}
                     placeholder="* * * * * *"
-                    onChange={text => setInputExpression(text.target.value)} />
-
+                    onChange={text => setInputExpression(text.target.value)}
+                />
                 <InputField
                     disabled
                     label="Cron description"
                     value={inputDescription}
                     placeholder="Đang hoàn thiện"
-                    onChange={text => setInputDescription(text.target.value)} />
+                    onChange={text => setInputDescription(text.target.value)}
+                />
             </div>
-
             <div className="h-7/15 mt-8">
                 <Textarea
                     disabled

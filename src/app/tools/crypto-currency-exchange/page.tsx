@@ -25,11 +25,10 @@ export default function CryptoCurrencyExchangePage() {
     const listCryptoCurrencies: string[] = [];
     try {
       const reponse = (await axios.get(`/api/crypto-currency-exchange`)).data;
-
       reponse.data.map((item: TypeDetailCrypto) => {
         arrayCryptoCurrencies.push({ id: item.id, slug: item.slug, price: item.quote.USD.price });
         listCryptoCurrencies.push(item.slug);
-      })
+      });
       setArrayCrypto(arrayCryptoCurrencies);
       setListCrypto(listCryptoCurrencies);
     } catch (err) {
@@ -39,23 +38,21 @@ export default function CryptoCurrencyExchangePage() {
 
   useEffect(() => {
     getListCurrencies();
-  }, [])
+  }, []);
 
   const handleCryptocurrencyExchange = useCallback(async () => {
     if (input.length < 1) {
-      setError("Cần có it nhất 1 trường")
+      setError("Cần có it nhất 1 trường");
     } else if (isNaN(Number(input))) {
-      setError("Lỗi định dạng dữ liệu")
+      setError("Lỗi định dạng dữ liệu");
     } else if (Number(input) < 1) {
-      setError("Input > 0")
+      setError("Input > 0");
     } else {
-      setError("")
+      setError("");
       try {
         const filterBase = arrayCrypto.filter((item) => item.slug === baseCode);
         const filterTarget = arrayCrypto.filter((item) => item.slug === targetCode);
         const baseToTarget = (Number(input) * Number(filterBase[0].price)) / Number(filterTarget[0].price);
-        console.log(baseToTarget);
-
         setOutput(baseToTarget);
       } catch (err) {
         console.log(err);
@@ -65,7 +62,7 @@ export default function CryptoCurrencyExchangePage() {
 
   useEffect(() => {
     handleCryptocurrencyExchange();
-  }, [input, arrayCrypto, targetCode, baseCode])
+  }, [input, arrayCrypto, targetCode, baseCode]);
 
   return (
     <div className="h-full w-full">
@@ -82,9 +79,9 @@ export default function CryptoCurrencyExchangePage() {
             selectItemDropDown={baseCode}
             onSelectItemDropDown={setBaseCode} />}
         />
-
-        <CurrencyExchangeIcon className="mt-8" />
-
+        <CurrencyExchangeIcon
+          className="mt-8"
+        />
         <InputField
           label="Output"
           type="number"

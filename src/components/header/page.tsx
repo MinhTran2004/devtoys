@@ -3,22 +3,17 @@
 import PrimaryButton from "../button";
 import LogoutIcon from '@mui/icons-material/Logout';
 
-interface HeaderProps{
+interface HeaderProps {
     nameUser?: string,
 }
 
 export default function Header({
     nameUser
 }: HeaderProps) {
+
     const handleLogout = () => {
         window.location.href = "/api/auth/logout";
     };
-
-    const handleLogin = () => {
-        window.location.href = "/api/auth/login";
-    };
-
-
 
     return (
         <div className="flex items-end gap-2">
@@ -27,7 +22,7 @@ export default function Header({
                 name="Logout"
                 disabled={true}
                 iconRight={<LogoutIcon sx={{ height: 18 }} />}
-                style={{height: 10}}
+                style={{ height: 10 }}
                 onClick={handleLogout}
             />
         </div>

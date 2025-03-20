@@ -1,6 +1,6 @@
 "use client"
-import { useCallback, useEffect, useState } from "react";
 
+import { useCallback, useEffect, useState } from "react";
 import Textarea from "@/components/textarea";
 import Table from "@/components/table";
 
@@ -21,19 +21,17 @@ export default function JsonTablePage() {
                 setOutput('Định dạng JSON không hợp lệ!');
             }
         } else {
-            setOutput("")
+            setOutput("");
         }
     }, [input]);
 
     useEffect(() => {
         handleConvertJSON();
-        console.log(typeof (input));
-    }, [input])
+    }, [input]);
 
     return (
         <div className="h-full w-full">
             <p className="text-2xl mb-2">JSON Array to Table</p>
-
             <div className={"grid grid-cols-1 gap-5 h-full mt-8 lg:grid-cols-2"}>
                 <div className="h-14/15">
                     <Textarea
@@ -43,9 +41,11 @@ export default function JsonTablePage() {
                         onChange={text => setInput(text.target.value)}
                     />
                 </div>
-
                 <div className="h-8/9">
-                    <Table data={output} label="Output" />
+                    <Table
+                        data={output}
+                        label="Output"
+                    />
                 </div>
             </div>
         </div>

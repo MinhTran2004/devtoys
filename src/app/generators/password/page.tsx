@@ -10,45 +10,65 @@ export default function PasswordPage() {
     const [inputGenerate, setInputGenerate] = useState(1);
     const [inputLength, setInputLength] = useState(24);
     const [output, setOutput] = useState("");
-
     const [isLowerCase, setIsLowercase] = useState(true);
     const [isUpperCase, setIsUpperCase] = useState(true);
     const [isDigit, setIsDigit] = useState(true);
     const [isSpecial, setIsSpecial] = useState(true);
     const [excludedChars, setExcludedChars] = useState("");
 
-
     const data = [
         {
             title: "Lowercase characters",
             content: "Use lowercase characters (abcdefghijklmnopqrstuvwxyz)",
-            iconRight: <Switch textFalse="Off" textTrue="On" checked={isLowerCase} onChange={() => setIsLowercase(!isLowerCase)} />
+            iconRight: <Switch
+                textFalse="Off"
+                textTrue="On"
+                checked={isLowerCase}
+                onChange={() => setIsLowercase(!isLowerCase)}
+            />
         },
         {
             title: "Uppercase characters",
             content: "Use uppercase characters (ABCDEFGHIJKLMNOPQRSTUVWXYZ)",
-            iconRight: <Switch textFalse="Off" textTrue="On" checked={isUpperCase} onChange={() => setIsUpperCase(!isUpperCase)} />
+            iconRight: <Switch
+                textFalse="Off"
+                textTrue="On"
+                checked={isUpperCase}
+                onChange={() => setIsUpperCase(!isUpperCase)}
+            />
         },
         {
             title: "Digit characters",
             content: "Use digit characters (0123456789)",
-            iconRight: <Switch textFalse="Off" textTrue="On" checked={isDigit} onChange={() => setIsDigit(!isDigit)} />
+            iconRight: <Switch
+                textFalse="Off"
+                textTrue="On"
+                checked={isDigit}
+                onChange={() => setIsDigit(!isDigit)}
+            />
         },
         {
             title: "Special characters",
             content: "Use special characters (ABCDEFGHIJKLMNOPQRSTUVWXYZ)",
-            iconRight: <Switch textFalse="Off" textTrue="On" checked={isSpecial} onChange={() => setIsSpecial(!isSpecial)} />
+            iconRight: <Switch
+                textFalse="Off"
+                textTrue="On"
+                checked={isSpecial}
+                onChange={() => setIsSpecial(!isSpecial)}
+            />
         },
         {
             title: "Excludedcharacters",
             content: "",
-            iconRight: <InputField value={excludedChars} onChange={(text) => setExcludedChars(text.target.value)} />
+            iconRight: <InputField
+                value={excludedChars}
+                onChange={(text) => setExcludedChars(text.target.value)}
+            />
         }
     ]
 
     const generatePassword = useCallback(() => {
         if (!isLowerCase && !isUpperCase && !isDigit && !isSpecial && excludedChars.length === 0) return setOutput("Vui lòng chọn ít nhất 1 định dạng");
-
 
         const lowercase = "abcdefghijklmnopqrstuvwxyz";
         const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -77,7 +97,6 @@ export default function PasswordPage() {
             }
             passwords.push(password);
         }
-
         setOutput(passwords.join("\n"));
     }, [inputGenerate, inputLength, isLowerCase, isUpperCase, isDigit, isSpecial, excludedChars]);
 
@@ -97,8 +116,9 @@ export default function PasswordPage() {
                     iconRight={<InputField
                         type="number"
                         value={inputLength}
-                        onChange={(text) => setInputLength(Number(text.target.value))} />} />
-
+                        onChange={(text) => setInputLength(Number(text.target.value))}
+                    />}
+                />
                 <label>Generate</label>
                 <div className="flex gap-2 items-start">
                     <PrimaryButton
@@ -110,9 +130,9 @@ export default function PasswordPage() {
                     <InputField
                         value={inputGenerate}
                         type="number"
-                        onChange={(text) => setInputGenerate(Number(text.target.value))} />
+                        onChange={(text) => setInputGenerate(Number(text.target.value))}
+                    />
                 </div>
-
                 <div className="w-full h-full mt-4">
                     <Textarea
                         label="UUID(s)"

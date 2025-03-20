@@ -41,7 +41,7 @@ export default async function RootLayout({
             <SideBar />
             <div className="bg-[#282828] rounded-2xl p-7 pt-0  w-full h-full overflow-y-hidden box-border">
               <div className="w-full flex justify-end">
-                <Header nameUser={session.user.nickname}/>
+                <Header nameUser={session.user.nickname} />
               </div>
               {children}
             </div>

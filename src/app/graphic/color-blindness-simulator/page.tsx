@@ -22,19 +22,20 @@ export default function ColorBlindnessSimulatorPage() {
     }
   };
 
-
-
   return (
     <div className="h-full w-full" >
       <p className="text-2xl mb-2">Color Blindness Simulator</p>
-      <DropImage onChange={handleImageUpload} />
-      <div className="grid grid-cols-2 w-full h-12/15 mt-5 gap-2 ">
+      <DropImage
+        onChange={handleImageUpload}
+      />
+      <div className="grid grid-cols-2 w-full h-12/15 mt-5 gap-2">
         {filters.map((item) => (
           <div className="flex items-center justify-center bg-[#333333]">
             <img
               style={{ maxHeight: 250, filter: item }}
               src={image}
-              alt="" />
+              alt=""
+            />
           </div>
         ))}
       </div>

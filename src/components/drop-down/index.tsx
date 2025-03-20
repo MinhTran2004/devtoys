@@ -16,9 +16,10 @@ export default function DropDown({
     selectItemDropDown,
     styleLayoutDropDown
 }: MenuProps) {
+
     const [isChecked, setIsChecked] = useState(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
-    
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -36,8 +37,13 @@ export default function DropDown({
         <div
             className="relative h-full"
             ref={containerRef}
-            onClick={() => setIsChecked(!isChecked)}>
-            <ItemDropDown styleLayoutDropDown={styleLayoutDropDown} label={selectItemDropDown ? selectItemDropDown : data[0]} iconRight={<KeyboardArrowDownIcon />} />
+            onClick={() => setIsChecked(!isChecked)}
+        >
+            <ItemDropDown
+                styleLayoutDropDown={styleLayoutDropDown}
+                label={selectItemDropDown ? selectItemDropDown : data[0]}
+                iconRight={<KeyboardArrowDownIcon />}
+            />
             {isChecked && (
                 <div className="absolute flex flex-col h-50 overflow-y-scroll bg-[#323232] z-999 gap-1 mt-1">
                     {data && (
@@ -48,7 +54,8 @@ export default function DropDown({
                                         key={item}
                                         label={item}
                                         onSelectItemDropDown={onSelectItemDropDown}
-                                        styleLayoutDropDown={styleLayoutDropDown} />
+                                        styleLayoutDropDown={styleLayoutDropDown}
+                                    />
                                 )
                             }
                         })

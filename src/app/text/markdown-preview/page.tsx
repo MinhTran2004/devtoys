@@ -1,4 +1,5 @@
 "use client"
+
 import Accordion from "@/components/accordion";
 import { useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
@@ -32,7 +33,12 @@ export default function MarkdownPreviewPage() {
         iconLeft={<CurrencyExchangeIcon />}
         title="Theme"
         content="Select wich theme to use to preview the Markdown"
-        iconRight={<DropDown data={dataTheme} selectItemDropDown={selectItemTheme} onSelectItemDropDown={setSelectItemTheme} />} />
+        iconRight={<DropDown
+          data={dataTheme}
+          selectItemDropDown={selectItemTheme}
+          onSelectItemDropDown={setSelectItemTheme}
+        />}
+      />
 
       <div className="h-7/8 grid grid-cols-2 gap-5">
         <Textarea
@@ -43,10 +49,10 @@ export default function MarkdownPreviewPage() {
 
         <div>
           <label>Output</label>
-        <div
-          className="h-19/20 pt-3 pl-5 rounded-lg"
-          style={{backgroundColor: selectItemTheme === "Dark" ? "#0e1117" : "white", color: selectItemTheme === "Dark" ? "white" : "black"}}
-          dangerouslySetInnerHTML={{ __html: output }} />
+          <div
+            className={`h-19/20 pt-3 pl-5 rounded-lg ${selectItemTheme === "Dark" ? 'bg-[#0e1117] text-white' : 'bg-white text-black'}`}
+            dangerouslySetInnerHTML={{ __html: output }}
+          />
         </div>
       </div>
 

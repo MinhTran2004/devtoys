@@ -14,32 +14,25 @@ export default function JSONPage() {
     const [isChecked, setIsChecked] = useState(false);
     const [selectItemDropDown, setSelectItemDropDown] = useState("2 spaces");
 
-    // Hàm để sắp xếp các đối tượng theo tên khóa
     const sortObject = (obj: any): any => {
-        if (typeof obj !== "object" || obj === null) return obj; // Không cần sắp xếp nếu không phải là đối tượng
-
-        if (Array.isArray(obj)) {
-            // Nếu là mảng, không thay đổi cấu trúc mảng, chỉ sắp xếp nội dung bên trong
-            return obj.map(sortObject); // Đệ quy để sắp xếp các phần tử trong mảng
-        }
-
+        if (typeof obj !== "object" || obj === null) return obj;
+        if (Array.isArray(obj)) return obj.map(sortObject);
         const sortedObj: any = {};
         Object.keys(obj)
-            .sort() // Sắp xếp các khóa theo chữ cái
+            .sort()
             .forEach((key) => {
-                sortedObj[key] = sortObject(obj[key]); // Đệ quy để sắp xếp các đối tượng lồng nhau
+                sortedObj[key] = sortObject(obj[key]);
             });
         return sortedObj;
     };
 
-    // Hàm để sắp xếp mảng các đối tượng (nếu có)
     const sortArray = (arr: any[]) => {
         return arr.map((item) => {
             if (typeof item === "object") {
-                return sortObject(item); // Nếu phần tử là đối tượng, gọi hàm sortObject
+                return sortObject(item);
             }
             return item;
-        }).sort(); // Sắp xếp mảng
+        }).sort();
     };
 
     const formatJson = () => {
@@ -73,12 +66,23 @@ export default function JSONPage() {
     return (
         <div className="h-full w-full">
             <p className="text-2xl mb-2">JSON Formatter</p>
-
-            <Accordion title="Indentation" iconRight={<DropDown data={data} selectItemDropDown={selectItemDropDown} onSelectItemDropDown={setSelectItemDropDown} />} />
+            <Accordion
+                title="Indentation"
+                iconRight={<DropDown
+                    data={data}
+                    selectItemDropDown={selectItemDropDown}
+                    onSelectItemDropDown={setSelectItemDropDown}
+                />}
+            />
             <Accordion
                 title="Sort JSON Properties alphabetically"
-                iconRight={<Switch textTrue="On" textFalse="Off" checked={isChecked} onChange={text => setIsChecked(!isChecked)} />} />
-
+                iconRight={<Switch
+                    textTrue="On"
+                    textFalse="Off"
+                    checked={isChecked}
+                    onChange={text => setIsChecked(!isChecked)}
+                />}
+            />
             <div className="grid grid-cols-1 gap-3 h-8/10 lg:grid-cols-2">
                 <Textarea
                     label="Input"
@@ -91,7 +95,6 @@ export default function JSONPage() {
                     value={output}
                 />
             </div>
-
         </div>
     )
 }
