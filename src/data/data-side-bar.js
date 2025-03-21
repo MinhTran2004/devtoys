@@ -20,7 +20,7 @@ export const DataSideBar = [
     key: "sub1",
     label: "All Tools",
     iconLeft: <HomeIcon fontSize="small" />,
-    link: "/"
+    link: "/pages"
   },
   // {
   //   key: "sub9",
@@ -32,13 +32,13 @@ export const DataSideBar = [
     label: "Converters",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    link: "/converters",
+    link: "/pages/converters",
     children: [
       {
         key: "sub2-1",
         label: "Cron parser",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/converters/cron-parser",
+        link: "/pages/converters/cron-parser",
       },
       // {
       //   key: "sub2-2",
@@ -49,19 +49,19 @@ export const DataSideBar = [
         key: "sub2-3",
         label: "JSON > Table",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/converters/json-table",
+        link: "/pages/converters/json-table",
       },
       {
         key: "sub2-4",
         label: "JSON <> YAML",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/converters/json-yaml",
+        link: "/pages/converters/json-yaml",
       },
       {
         key: "sub2-5",
         label: "Number Base",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/converters/number-base"
+        link: "/pages/converters/number-base"
       },
     ],
   },
@@ -70,57 +70,57 @@ export const DataSideBar = [
     label: "Encoders",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    link: "/encoders",
+    link: "/pages/encoders",
     children: [
       {
         key: "sub3-1",
         label: "Base64 Image",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/encoders/base64-image"
+        link: "/pages/encoders/base64-image"
       },
       {
         key: "sub3-2",
         label: "Base64 Text",
         iconLeft: <HomeIcon fontSize="small" />,
         iconRight: <EmojiObjectsIcon fontSize="small" />,
-        link: "/encoders/base64-text"
+        link: "/pages/encoders/base64-text"
       },
       {
         key: "sub3-3",
         label: "Certificate",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/encoders/certificate"
+        link: "/pages/encoders/certificate"
       },
       {
         key: "sub3-4",
         label: "GZIP",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/encoders/gzip"
+        link: "/pages/encoders/gzip"
       },
       {
         key: "sub3-5",
         label: "HTML",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/encoders/html"
+        link: "/pages/encoders/html"
       },
       {
         key: "sub3-6",
         label: "JWT",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/encoders/jwt"
+        link: "/pages/encoders/jwt"
       },
       {
         key: "sub3-7",
         label: "QR Code",
         iconLeft: <HomeIcon fontSize="small" />,
         iconRight: <EmojiObjectsIcon fontSize="small" />,
-        link: "/encoders/qr-code"
+        link: "/pages/encoders/qr-code"
       },
       {
         key: "sub3-8",
         label: "URL",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/encoders/url"
+        link: "/pages/encoders/url"
       },
     ],
   },
@@ -129,13 +129,13 @@ export const DataSideBar = [
     label: "Formatters",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    link: "/formatters",
+    link: "/pages/formatters",
     children: [
       {
         key: "sub4-1",
         label: "JSON",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/formatters/json"
+        link: "/pages/formatters/json"
       },
       // {
       //   key: "sub4-2",
@@ -146,7 +146,7 @@ export const DataSideBar = [
         key: "sub4-3",
         label: "XML",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/formatters/xml"
+        link: "/pages/formatters/xml"
       },
     ],
   },
@@ -155,32 +155,32 @@ export const DataSideBar = [
     label: "Generators",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    link: "/generators",
+    link: "/pages/generators",
     children: [
       {
         key: "sub5-1",
         label: "Hash / Checksum",
         iconLeft: <HomeIcon fontSize="small" />,
         iconRight: <EmojiObjectsIcon fontSize="small" />,
-        link: "/generators/hash-checksum",
+        link: "/pages/generators/hash-checksum",
       },
       {
         key: "sub5-2",
         label: "Lorem Ipsum",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/generators/lorem-ipsum",
+        link: "/pages/generators/lorem-ipsum",
       },
       {
         key: "sub5-3",
         label: "Password",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/generators/password",
+        link: "/pages/generators/password",
       },
       {
         key: "sub5-4",
         label: "UUID",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/generators/uuid",
+        link: "/pages/generators/uuid",
       },
     ],
   },
@@ -189,19 +189,19 @@ export const DataSideBar = [
     label: "Graphic",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    link: "/graphic",
+    link: "/pages/graphic",
     children: [
       {
         key: "sub6-1",
         label: "Color blindness Simulator",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/graphic/color-blindness-simulator",
+        link: "/pages/graphic/color-blindness-simulator",
       },
       {
         key: "sub6-2",
         label: "Image Converter",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/graphic/image-converter",
+        link: "/pages/graphic/image-converter",
       },
     ],
   },
@@ -210,26 +210,26 @@ export const DataSideBar = [
     label: "Testers",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    link: "/testers",
+    link: "/pages/testers",
     children: [
       {
         key: "sub7-1",
         label: "JSONpath",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/testers/json-path",
+        link: "/pages/testers/json-path",
       },
       {
         key: "sub7-2",
         label: "RegEx",
         iconLeft: <HomeIcon fontSize="small" />,
         iconRight: <EmojiObjectsIcon fontSize="small" />,
-        link: "/testers/regex",
+        link: "/pages/testers/regex",
       },
       {
         key: "sub7-3",
         label: "XML",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/testers/xml",
+        link: "/pages/testers/xml",
       },
     ],
   },
@@ -238,25 +238,25 @@ export const DataSideBar = [
     label: "Text",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    link: "/text",
+    link: "/pages/text",
     children: [
       {
         key: "sub8-1",
         label: "Escape / Unescape",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/text/escape-unescape"
+        link: "/pages/text/escape-unescape"
       },
       {
         key: "sub8-2",
         label: "List Compare",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/text/list-compare"
+        link: "/pages/text/list-compare"
       },
       {
         key: "sub8-3",
         label: "Markdown Preview",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/text/markdown-preview"
+        link: "/pages/text/markdown-preview"
       },
       // {
       //   key: "sub8-4",
@@ -273,7 +273,7 @@ export const DataSideBar = [
         key: "sub8-5",
         label: "Compare",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/text/compare"
+        link: "/pages/text/compare"
       },
     ],
   },
@@ -282,31 +282,31 @@ export const DataSideBar = [
     label: "Tools",
     iconLeft: <HomeIcon fontSize="small" />,
     iconRight: <KeyboardArrowDownIcon fontSize="small" />,
-    link: "/tools",
+    link: "/pages/tools",
     children: [
       {
         key: "sub8-1",
         label: "Currency Exchange",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/tools/currency-exchange"
+        link: "/pages/tools/currency-exchange"
       },
       {
         key: "sub8-2",
         label: "Crypto Currency Exchange",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/tools/crypto-currency-exchange"
+        link: "/pages/tools/crypto-currency-exchange"
       },
       {
         key: "sub8-3",
         label: "Scan Virus File",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/tools/scan-virus-file"
+        link: "/pages/tools/scan-virus-file"
       },
       {
         key: "sub8-5",
         label: "Ip Geo Location",
         iconLeft: <HomeIcon fontSize="small" />,
-        link: "/tools/ip-geo-location"
+        link: "/pages/tools/ip-geo-location"
       },
     ],
   },

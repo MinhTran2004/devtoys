@@ -1,9 +1,9 @@
 "use client"
 
-import { DataAllTools } from "../../data/all-tools";
+import { DataAllTools } from "../../../data/all-tools";
 import ListCard from "@/components/card/list-card";
 
-export default function GraphicPage() {
+export default function TextPage() {
     const data = DataAllTools;
     const filter = data.filter((item) => item.link);
 

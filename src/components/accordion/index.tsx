@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from "react";
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';

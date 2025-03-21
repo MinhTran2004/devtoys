@@ -3,9 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/side-bar"
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-import Header from "@/components/header/page";
-import { getSession } from "@auth0/nextjs-auth0";
-import { redirect } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,22 +24,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const session = await getSession();
-  if (!session?.user) {
-    redirect("/api/auth/login");
-  }
-
   return (
     <html lang="en">
       <UserProvider>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <div id="main">
-            <SideBar />
-            <div className="bg-[#282828] rounded-2xl p-7 pt-0  w-full h-full overflow-y-hidden box-border">
-              <div className="w-full flex justify-end">
-                <Header nameUser={session.user.nickname} />
-              </div>
+            <div className="w-full h-full overflow-y-hidden box-border">
               {children}
             </div>
           </div>

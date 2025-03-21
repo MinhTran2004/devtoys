@@ -1,23 +1,40 @@
-"use client"
+"use client";
 
-import ListCard from "@/components/card/list-card";
-import { DataAllTools } from "../data/all-tools";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function DashboardPage() {
 
-  const data = DataAllTools;
-  const filter = data.filter((item) => item.link);
+  const router = useRouter();
+
+  const checkSession = async () => {
+    const response = await fetch(`/api/login`)
+      .then(res => res.json())
+    if (response.session?.user) {
+      router.push('/pages');
+    }
+  }
+
+  useEffect(() => {
+    checkSession();
+  }, []);
+
+  const handleLogin = () => {
+    router.push(`/api/auth/login`);
+  };
 
   return (
-    <div className="pb-100">
-      <div className="flex">
-        <h1 className="text-4xl font-bold">Welcome to DevToys</h1>
-        <span className="text-base">v2.0-preview.8</span>
-      </div>
-      <div>
-        <ListCard title="All tools" data={filter} />
-      </div>
-      <a href="/api/auth/login">Login</a>
+    <div className="w-full h-full relative">
+      <img
+        src="https://static.vecteezy.com/system/resources/thumbnails/042/192/644/small_2x/ai-generated-mysterious-sunset-background-free-photo.jpg"
+        className="h-full w-full absolute z-10"
+        alt=""
+      />
+
+      <button
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-[#442039] px-7 py-3 rounded-3xl active:scale-95"
+        onClick={handleLogin}
+      >LOGIN</button>
     </div>
   );
 }

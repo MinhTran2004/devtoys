@@ -14,12 +14,13 @@ export default function PrimaryButton({
     disabled,
     styleLayout,
     name,
+    onClick,
     ...button
 }: PrimaryButtonProps) {
     return (
         <div style={{ ...styleLayout }}>
             <label>{label}</label>
-            <div className={`h-8 flex items-center justify-between gap-1 mt-1 p-2 text-sm rounded ${disabled ? 'cursor-pointer text-black bg-[#6ebbe7]' : 'cursor-default text-[#808080] bg-[#2f2f2f]'}`}>
+            <div className={`h-8 flex items-center justify-between gap-1 mt-1 p-2 text-sm rounded ${disabled ? 'cursor-pointer text-black bg-[#6ebbe7]' : 'cursor-default text-[#808080] bg-[#2f2f2f]'} active:scale-95`}>
                 {iconLeft}
                 <button className={` h-full flex items-center justify-between mt-1 p-2 text-sm rounded ${disabled ? 'cursor-pointer text-black bg-[#6ebbe7]' : 'cursor-default text-[#808080] bg-[#2f2f2f]'}`}
                     {...button}>{name}</button>
