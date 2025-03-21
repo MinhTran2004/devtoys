@@ -1,4 +1,4 @@
-import { getSession } from "@auth0/nextjs-auth0";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request, { params }: { params: any }) {
@@ -6,8 +6,8 @@ export async function GET(req: Request, { params }: { params: any }) {
     const res = new NextResponse();
 
     // Truyền cả req và res vào getSession
-    const session = await getSession(req, res);
+    const cookie = (await cookies()).get('appSession');
 
     // Trả về JSON response, giữ nguyên các cookie đã được set
-    return NextResponse.json({ session }, { headers: res.headers });
+    return NextResponse.json({ value: cookie?.value }, { headers: res.headers });
 }

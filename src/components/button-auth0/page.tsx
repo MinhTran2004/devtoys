@@ -10,7 +10,7 @@ export default function ButtonAuth0() {
     const checkSession = async () => {
         const response = await fetch(`/api/login`)
             .then(res => res.json())
-        setSession(response.session?.user);
+        setSession(response.value);
     };
 
     useEffect(() => {
@@ -20,10 +20,8 @@ export default function ButtonAuth0() {
 
     const handleSubmit = useCallback(() => {
         if (session) {
-            console.log('haha');
             router.push(`/api/auth/logout`);
         } else {
-            console.log('hihi');
             router.push(`/api/auth/login`);
         }
     }, [session])

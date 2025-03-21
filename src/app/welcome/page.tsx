@@ -8,7 +8,6 @@ export default function WelcomePage() {
                 className="h-full w-full absolute z-20"
                 alt=""
             />
-
             <ButtonAuth0 />
         </div>
     )

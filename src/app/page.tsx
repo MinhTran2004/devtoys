@@ -4,13 +4,12 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function DashboardPage() {
-
   const router = useRouter();
 
   const checkSession = async () => {
     const response = await fetch(`/api/login`)
       .then(res => res.json())
-    if (response.session?.user) {
+    if (response.value) {
       router.push('/pages');
     }
   }
@@ -30,7 +29,6 @@ export default function DashboardPage() {
         className="h-full w-full absolute z-10"
         alt=""
       />
-
       <button
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-[#442039] px-7 py-3 rounded-3xl active:scale-95"
         onClick={handleLogin}
