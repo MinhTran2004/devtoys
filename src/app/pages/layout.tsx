@@ -1,6 +1,4 @@
-import ButtonAuth0 from "@/components/button-auth0/page";
 import SideBar from "@/components/side-bar";
-import { Suspense } from "react";
 
 export default async function RootLayout({
     children,
