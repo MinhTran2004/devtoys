@@ -10,6 +10,7 @@ export async function GET(req: NextRequest) {
                 { status: 401 }
             );
         }
+
         const url = `${process.env.AUTH0_ISSUER_BASE_URL}/userinfo`;
         const response = await fetch(url, {
             headers: {
@@ -17,15 +18,17 @@ export async function GET(req: NextRequest) {
             },
         });
 
-        // if (!response.ok) {
-        //     const errorText = await response.text();
-        //     return NextResponse.json(
-        //         { status: 401, msg: `Token không hợp lệ: ${errorText}` },
-        //         { status: 401 }
-        //     );
-        // }
+        const responseText = await response.text();
+        console.log("Auth0 Response:", response.status, responseText);
 
-        const userData = await response.json();
+        if (!response.ok) {
+            return NextResponse.json(
+                { status: 401, msg: `Token không hợp lệ: ${responseText}` },
+                { status: 401 }
+            );
+        }
+
+        const userData = JSON.parse(responseText);
         return NextResponse.json(userData);
     } catch (err) {
         console.error("Lỗi trong /me:", err);
