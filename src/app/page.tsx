@@ -25,11 +25,6 @@ export default function DashboardPage() {
 
   return (
     <div className="w-full h-full relative">
-      <img
-        src="https://static.vecteezy.com/system/resources/thumbnails/042/192/644/small_2x/ai-generated-mysterious-sunset-background-free-photo.jpg"
-        className="h-full w-full absolute z-10"
-        alt=""
-      />
     </div>
   );
 }

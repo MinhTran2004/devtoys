@@ -9,15 +9,15 @@ export async function GET() {
             );
         }
 
-        const domain = process.env.AUTH0_ISSUER_BASE_URL.replace("https://", "");
+        const domain = process.env.AUTH0_ISSUER_BASE_URL.replace("https://", "").replace(/\/+$/, "");
         const clientId = process.env.AUTH0_CLIENT_ID;
         const redirectUri = `${process.env.AUTH0_BASE_URL}/api/auth/callback`;
         const scope = process.env.AUTH0_SCOPE || "openid profile";
         const apiURL = `https://${domain}/authorize?` +
             `client_id=${clientId}&` +
             `response_type=code&` +
-            `redirect_uri=${redirectUri}&` +
-            `scope=${scope}`;
+            `redirect_uri=${encodeURIComponent(redirectUri)}&` +
+            `scope=${encodeURIComponent(scope)}`;
         return NextResponse.redirect(apiURL);
     } catch (err) {
         console.error("Lỗi trong quá trình xử lý đăng nhập:", err);
