@@ -16,8 +16,8 @@ export async function GET() {
         const apiURL = `https://${domain}/authorize?` +
             `client_id=${clientId}&` +
             `response_type=code&` +
-            `redirect_uri=${encodeURIComponent(redirectUri)}&` +
-            `scope=${encodeURIComponent(scope)}`;
+            `redirect_uri=${redirectUri}&` +
+            `scope=${scope}`;
         return NextResponse.redirect(apiURL);
     } catch (err) {
         console.error("Lỗi trong quá trình xử lý đăng nhập:", err);

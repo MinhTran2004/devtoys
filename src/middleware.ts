@@ -4,8 +4,6 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
     const authToken = request.cookies.get('access_token')?.value;
 
-    console.log('Auth Token:', authToken);
-
     if (!authToken) {
         const redirectUrl = new URL('/welcome', request.url);
         console.log('Redirecting to:', redirectUrl.toString());
