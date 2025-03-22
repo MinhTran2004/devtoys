@@ -11,7 +11,7 @@ export async function GET() {
 
         const domain = process.env.AUTH0_ISSUER_BASE_URL.replace("https://", "").replace(/\/+$/, "");
         const clientId = process.env.AUTH0_CLIENT_ID;
-        const redirectUri = `${process.env.AUTH0_BASE_URL}/api/auth/callback`;
+        const redirectUri = `${process.env.AUTH0_BASE_URL}api/auth/callback`;
         const scope = process.env.AUTH0_SCOPE || "openid profile email";
         const audience = "https://dev-zinn8d20xyjq3y37.us.auth0.com/api/v2/";
 
