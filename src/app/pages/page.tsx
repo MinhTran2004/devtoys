@@ -52,7 +52,7 @@ export default function MainPage() {
                     <img
                         onClick={() => setIsChecked(!isChecked)}
                         src={userInfo?.picture}
-                        className="h-12 rounded-4xl"
+                        className="h-12 rounded-4xl cursor-pointer"
                         alt=""
                     />
                     {isChecked &&
