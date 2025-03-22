@@ -1,37 +1,12 @@
 "use client"
-
-import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
-
 export default function ButtonAuth0() {
-    const [session, setSession] = useState<string | null>("");
-    const router = useRouter();
-
-    const checkSession = useCallback(async () => {
-        const response = await fetch(`/api/auth/me`)
-            .then(res => res.json());
-        if (response.status != 401) {
-            setSession(response);
-        }
-    }, []);
-
-    useEffect(() => {
-        checkSession();
-    }, []);
-
-    const handleSubmit = useCallback(() => {
-        if (session) {
-            router.push(`/api/auth/logout`);
-        } else {
-            router.push(`/api/auth/login`);
-        }
-    }, [session])
+    const handleSubmit = () => {
+        window.location.href = `/api/auth/logout`;
+    };
 
     return (
         <div className="cursor-pointer">
-            <button
-                onClick={handleSubmit}
-            >{session ? "Logout" : "Login"}</button>
+            <button onClick={handleSubmit}>Logout</button>
         </div>
     )
 }
