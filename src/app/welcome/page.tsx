@@ -1,6 +1,14 @@
-import ButtonAuth0 from "@/components/button-auth0/page";
+'use client'
 
 export default function WelcomePage() {
+    const handleLogin = async () => {
+        try {
+            window.location.href = `api/auth/login`;
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <div className="w-full h-screen relative">
             <img
@@ -8,7 +16,10 @@ export default function WelcomePage() {
                 className="h-full w-full absolute z-20"
                 alt=""
             />
-            <ButtonAuth0 />
+            <button
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-[#442039] px-7 py-3 rounded-3xl active:scale-95"
+                onClick={handleLogin}
+            >LOGIN</button>
         </div>
     )
 }

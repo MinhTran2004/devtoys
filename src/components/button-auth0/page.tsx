@@ -7,16 +7,16 @@ export default function ButtonAuth0() {
     const [session, setSession] = useState<string | null>("");
     const router = useRouter();
 
-    const checkSession = async () => {
-        const response = await fetch(`/api/login`)
-            .then(res => res.json())
-        setSession(response.value);
-    };
+    const checkSession = useCallback(async () => {
+        const response = await fetch(`/api/auth/me`)
+            .then(res => res.json());
+        setSession(response);
+        console.log(response);
+    }, []);
 
     useEffect(() => {
         checkSession();
     }, []);
-
 
     const handleSubmit = useCallback(() => {
         if (session) {
