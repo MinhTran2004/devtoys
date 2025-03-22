@@ -9,6 +9,8 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ status: 400, msg: "Thiếu mã xác thực" }, { status: 400 });
         }
 
+        const AUTH0_BASE_URL = process.env.AUTH0_BASE_URL && process.env.AUTH0_BASE_URL.replace(/\/+$/, "");
+
         const tokenResponse = await fetch(`${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -17,7 +19,7 @@ export async function GET(req: NextRequest) {
                 client_id: process.env.AUTH0_CLIENT_ID,
                 client_secret: process.env.AUTH0_CLIENT_SECRET,
                 code,
-                redirect_uri: `${process.env.AUTH0_BASE_URL}/api/auth/callback`,
+                redirect_uri: `${AUTH0_BASE_URL}/api/auth/callback`,
             }),
         });
 

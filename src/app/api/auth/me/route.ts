@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
     try {
         const accessToken = req.cookies.get("access_token")?.value;
-        console.log("Access Token:", accessToken);
 
         if (!accessToken) {
             return NextResponse.json(
@@ -13,7 +12,6 @@ export async function GET(req: NextRequest) {
         }
 
         const url = `${process.env.AUTH0_ISSUER_BASE_URL}/userinfo`;
-        console.log("Fetching from:", url);
         const response = await fetch(url, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
