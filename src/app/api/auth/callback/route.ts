@@ -10,8 +10,19 @@ export async function GET(req: NextRequest) {
         }
 
         const AUTH0_BASE_URL = process.env.AUTH0_BASE_URL && process.env.AUTH0_BASE_URL.replace(/\/+$/, "");
+        const tokenUrl = `${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`;
+        const redirectUri = `${AUTH0_BASE_URL}/api/auth/callback`;
 
-        const tokenResponse = await fetch(`${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`, {
+        console.log("Fetching token from:", tokenUrl);
+        console.log("Request body:", {
+            grant_type: "authorization_code",
+            client_id: process.env.AUTH0_CLIENT_ID,
+            client_secret: process.env.AUTH0_CLIENT_SECRET,
+            code,
+            redirect_uri: redirectUri,
+        });
+
+        const tokenResponse = await fetch(tokenUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -19,15 +30,19 @@ export async function GET(req: NextRequest) {
                 client_id: process.env.AUTH0_CLIENT_ID,
                 client_secret: process.env.AUTH0_CLIENT_SECRET,
                 code,
-                redirect_uri: `${AUTH0_BASE_URL}/api/auth/callback`,
+                redirect_uri: redirectUri,
             }),
         });
 
         if (!tokenResponse.ok) {
-            throw new Error("Không thể lấy token");
+            const errorText = await tokenResponse.text();
+            console.error("Token response error:", tokenResponse.status, errorText);
+            throw new Error(`Không thể lấy token: ${errorText}`);
         }
 
         const { access_token } = await tokenResponse.json();
+        console.log("Access Token:", access_token);
+
         const response = NextResponse.redirect(`${process.env.AUTH0_BASE_URL}/pages`);
         response.cookies.set("access_token", access_token, {
             httpOnly: true,
