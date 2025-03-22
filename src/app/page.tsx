@@ -12,8 +12,6 @@ export default function DashboardPage() {
     })
       .then(res => res.json());
 
-    console.log(response.status);
-
     if (response.ok) {
       router.push(`/pages`);
     } else {
