@@ -7,35 +7,41 @@ export async function GET(req: NextRequest) {
         const code = searchParams.get("code");
         const state = searchParams.get("state");
 
-        // Kiểm tra xem code có tồn tại không
+        // Kiểm tra mã xác thực
         if (!code) {
-            console.error("Missing authorization code in query parameters");
-            return NextResponse.json({ status: 400, msg: "Thiếu mã xác thực" }, { status: 400 });
+            console.error("Thiếu mã xác thực trong query parameters");
+            return NextResponse.json(
+                { status: 400, msg: "Thiếu mã xác thực" },
+                { status: 400 }
+            );
         }
 
-        // (Tùy chọn) Kiểm tra state để chống CSRF
+        // Xác thực state để chống CSRF
         const expectedState = req.cookies.get("auth_state")?.value;
         if (expectedState && state !== expectedState) {
-            console.error("State mismatch:", { received: state, expected: expectedState });
-            return NextResponse.json({ status: 400, msg: "State không hợp lệ" }, { status: 400 });
+            console.error("State không khớp:", { received: state, expected: expectedState });
+            return NextResponse.json(
+                { status: 400, msg: "State không hợp lệ" },
+                { status: 400 }
+            );
         }
 
-        // Chuẩn bị URL và redirect_uri
-        const AUTH0_BASE_URL = process.env.AUTH0_BASE_URL && process.env.AUTH0_BASE_URL.replace(/\/+$/, "");
-        const tokenUrl = `${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`;
+        // Kiểm tra biến môi trường
+        const AUTH0_BASE_URL = process.env.AUTH0_BASE_URL?.replace(/\/+$/, "");
+        const AUTH0_ISSUER_BASE_URL = process.env.AUTH0_ISSUER_BASE_URL?.replace(/\/+$/, "");
+
+        if (!AUTH0_BASE_URL || !AUTH0_ISSUER_BASE_URL || !process.env.AUTH0_CLIENT_ID || !process.env.AUTH0_CLIENT_SECRET) {
+            console.error("Thiếu biến môi trường cần thiết");
+            return NextResponse.json(
+                { status: 500, msg: "Lỗi cấu hình máy chủ" },
+                { status: 500 }
+            );
+        }
+
+        const tokenUrl = `${AUTH0_ISSUER_BASE_URL}/oauth/token`;
         const redirectUri = `${AUTH0_BASE_URL}/api/auth/callback`;
 
-        // Log thông tin yêu cầu để debug
-        console.log("Fetching token from:", tokenUrl);
-        console.log("Request body:", {
-            grant_type: "authorization_code",
-            client_id: process.env.AUTH0_CLIENT_ID,
-            client_secret: process.env.AUTH0_CLIENT_SECRET,
-            code,
-            redirect_uri: redirectUri,
-        });
-
-        // Gửi yêu cầu POST đến /oauth/token để đổi code lấy access_token
+        // Đổi mã code lấy token
         const tokenResponse = await fetch(tokenUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -48,27 +54,37 @@ export async function GET(req: NextRequest) {
             }),
         });
 
-        // Kiểm tra phản hồi từ Auth0
         if (!tokenResponse.ok) {
             const errorText = await tokenResponse.text();
-            console.error("Token response error:", tokenResponse.status, errorText);
-            throw new Error(`Không thể lấy token: ${errorText}`);
+            console.error("Lỗi khi đổi token:", {
+                status: tokenResponse.status,
+                error: errorText,
+            });
+            return NextResponse.json(
+                { status: 500, msg: "Không thể đổi mã xác thực lấy token" },
+                { status: 500 }
+            );
         }
 
-        // Lấy access_token từ phản hồi
         const { access_token } = await tokenResponse.json();
-        console.log("Access Token:", access_token);
+        if (!access_token) {
+            console.error("Không nhận được access token từ Auth0");
+            return NextResponse.json(
+                { status: 500, msg: "Phản hồi token không hợp lệ" },
+                { status: 500 }
+            );
+        }
 
-        // Chuyển hướng người dùng và lưu access_token vào cookies
-        const response = NextResponse.redirect(`${process.env.AUTH0_BASE_URL}/pages`);
+        // Tạo phản hồi redirect và set cookie
+        const response = NextResponse.redirect(`${AUTH0_BASE_URL}/pages`);
         response.cookies.set("access_token", access_token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production", // Chỉ dùng HTTPS trong production
+            secure: process.env.NODE_ENV === "production",
             path: "/",
-            maxAge: 60 * 60 * 24, // 1 ngày
+            maxAge: 60 * 60 * 24, // 24 giờ
         });
 
-        // (Tùy chọn) Xóa state sau khi sử dụng
+        // Xóa cookie state nếu tồn tại
         if (expectedState) {
             response.cookies.delete("auth_state");
         }
@@ -76,6 +92,16 @@ export async function GET(req: NextRequest) {
         return response;
     } catch (err) {
         console.error("Lỗi trong callback:", err);
-        return NextResponse.json({ status: 500, msg: "Lỗi máy chủ" }, { status: 500 });
+        return NextResponse.json(
+            { status: 500, msg: "Lỗi máy chủ nội bộ" },
+            { status: 500 }
+        );
     }
 }
+
+// Cấu hình cho Vercel
+export const config = {
+    api: {
+        bodyParser: false, // Không cần cho GET, nhưng nên khai báo rõ ràng
+    },
+};
