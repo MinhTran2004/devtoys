@@ -12,7 +12,7 @@ export default function DashboardPage() {
     })
       .then(res => res.json());
 
-    if (response) {
+    if (response.status != 401) {
       router.push(`/pages`);
     } else {
       router.push(`/welcome`);
@@ -22,8 +22,6 @@ export default function DashboardPage() {
   useEffect(() => {
     checkSession();
   }, []);
-
-
 
   return (
     <div className="w-full h-full relative">

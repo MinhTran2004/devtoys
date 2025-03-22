@@ -10,8 +10,9 @@ export default function ButtonAuth0() {
     const checkSession = useCallback(async () => {
         const response = await fetch(`/api/auth/me`)
             .then(res => res.json());
-        setSession(response);
-        console.log(response);
+        if (response.status != 401) {
+            setSession(response);
+        }
     }, []);
 
     useEffect(() => {
