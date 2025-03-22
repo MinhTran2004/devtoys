@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
     try {
         const accessToken = req.cookies.get("access_token")?.value;
+        console.log("Access Token:", accessToken);
 
         if (!accessToken) {
             return NextResponse.json(
@@ -11,15 +12,18 @@ export async function GET(req: NextRequest) {
             );
         }
 
-        const response = await fetch(`${process.env.AUTH0_ISSUER_BASE_URL}/userinfo`, {
+        const url = `${process.env.AUTH0_ISSUER_BASE_URL}/userinfo`;
+        console.log("Fetching from:", url);
+        const response = await fetch(url, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },
         });
 
         if (!response.ok) {
+            const errorText = await response.text();
             return NextResponse.json(
-                { status: 401, msg: "Token không hợp lệ" },
+                { status: 401, msg: `Token không hợp lệ: ${errorText}` },
                 { status: 401 }
             );
         }

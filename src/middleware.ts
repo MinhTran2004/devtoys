@@ -9,8 +9,6 @@ export function middleware(request: NextRequest) {
         console.log('Redirecting to:', redirectUrl.toString());
         return NextResponse.redirect(redirectUrl);
     }
-
-    return NextResponse.next();
 }
 
 export const config = {

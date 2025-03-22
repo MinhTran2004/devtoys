@@ -12,7 +12,9 @@ export default function DashboardPage() {
     })
       .then(res => res.json());
 
-    if (response.status != 401) {
+    console.log(response.status);
+
+    if (response.ok) {
       router.push(`/pages`);
     } else {
       router.push(`/welcome`);
