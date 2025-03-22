@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
             );
         }
 
-        const domain = process.env.AUTH0_ISSUER_BASE_URL?.replace("https://", "");
+        const domain = process.env.AUTH0_ISSUER_BASE_URL?.replace("https://", "").replace(/\/+$/, "");
         const clientId = process.env.AUTH0_CLIENT_ID;
         const clientSecret = process.env.AUTH0_CLIENT_SECRET;
         const redirectUri = `${process.env.AUTH0_BASE_URL}/api/auth/callback`;
