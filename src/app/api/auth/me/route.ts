@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
     try {
         const accessToken = req.cookies.get("access_token")?.value;
-        console.log("Access Token:", accessToken);
 
         if (!accessToken) {
             return NextResponse.json(
@@ -20,11 +19,11 @@ export async function GET(req: NextRequest) {
         });
 
         const responseText = await response.text();
-        console.log("Auth0 Response:", responseText);
+        console.log("Auth0 Response:", response);
 
-        if (!response.ok) {
+        if (response.ok) {
             return NextResponse.json(
-                { status: 401, msg: `Token không hợp lệ: ${responseText}` },
+                { status: 401, msg: `Token không hợp lệ: ${responseText}`, token: accessToken, response: response },
                 { status: 401 }
             );
         }
