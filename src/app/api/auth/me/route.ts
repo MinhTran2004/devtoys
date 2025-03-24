@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
 
         if (response.ok) {
             return NextResponse.json(
-                { status: 401, msg: `Token không hợp lệ: ${responseText}`, token: accessToken, response: response, domain: process.env.AUTH0_ISSUER_BASE_URL },
+                { status: 401, msg: `Token không hợp lệ: ${responseText}`, token: accessToken, response: response },
                 { status: 401 }
             );
         }
