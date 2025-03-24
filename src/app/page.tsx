@@ -1,9 +1,8 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { NextRequest } from "next/server";
 
-export default function DashboardPage(request: NextRequest) {
-  const cookieStore = cookies();
+export default async function DashboardPage() {
+  const cookieStore = await cookies();
   const accessToken = cookieStore.get("access_token")?.value;
 
   if (accessToken) {
