@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
     try {
         const accessToken = req.cookies.get("access_token")?.value;
+        console.log("Access Token:", accessToken);
 
         if (!accessToken) {
             return NextResponse.json(
@@ -15,12 +16,11 @@ export async function GET(req: NextRequest) {
         const response = await fetch(url, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
-                access_token: accessToken,
             },
         });
 
         const responseText = await response.text();
-        // console.log(response);
+        console.log("Auth0 Response:", responseText);
 
         if (!response.ok) {
             return NextResponse.json(
@@ -32,6 +32,7 @@ export async function GET(req: NextRequest) {
         const userData = JSON.parse(responseText);
         return NextResponse.json(userData);
     } catch (err) {
+        console.error("Server Error:", err);
         return NextResponse.json(
             { status: 500, msg: "Lỗi máy chủ" },
             { status: 500 }
