@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
     try {
         const accessToken = req.cookies.get("access_token")?.value;
+        const domain = process.env.AUTH0_ISSUER_BASE_URL;
 
         if (!accessToken) {
             return NextResponse.json(
@@ -21,9 +22,9 @@ export async function GET(req: NextRequest) {
         const responseText = await response.text();
         console.log("Auth0 Response:", response);
 
-        if (!response.ok) {
+        if (response.ok) {
             return NextResponse.json(
-                { status: 401, msg: `Token không hợp lệ: ${responseText}`, token: accessToken, response: response },
+                { status: 401, msg: `Token không hợp lệ: ${responseText}`, token: accessToken, response: response, domain: domain },
                 { status: 401 }
             );
         }
