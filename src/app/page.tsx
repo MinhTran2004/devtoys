@@ -1,29 +1,16 @@
-"use client";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { NextRequest } from "next/server";
 
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+export default function DashboardPage(request: NextRequest) {
+  const cookieStore = cookies();
+  const accessToken = cookieStore.get("access_token")?.value;
 
-export default function DashboardPage() {
-  const router = useRouter();
-
-  const checkSession = async () => {
-    const response = await fetch(`/api/auth/me`, {
-      credentials: 'include'
-    })
-      .then(res => res.json());
-
-    console.log(response);
-
-    if (response) {
-      router.push(`/pages`);
-    } else {
-      router.push(`/welcome`);
-    }
+  if (accessToken) {
+    redirect(`/pages`);
+  } else {
+    redirect(`/welcome`);
   }
-
-  useEffect(() => {
-    checkSession();
-  }, []);
 
   return (
     <div className="w-full h-full relative">
