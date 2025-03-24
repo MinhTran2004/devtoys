@@ -15,11 +15,12 @@ export async function GET(req: NextRequest) {
         const response = await fetch(url, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
+                access_token: accessToken,
             },
         });
 
         const responseText = await response.text();
-        console.log("Auth0 Response:", response.status, responseText);
+        // console.log(response);
 
         if (!response.ok) {
             return NextResponse.json(
@@ -31,7 +32,6 @@ export async function GET(req: NextRequest) {
         const userData = JSON.parse(responseText);
         return NextResponse.json(userData);
     } catch (err) {
-        console.error("Lỗi trong /me:", err);
         return NextResponse.json(
             { status: 500, msg: "Lỗi máy chủ" },
             { status: 500 }

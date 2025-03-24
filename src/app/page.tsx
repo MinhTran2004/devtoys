@@ -12,7 +12,9 @@ export default function DashboardPage() {
     })
       .then(res => res.json());
 
-    if (response.ok) {
+    console.log(response);
+
+    if (response) {
       router.push(`/pages`);
     } else {
       router.push(`/welcome`);
