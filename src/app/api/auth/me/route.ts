@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
         const responseText = await response.text();
         console.log("Auth0 Response:", response);
 
-        if (response.ok) {
+        if (!response.ok) {
             return NextResponse.json(
                 { status: 401, msg: `Token không hợp lệ: ${responseText}`, token: accessToken, response: response },
                 { status: 401 }
