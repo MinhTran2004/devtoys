@@ -17,7 +17,7 @@ export default function WelcomePage() {
                 alt=""
             />
             <button
-                className="absolute cursor-pointer top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-[#442039] px-7 py-3 rounded-3xl active:scale-95"
+                className="absolute cursor-pointer top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-[#442039] px-7 py-3 rounded-3xl active:scale-95 text-white"
                 onClick={handleLogin}
             >LOGIN</button>
         </div>

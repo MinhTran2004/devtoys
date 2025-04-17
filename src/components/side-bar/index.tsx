@@ -16,12 +16,14 @@ export default function SideBar() {
         >
             <div className="mx-2.5 mb-2">
                 <div onClick={() => setStatusSideBar(!statusSideBar)}>
-                    <MenuIcon sx={{ fontSize: 20, marginBottom: 1.5, cursor: "pointer" }} />
+                    <MenuIcon sx={{ fontSize: 20, marginBottom: 1.5, cursor: "pointer", color: "white" }} />
                 </div>
                 {statusSideBar && (
                     <InputField
-                        placeholder="Type to search for tools"
-                        iconRight={<SearchIcon />}
+                    style={{color: 'white'}}
+                    color="white"
+                    placeholder="Type to search for tools"
+                        iconRight={<SearchIcon style={{color: 'white'}}/>}
                     />
                 )}
             </div>
